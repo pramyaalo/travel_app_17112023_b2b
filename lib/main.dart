@@ -1,125 +1,273 @@
+import 'dart:convert';
+import 'dart:developer';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:travel_app_17112023_b2b/utils/response_handler.dart';
+import 'package:travel_app_17112023_b2b/utils/shared_preferences.dart';
+
+import 'Dashboard.dart';
+import 'Models/LoginModel.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MaterialApp(home: LoginScreen()));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a blue toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+class _LoginScreenState extends State<LoginScreen> {
+  bool _showPassword = false;
+  String MemberId = '';
+  String UserName = '';
+  Future<http.Response>? __futureLogin;
+  final TextEditingController _userNameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
-  void _incrementCounter() {
+  void _togglePasswordVisibility() {
     setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
+      _showPassword = !_showPassword;
     });
   }
 
   @override
+  void initState() {
+    _showPassword = false;
+  }
+
+  @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+    return Container(
+        color: Color(0xffefefef),
+        child: Center(
+          child: Card(
+            margin: const EdgeInsets.fromLTRB(30, 0, 30, 0),
+            color: Colors.white,
+            elevation: 16.0,
+            shadowColor: Colors.white,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10.0),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+            child: Container(
+              padding: EdgeInsets.all(20.0),
+              width: double.infinity,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Image(
+                          width: 150,
+                          image: AssetImage("assets/images/logo.png"))
+                    ],
+                  ),
+                  Container(
+                    margin: EdgeInsets.symmetric(vertical: 20.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: const [
+                        Expanded(child: Divider()),
+                        SizedBox(
+                          width: 10.0,
+                        ),
+                        Text(
+                          "Login to your Account",
+                          style: TextStyle(
+                              fontFamily: "Montserrat",
+                              fontSize: 15,
+                              fontWeight: FontWeight.w400),
+                        ),
+                        SizedBox(
+                          width: 10.0,
+                        ),
+                        Expanded(child: Divider())
+                      ],
+                    ),
+                  ),
+                  Container(
+                    child: Column(
+                      children: [
+                        TextField(
+                          decoration: InputDecoration(
+                              hintText: "Username",
+                              hintStyle: TextStyle(fontFamily: "Montserrat"),
+                              icon: Icon(Icons.people)),
+                          controller: _userNameController,
+                          keyboardType: TextInputType.emailAddress,
+                          style:
+                              TextStyle(fontFamily: "Montserrat", fontSize: 15),
+                        ),
+                        SizedBox(
+                          height: 20.0,
+                        ),
+                        TextField(
+                          style:
+                              TextStyle(fontFamily: "Montserrat", fontSize: 15),
+                          decoration: InputDecoration(
+                            hintText: "Password",
+                            hintStyle: TextStyle(fontFamily: "Montserrat"),
+                            icon: Icon(Icons.password),
+                            suffixIcon: GestureDetector(
+                              onTap: _togglePasswordVisibility,
+                              child: _showPassword
+                                  ? Icon(Icons.visibility)
+                                  : Icon(Icons.visibility_off),
+                            ),
+                          ),
+                          controller: _passwordController,
+                          obscureText: _showPassword,
+                        ),
+                        SizedBox(
+                          height: 20.0,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Text(
+                              "Forgot password?",
+                              style: TextStyle(
+                                  fontFamily: "Montserrat", color: Colors.blue),
+                            )
+                          ],
+                        ),
+                        SizedBox(
+                          height: 20.0,
+                        ),
+                        ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Dashboard(),
+                              ),
+                            );
+                            print('JSON Response: ${_userNameController.text}');
+                            __futureLogin = ResponseHandler.performPost(
+                                "B2cLogin",
+                                'Username=' +
+                                    _userNameController.text +
+                                    '&Password=' +
+                                    _passwordController.text);
+
+                            __futureLogin?.then((value) {
+                              print('Response body: ${value.body}');
+
+                              String jsonResponse =
+                                  ResponseHandler.parseData(value.body);
+
+                              print('JSON Response: ${jsonResponse}');
+
+                              try {
+                                Map<String, dynamic> map =
+                                    json.decode(jsonResponse);
+                                List<dynamic> list = map["Table"];
+                                print('decodedJson: ${list}');
+                                LoginModel fm = LoginModel.fromJson(list[0]);
+                                print('decodedJson[0]: ${list[0]}');
+
+                                Prefs.saveStringValue(
+                                    Prefs.PREFS_USER_TYPE, fm.UserType);
+                                Prefs.saveStringValue(
+                                    Prefs.PREFS_USER_TYPE_ID, fm.UserTypeId);
+                                Prefs.saveStringValue(
+                                    Prefs.PREFS_USER_ID, fm.UserID);
+                                MemberId = fm.UserID;
+                                print('USERID' + MemberId);
+                                Prefs.saveStringValue(
+                                    Prefs.PREFS_USER_NAME, fm.Username);
+                                UserName = fm.Username;
+
+                                Prefs.saveStringValue(
+                                    Prefs.PREFS_NAME, fm.Name);
+                                Prefs.saveStringValue(
+                                    Prefs.PREFS_PASSWORD, fm.Password);
+                                Prefs.saveStringValue(
+                                    Prefs.PREFS_TRANSACTION_PASSWORD,
+                                    fm.TransactionPassword);
+                                Prefs.saveStringValue(
+                                    Prefs.PREFS_CONTACT_EMAIL, fm.ContactEmail);
+                                Prefs.saveStringValue(
+                                    Prefs.PREFS_MOBILE, fm.Mobile);
+                                Prefs.saveStringValue(
+                                    Prefs.PREFS_TIME_IN, fm.Timein);
+                                Prefs.saveStringValue(
+                                    Prefs.PREFS_TIME_OUT, fm.Timeout);
+                                Prefs.saveStringValue(
+                                    Prefs.PREFS_IS_ACTIVE, fm.IsActive);
+
+                                Prefs.saveStringValue(Prefs.PREFS_TWO, fm.Two);
+                                Prefs.saveStringValue(
+                                    Prefs.PREFS_PHOTO, fm.Photo);
+
+                                Prefs.saveStringValue(
+                                    Prefs.PREFS_PAYPAL, fm.Paypal);
+                                Prefs.saveStringValue(
+                                    Prefs.PREFS_PAYZA, fm.Payza);
+                                Prefs.saveStringValue(
+                                    Prefs.PREFS_DATE_CREATED, fm.Datecreated);
+                                Prefs.saveStringValue(
+                                    Prefs.PREFS_CURRENCY, fm.Currency);
+
+                                /*  Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => Dashboard(),
+                                  ),
+                                );*/
+                              } catch (error) {
+                                // Fluttertoast.showToast(msg: "Login Failed");
+                                log(error.toString());
+                              }
+                            });
+                            log('buttonPress' + _userNameController.text);
+                          },
+                          child: Text(
+                            "LOGIN",
+                            style: TextStyle(fontFamily: "Montserrat"),
+                          ),
+                          style: ElevatedButton.styleFrom(
+                            elevation: 10.0,
+                            shadowColor: Colors.blue,
+                            primary: Colors.blue,
+                            padding: EdgeInsets.all(10.0),
+                            minimumSize: Size(double.infinity, 50.0),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 30.0,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "New to AKS Travel? ",
+                              style: TextStyle(
+                                  fontFamily: "Montserrat",
+                                  color: Colors.black87),
+                            ),
+                            Text(
+                              "Join now ",
+                              style: TextStyle(
+                                  fontFamily: "Montserrat", color: Colors.blue),
+                            )
+                          ],
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              ),
             ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+          ),
+        ));
   }
 }
