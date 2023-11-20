@@ -5,6 +5,28 @@ import 'package:flutter/material.dart';
 
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:travel_app_17112023_b2b/Booking/AllBookingList.dart';
+import 'package:travel_app_17112023_b2b/Booking/BookingCard.dart';
+import 'package:travel_app_17112023_b2b/Booking/BookingRefundsDue.dart';
+import 'package:travel_app_17112023_b2b/Booking/CancelledBooking.dart';
+import 'package:travel_app_17112023_b2b/Booking/NewBooking.dart';
+import 'package:travel_app_17112023_b2b/Booking/OpenBooking.dart';
+import 'package:travel_app_17112023_b2b/Booking/PartPayment.dart';
+import 'package:travel_app_17112023_b2b/Booking/PendingPayment.dart';
+import 'package:travel_app_17112023_b2b/Booking/ProductWiseBooking.dart';
+import 'package:travel_app_17112023_b2b/Booking/ServiceRequest.dart';
+import 'package:travel_app_17112023_b2b/Booking/UnConfirmedBooking.dart';
+import 'package:travel_app_17112023_b2b/Report/BookingCancellationReport.dart';
+import 'package:travel_app_17112023_b2b/Report/ChangingRequestReport.dart';
+import 'package:travel_app_17112023_b2b/Report/ClientInvoiceReport.dart';
+import 'package:travel_app_17112023_b2b/Report/InvoiceReport.dart';
+import 'package:travel_app_17112023_b2b/Report/LedgerStatementReport.dart';
+import 'package:travel_app_17112023_b2b/Report/PaymentCollectionReport.dart';
+import 'package:travel_app_17112023_b2b/Report/RequestCancellationReport.dart';
+import 'package:travel_app_17112023_b2b/Report/TicketReport.dart';
+import 'package:travel_app_17112023_b2b/Report/UnConfirmedBooking.dart';
+import 'package:travel_app_17112023_b2b/Report/UnTicketReport.dart';
+import 'package:travel_app_17112023_b2b/Report/sales_report.dart';
 
 import 'Queues/CancelBookingQueue.dart';
 import 'Queues/TicketOrderQueue.dart';
@@ -152,8 +174,8 @@ class _CorDashboardState extends State<Dashboard> {
                     style: TextStyle(fontFamily: "Montserrat")),
               ),
               ExpansionTile(
-                title: Text("Book Now",
-                    style: TextStyle(fontFamily: "Montserrat")),
+                title:
+                    Text("Booking", style: TextStyle(fontFamily: "Montserrat")),
                 leading:
                     Icon(const IconData(0xee5e, fontFamily: 'MaterialIcons')),
                 children: [
@@ -165,48 +187,127 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   FlightsScreen()));*/
                     },
-                    title: Text("Flights",
+                    title: Text("Book Now",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
                   ListTile(
                     onTap: () {
-                      /*   Navigator.push(
+                      Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  HotelsScreen()));*/
+                                  BookingCard()));
                     },
-                    title: Text("Hotels",
+                    title: Text("Booking Card",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
                   ListTile(
                     onTap: () {
-                      /*   Navigator.push(
+                      Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (BuildContext context) => CabsScreen()));*/
+                              builder: (BuildContext context) =>
+                                  NewBookings()));
                     },
-                    title: Text("Cars",
+                    title: Text("New Booking",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
                   ListTile(
                     onTap: () {
-                      /*    Navigator.push(
+                      Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (BuildContext context) => Holidays()));*/
+                              builder: (BuildContext context) =>
+                                  OpenBooking()));
                     },
-                    title: Text("Holidays",
+                    title: Text("Open Booking",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
                   ListTile(
                     onTap: () {
-                      /*  Navigator.push(
+                      Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (BuildContext context) => BusScreen()));*/
+                              builder: (BuildContext context) =>
+                                  PartPayment()));
                     },
-                    title: Text("Buses",
+                    title: Text("Part Payment",
+                        style: TextStyle(fontFamily: "Montserrat")),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  PendingPayment()));
+                    },
+                    title: Text("Pending Payment",
+                        style: TextStyle(fontFamily: "Montserrat")),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  ServiceRequest()));
+                    },
+                    title: Text("Service Request",
+                        style: TextStyle(fontFamily: "Montserrat")),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  UnconfirmedBooking()));
+                    },
+                    title: Text("UnConfirmed Booking",
+                        style: TextStyle(fontFamily: "Montserrat")),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  CancelledBooking()));
+                    },
+                    title: Text("Cancelled Flight Booking",
+                        style: TextStyle(fontFamily: "Montserrat")),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  BookingRefundsDue()));
+                    },
+                    title: Text("Booking Refunds Due",
+                        style: TextStyle(fontFamily: "Montserrat")),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) => AllBooking()));
+                    },
+                    title: Text("All Bookings List",
+                        style: TextStyle(fontFamily: "Montserrat")),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  AllProductWiseBooking()));
+                    },
+                    title: Text("Productwise Bookings",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
                 ],
@@ -569,134 +670,123 @@ class _CorDashboardState extends State<Dashboard> {
                   ),
                   ListTile(
                     onTap: () {
-                      /* Navigator.push(
+                      Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  BookingCancellationReport()));*/
+                                  BookingCancellationReport()));
                     },
                     title: Text("Booking Cancellation Report",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
                   ListTile(
                     onTap: () {
-                      /*Navigator.push(
+                      Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  UnConfirmedBooking()));*/
+                                  UnConfirmedBooking()));
                     },
                     title: Text("UnConfirmed Booking",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
                   ListTile(
                     onTap: () {
-                      /* Navigator.push(
+                      Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  RequestCancellationReport()));*/
+                                  RequestCancellationReport()));
                     },
                     title: Text("Request Cancellation Report",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
                   ListTile(
                     onTap: () {
-                      /*  Navigator.push(
+                      Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  ChangingRequestReport()));*/
+                                  ChangingRequestReport()));
                     },
                     title: Text("Changing Request Report",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
                   ListTile(
                     onTap: () {
-                      /* Navigator.push(
+                      Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  ClientInvoiceReport()));*/
+                                  ClientInvoiceReport()));
                     },
                     title: Text("Client Invoice Report",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
                   ListTile(
                     onTap: () {
-                      /*  Navigator.push(
+                      Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  InvoiceReport()));*/
+                                  InvoiceReport()));
                     },
                     title: Text("Invoice Report",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
                   ListTile(
                     onTap: () {
-                      /*    Navigator.push(
+                      Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  LedgerSttementReport()));*/
+                                  LedgerSttementReport()));
                     },
                     title: Text("Ledger Statement Report",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
                   ListTile(
                     onTap: () {
-                      /*  Navigator.push(
+                      Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  PaymentCollectionReport()));*/
+                                  PaymentCollectionReport()));
                     },
                     title: Text("Payment Collection Report",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
                   ListTile(
                     onTap: () {
-                      /* Navigator.push(
+                      Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  TicketReport()));*/
+                                  SalesReport()));
+                    },
+                    title: Text("Sales Report",
+                        style: TextStyle(fontFamily: "Montserrat")),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  TicketReport()));
                     },
                     title: Text("Ticket Report",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
                   ListTile(
                     onTap: () {
-                      /*  Navigator.push(
+                      Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  UnTicketReport()));*/
+                                  UnTicketReport()));
                     },
                     title: Text("Unticket Report",
-                        style: TextStyle(fontFamily: "Montserrat")),
-                  ),
-                  ListTile(
-                    onTap: () {
-                      /* Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  FinancialReport()));*/
-                    },
-                    title: Text("Financial Report",
-                        style: TextStyle(fontFamily: "Montserrat")),
-                  ),
-                  ListTile(
-                    onTap: () {
-                      /*   Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  WalletStatementReport()));*/
-                    },
-                    title: Text("Wallet Statement Report",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
                 ],
