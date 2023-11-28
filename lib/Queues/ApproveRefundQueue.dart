@@ -5,14 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:travel_app_17112023_b2b/Queues/InvoiceReceipt.dart';
 
-class CancelBookingQueue extends StatefulWidget {
-  const CancelBookingQueue({Key? key}) : super(key: key);
+class ApproveRefundQueue extends StatefulWidget {
+  const ApproveRefundQueue({Key? key}) : super(key: key);
 
   @override
-  State<CancelBookingQueue> createState() => _BookingCardGeneralDetailsState();
+  State<ApproveRefundQueue> createState() => _BookingCardGeneralDetailsState();
 }
 
-class _BookingCardGeneralDetailsState extends State<CancelBookingQueue> {
+class _BookingCardGeneralDetailsState extends State<ApproveRefundQueue> {
   /* static Future<List<FlightTicketOrderQueueGet>?>
   getFlightTicketOrderQueue() async {
     List<FlightTicketOrderQueueGet> bookingCardData = [];
@@ -44,7 +44,7 @@ class _BookingCardGeneralDetailsState extends State<CancelBookingQueue> {
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            "Cancel Booking Queue",
+            "APPROVE REFUND QUEUE",
             style: TextStyle(fontFamily: "Montserrat", fontSize: 16),
           ),
           //title: Image.asset('assets/images/logo.png', width: 150, height: 30,),
@@ -81,21 +81,59 @@ class _BookingCardGeneralDetailsState extends State<CancelBookingQueue> {
                         children: [
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.end,
                             children: [
-                              Text(
-                                /* snapshot.data![index].BookFlightId ??
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    /* snapshot.data![index].BookFlightId ??
                                     "",*/
-                                "Srini l",
-                                style: TextStyle(
-                                    fontFamily: "Montserrat",
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.bold),
+                                    "Srini l",
+                                    style: TextStyle(
+                                        fontFamily: "Montserrat",
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  SizedBox(
+                                    width: 120,
+                                  ),
+                                  Text(
+                                    /* snapshot.data![index].BookFlightId ??
+                                    "",*/
+                                    "Services : Holiday",
+                                    style: TextStyle(
+                                        fontFamily: "Montserrat",
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 4,
                               ),
                               Row(
                                 children: [
                                   Text(
                                     // snapshot.data![index].PayMode,
-                                    "Shanthini K",
+                                    "Booking Date : 02/12/2022",
+                                    style: TextStyle(
+                                        fontFamily: "Montserrat",
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 17),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 4,
+                              ),
+                              Row(
+                                children: [
+                                  Text(
+                                    // snapshot.data![index].PayMode,
+                                    "Trip Date : 2022-12-30 - 2022-12-30",
                                     style: TextStyle(
                                         fontFamily: "Montserrat",
                                         fontWeight: FontWeight.w500,
@@ -105,80 +143,7 @@ class _BookingCardGeneralDetailsState extends State<CancelBookingQueue> {
                               ),
                             ],
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (BuildContext context) =>
-                                          Receipt(),
-                                    ),
-                                  );
-                                },
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 10),
-                                  child: Column(
-                                    children: [
-                                      Container(
-                                        padding:
-                                            EdgeInsets.fromLTRB(10.0, 5, 10, 5),
-                                        decoration: BoxDecoration(
-                                          color: Colors.orange,
-                                          border: Border.all(
-                                              width: 0.1,
-                                              color: Colors
-                                                  .blue), //https://stackoverflow.com/a/67395539/16076689
-                                          borderRadius:
-                                              new BorderRadius.circular(5.0),
-                                        ),
-                                        child: Text(
-                                          "Invoice",
-                                          //snapshot.data![index].paidStatus,
-                                          style: TextStyle(
-                                              fontFamily: "Montserrat",
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.w500,
-                                              color: Colors.white),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              /*Padding(
-                                padding: const EdgeInsets.only(left: 10),
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      padding:
-                                          EdgeInsets.fromLTRB(10.0, 5, 10, 5),
-                                      decoration: BoxDecoration(
-                                        color: Colors.teal,
-                                        border: Border.all(
-                                            width: 0.1,
-                                            color: Colors
-                                                .blue), //https://stackoverflow.com/a/67395539/16076689
-                                        borderRadius:
-                                            new BorderRadius.circular(5.0),
-                                      ),
-                                      child: Text(
-                                        "Issue",
-                                        //snapshot.data![index].paidStatus,
-                                        style: TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.white),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),*/
-                            ],
-                          ),
+
                           /*Flexible(
                             child: Text(
                               // snapshot.data![index].BookCardPassenger,
@@ -280,6 +245,9 @@ class _BookingCardGeneralDetailsState extends State<CancelBookingQueue> {
                           )
                         ],
                       ),*/
+                      SizedBox(
+                        height: 5,
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -299,7 +267,7 @@ class _BookingCardGeneralDetailsState extends State<CancelBookingQueue> {
                                         new BorderRadius.circular(5.0),
                                   ),
                                   child: Text(
-                                    "Paid",
+                                    "Approve",
                                     //snapshot.data![index].paidStatus,
                                     style: TextStyle(
                                         fontFamily: "Montserrat",
@@ -331,33 +299,7 @@ class _BookingCardGeneralDetailsState extends State<CancelBookingQueue> {
                                     Padding(
                                       padding: const EdgeInsets.only(bottom: 4),
                                       child: Text(
-                                        "Oct 15 2023",
-                                        //snapshot.data![index].tripDate,
-                                        style: TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 15,
-                                            color: Colors.blue),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(bottom: 0),
-                                      child: Image(
-                                        image: AssetImage(
-                                            'assets/images/tickiconpng.png'),
-                                        color: Colors.blue,
-                                        width: 16,
-                                        height: 16,
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(bottom: 4),
-                                      child: Text(
-                                        "Issue",
+                                        "Due Date : 09/12/2022",
                                         //snapshot.data![index].tripDate,
                                         style: TextStyle(
                                             fontFamily: "Montserrat",
@@ -464,21 +406,59 @@ class _BookingCardGeneralDetailsState extends State<CancelBookingQueue> {
                         children: [
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.end,
                             children: [
-                              Text(
-                                /* snapshot.data![index].BookFlightId ??
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    /* snapshot.data![index].BookFlightId ??
                                     "",*/
-                                "Srini l",
-                                style: TextStyle(
-                                    fontFamily: "Montserrat",
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.bold),
+                                    "Srini l",
+                                    style: TextStyle(
+                                        fontFamily: "Montserrat",
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  SizedBox(
+                                    width: 120,
+                                  ),
+                                  Text(
+                                    /* snapshot.data![index].BookFlightId ??
+                                    "",*/
+                                    "Services : Holiday",
+                                    style: TextStyle(
+                                        fontFamily: "Montserrat",
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 4,
                               ),
                               Row(
                                 children: [
                                   Text(
                                     // snapshot.data![index].PayMode,
-                                    "Shanthini K",
+                                    "Booking Date : 02/12/2022",
+                                    style: TextStyle(
+                                        fontFamily: "Montserrat",
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 17),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 4,
+                              ),
+                              Row(
+                                children: [
+                                  Text(
+                                    // snapshot.data![index].PayMode,
+                                    "Trip Date : 2022-12-30 - 2022-12-30",
                                     style: TextStyle(
                                         fontFamily: "Montserrat",
                                         fontWeight: FontWeight.w500,
@@ -488,69 +468,7 @@ class _BookingCardGeneralDetailsState extends State<CancelBookingQueue> {
                               ),
                             ],
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 10),
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      padding:
-                                          EdgeInsets.fromLTRB(10.0, 5, 10, 5),
-                                      decoration: BoxDecoration(
-                                        color: Colors.orange,
-                                        border: Border.all(
-                                            width: 0.1,
-                                            color: Colors
-                                                .blue), //https://stackoverflow.com/a/67395539/16076689
-                                        borderRadius:
-                                            new BorderRadius.circular(5.0),
-                                      ),
-                                      child: Text(
-                                        "Invoice",
-                                        //snapshot.data![index].paidStatus,
-                                        style: TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.white),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              /*Padding(
-                                padding: const EdgeInsets.only(left: 10),
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      padding:
-                                          EdgeInsets.fromLTRB(10.0, 5, 10, 5),
-                                      decoration: BoxDecoration(
-                                        color: Colors.teal,
-                                        border: Border.all(
-                                            width: 0.1,
-                                            color: Colors
-                                                .blue), //https://stackoverflow.com/a/67395539/16076689
-                                        borderRadius:
-                                            new BorderRadius.circular(5.0),
-                                      ),
-                                      child: Text(
-                                        "Issue",
-                                        //snapshot.data![index].paidStatus,
-                                        style: TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.white),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),*/
-                            ],
-                          ),
+
                           /*Flexible(
                             child: Text(
                               // snapshot.data![index].BookCardPassenger,
@@ -652,6 +570,9 @@ class _BookingCardGeneralDetailsState extends State<CancelBookingQueue> {
                           )
                         ],
                       ),*/
+                      SizedBox(
+                        height: 5,
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -671,7 +592,7 @@ class _BookingCardGeneralDetailsState extends State<CancelBookingQueue> {
                                         new BorderRadius.circular(5.0),
                                   ),
                                   child: Text(
-                                    "Paid",
+                                    "Approve",
                                     //snapshot.data![index].paidStatus,
                                     style: TextStyle(
                                         fontFamily: "Montserrat",
@@ -703,33 +624,7 @@ class _BookingCardGeneralDetailsState extends State<CancelBookingQueue> {
                                     Padding(
                                       padding: const EdgeInsets.only(bottom: 4),
                                       child: Text(
-                                        "Oct 15 2023",
-                                        //snapshot.data![index].tripDate,
-                                        style: TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 15,
-                                            color: Colors.blue),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(bottom: 0),
-                                      child: Image(
-                                        image: AssetImage(
-                                            'assets/images/tickiconpng.png'),
-                                        color: Colors.blue,
-                                        width: 16,
-                                        height: 16,
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(bottom: 4),
-                                      child: Text(
-                                        "Issue",
+                                        "Due Date : 09/12/2022",
                                         //snapshot.data![index].tripDate,
                                         style: TextStyle(
                                             fontFamily: "Montserrat",
@@ -836,21 +731,59 @@ class _BookingCardGeneralDetailsState extends State<CancelBookingQueue> {
                         children: [
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.end,
                             children: [
-                              Text(
-                                /* snapshot.data![index].BookFlightId ??
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    /* snapshot.data![index].BookFlightId ??
                                     "",*/
-                                "Srini l",
-                                style: TextStyle(
-                                    fontFamily: "Montserrat",
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.bold),
+                                    "Srini l",
+                                    style: TextStyle(
+                                        fontFamily: "Montserrat",
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  SizedBox(
+                                    width: 120,
+                                  ),
+                                  Text(
+                                    /* snapshot.data![index].BookFlightId ??
+                                    "",*/
+                                    "Services : Holiday",
+                                    style: TextStyle(
+                                        fontFamily: "Montserrat",
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 4,
                               ),
                               Row(
                                 children: [
                                   Text(
                                     // snapshot.data![index].PayMode,
-                                    "Shanthini K",
+                                    "Booking Date : 02/12/2022",
+                                    style: TextStyle(
+                                        fontFamily: "Montserrat",
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 17),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 4,
+                              ),
+                              Row(
+                                children: [
+                                  Text(
+                                    // snapshot.data![index].PayMode,
+                                    "Trip Date : 2022-12-30 - 2022-12-30",
                                     style: TextStyle(
                                         fontFamily: "Montserrat",
                                         fontWeight: FontWeight.w500,
@@ -860,69 +793,7 @@ class _BookingCardGeneralDetailsState extends State<CancelBookingQueue> {
                               ),
                             ],
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 10),
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      padding:
-                                          EdgeInsets.fromLTRB(10.0, 5, 10, 5),
-                                      decoration: BoxDecoration(
-                                        color: Colors.orange,
-                                        border: Border.all(
-                                            width: 0.1,
-                                            color: Colors
-                                                .blue), //https://stackoverflow.com/a/67395539/16076689
-                                        borderRadius:
-                                            new BorderRadius.circular(5.0),
-                                      ),
-                                      child: Text(
-                                        "Invoice",
-                                        //snapshot.data![index].paidStatus,
-                                        style: TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.white),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              /*Padding(
-                                padding: const EdgeInsets.only(left: 10),
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      padding:
-                                          EdgeInsets.fromLTRB(10.0, 5, 10, 5),
-                                      decoration: BoxDecoration(
-                                        color: Colors.teal,
-                                        border: Border.all(
-                                            width: 0.1,
-                                            color: Colors
-                                                .blue), //https://stackoverflow.com/a/67395539/16076689
-                                        borderRadius:
-                                            new BorderRadius.circular(5.0),
-                                      ),
-                                      child: Text(
-                                        "Issue",
-                                        //snapshot.data![index].paidStatus,
-                                        style: TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.white),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),*/
-                            ],
-                          ),
+
                           /*Flexible(
                             child: Text(
                               // snapshot.data![index].BookCardPassenger,
@@ -1024,6 +895,9 @@ class _BookingCardGeneralDetailsState extends State<CancelBookingQueue> {
                           )
                         ],
                       ),*/
+                      SizedBox(
+                        height: 5,
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -1043,7 +917,7 @@ class _BookingCardGeneralDetailsState extends State<CancelBookingQueue> {
                                         new BorderRadius.circular(5.0),
                                   ),
                                   child: Text(
-                                    "Paid",
+                                    "Approve",
                                     //snapshot.data![index].paidStatus,
                                     style: TextStyle(
                                         fontFamily: "Montserrat",
@@ -1075,33 +949,7 @@ class _BookingCardGeneralDetailsState extends State<CancelBookingQueue> {
                                     Padding(
                                       padding: const EdgeInsets.only(bottom: 4),
                                       child: Text(
-                                        "Oct 15 2023",
-                                        //snapshot.data![index].tripDate,
-                                        style: TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 15,
-                                            color: Colors.blue),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(bottom: 0),
-                                      child: Image(
-                                        image: AssetImage(
-                                            'assets/images/tickiconpng.png'),
-                                        color: Colors.blue,
-                                        width: 16,
-                                        height: 16,
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(bottom: 4),
-                                      child: Text(
-                                        "Issue",
+                                        "Due Date : 09/12/2022",
                                         //snapshot.data![index].tripDate,
                                         style: TextStyle(
                                             fontFamily: "Montserrat",
@@ -1208,21 +1056,59 @@ class _BookingCardGeneralDetailsState extends State<CancelBookingQueue> {
                         children: [
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.end,
                             children: [
-                              Text(
-                                /* snapshot.data![index].BookFlightId ??
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    /* snapshot.data![index].BookFlightId ??
                                     "",*/
-                                "Srini l",
-                                style: TextStyle(
-                                    fontFamily: "Montserrat",
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.bold),
+                                    "Srini l",
+                                    style: TextStyle(
+                                        fontFamily: "Montserrat",
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  SizedBox(
+                                    width: 120,
+                                  ),
+                                  Text(
+                                    /* snapshot.data![index].BookFlightId ??
+                                    "",*/
+                                    "Services : Holiday",
+                                    style: TextStyle(
+                                        fontFamily: "Montserrat",
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 4,
                               ),
                               Row(
                                 children: [
                                   Text(
                                     // snapshot.data![index].PayMode,
-                                    "Shanthini K",
+                                    "Booking Date : 02/12/2022",
+                                    style: TextStyle(
+                                        fontFamily: "Montserrat",
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 17),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 4,
+                              ),
+                              Row(
+                                children: [
+                                  Text(
+                                    // snapshot.data![index].PayMode,
+                                    "Trip Date : 2022-12-30 - 2022-12-30",
                                     style: TextStyle(
                                         fontFamily: "Montserrat",
                                         fontWeight: FontWeight.w500,
@@ -1232,69 +1118,7 @@ class _BookingCardGeneralDetailsState extends State<CancelBookingQueue> {
                               ),
                             ],
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 10),
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      padding:
-                                          EdgeInsets.fromLTRB(10.0, 5, 10, 5),
-                                      decoration: BoxDecoration(
-                                        color: Colors.orange,
-                                        border: Border.all(
-                                            width: 0.1,
-                                            color: Colors
-                                                .blue), //https://stackoverflow.com/a/67395539/16076689
-                                        borderRadius:
-                                            new BorderRadius.circular(5.0),
-                                      ),
-                                      child: Text(
-                                        "Invoice",
-                                        //snapshot.data![index].paidStatus,
-                                        style: TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.white),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              /*Padding(
-                                padding: const EdgeInsets.only(left: 10),
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      padding:
-                                          EdgeInsets.fromLTRB(10.0, 5, 10, 5),
-                                      decoration: BoxDecoration(
-                                        color: Colors.teal,
-                                        border: Border.all(
-                                            width: 0.1,
-                                            color: Colors
-                                                .blue), //https://stackoverflow.com/a/67395539/16076689
-                                        borderRadius:
-                                            new BorderRadius.circular(5.0),
-                                      ),
-                                      child: Text(
-                                        "Issue",
-                                        //snapshot.data![index].paidStatus,
-                                        style: TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.white),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),*/
-                            ],
-                          ),
+
                           /*Flexible(
                             child: Text(
                               // snapshot.data![index].BookCardPassenger,
@@ -1396,6 +1220,9 @@ class _BookingCardGeneralDetailsState extends State<CancelBookingQueue> {
                           )
                         ],
                       ),*/
+                      SizedBox(
+                        height: 5,
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -1415,7 +1242,7 @@ class _BookingCardGeneralDetailsState extends State<CancelBookingQueue> {
                                         new BorderRadius.circular(5.0),
                                   ),
                                   child: Text(
-                                    "Paid",
+                                    "Approve",
                                     //snapshot.data![index].paidStatus,
                                     style: TextStyle(
                                         fontFamily: "Montserrat",
@@ -1447,33 +1274,7 @@ class _BookingCardGeneralDetailsState extends State<CancelBookingQueue> {
                                     Padding(
                                       padding: const EdgeInsets.only(bottom: 4),
                                       child: Text(
-                                        "Oct 15 2023",
-                                        //snapshot.data![index].tripDate,
-                                        style: TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 15,
-                                            color: Colors.blue),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(bottom: 0),
-                                      child: Image(
-                                        image: AssetImage(
-                                            'assets/images/tickiconpng.png'),
-                                        color: Colors.blue,
-                                        width: 16,
-                                        height: 16,
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(bottom: 4),
-                                      child: Text(
-                                        "Issue",
+                                        "Due Date : 09/12/2022",
                                         //snapshot.data![index].tripDate,
                                         style: TextStyle(
                                             fontFamily: "Montserrat",
@@ -1580,21 +1381,59 @@ class _BookingCardGeneralDetailsState extends State<CancelBookingQueue> {
                         children: [
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.end,
                             children: [
-                              Text(
-                                /* snapshot.data![index].BookFlightId ??
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    /* snapshot.data![index].BookFlightId ??
                                     "",*/
-                                "Srini l",
-                                style: TextStyle(
-                                    fontFamily: "Montserrat",
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.bold),
+                                    "Srini l",
+                                    style: TextStyle(
+                                        fontFamily: "Montserrat",
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  SizedBox(
+                                    width: 120,
+                                  ),
+                                  Text(
+                                    /* snapshot.data![index].BookFlightId ??
+                                    "",*/
+                                    "Services : Holiday",
+                                    style: TextStyle(
+                                        fontFamily: "Montserrat",
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 4,
                               ),
                               Row(
                                 children: [
                                   Text(
                                     // snapshot.data![index].PayMode,
-                                    "Shanthini K",
+                                    "Booking Date : 02/12/2022",
+                                    style: TextStyle(
+                                        fontFamily: "Montserrat",
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 17),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 4,
+                              ),
+                              Row(
+                                children: [
+                                  Text(
+                                    // snapshot.data![index].PayMode,
+                                    "Trip Date : 2022-12-30 - 2022-12-30",
                                     style: TextStyle(
                                         fontFamily: "Montserrat",
                                         fontWeight: FontWeight.w500,
@@ -1604,69 +1443,7 @@ class _BookingCardGeneralDetailsState extends State<CancelBookingQueue> {
                               ),
                             ],
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 10),
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      padding:
-                                          EdgeInsets.fromLTRB(10.0, 5, 10, 5),
-                                      decoration: BoxDecoration(
-                                        color: Colors.orange,
-                                        border: Border.all(
-                                            width: 0.1,
-                                            color: Colors
-                                                .blue), //https://stackoverflow.com/a/67395539/16076689
-                                        borderRadius:
-                                            new BorderRadius.circular(5.0),
-                                      ),
-                                      child: Text(
-                                        "Invoice",
-                                        //snapshot.data![index].paidStatus,
-                                        style: TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.white),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              /*Padding(
-                                padding: const EdgeInsets.only(left: 10),
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      padding:
-                                          EdgeInsets.fromLTRB(10.0, 5, 10, 5),
-                                      decoration: BoxDecoration(
-                                        color: Colors.teal,
-                                        border: Border.all(
-                                            width: 0.1,
-                                            color: Colors
-                                                .blue), //https://stackoverflow.com/a/67395539/16076689
-                                        borderRadius:
-                                            new BorderRadius.circular(5.0),
-                                      ),
-                                      child: Text(
-                                        "Issue",
-                                        //snapshot.data![index].paidStatus,
-                                        style: TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.white),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),*/
-                            ],
-                          ),
+
                           /*Flexible(
                             child: Text(
                               // snapshot.data![index].BookCardPassenger,
@@ -1768,6 +1545,9 @@ class _BookingCardGeneralDetailsState extends State<CancelBookingQueue> {
                           )
                         ],
                       ),*/
+                      SizedBox(
+                        height: 5,
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -1787,7 +1567,7 @@ class _BookingCardGeneralDetailsState extends State<CancelBookingQueue> {
                                         new BorderRadius.circular(5.0),
                                   ),
                                   child: Text(
-                                    "Paid",
+                                    "Approve",
                                     //snapshot.data![index].paidStatus,
                                     style: TextStyle(
                                         fontFamily: "Montserrat",
@@ -1819,33 +1599,7 @@ class _BookingCardGeneralDetailsState extends State<CancelBookingQueue> {
                                     Padding(
                                       padding: const EdgeInsets.only(bottom: 4),
                                       child: Text(
-                                        "Oct 15 2023",
-                                        //snapshot.data![index].tripDate,
-                                        style: TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 15,
-                                            color: Colors.blue),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(bottom: 0),
-                                      child: Image(
-                                        image: AssetImage(
-                                            'assets/images/tickiconpng.png'),
-                                        color: Colors.blue,
-                                        width: 16,
-                                        height: 16,
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(bottom: 4),
-                                      child: Text(
-                                        "Issue",
+                                        "Due Date : 09/12/2022",
                                         //snapshot.data![index].tripDate,
                                         style: TextStyle(
                                             fontFamily: "Montserrat",
@@ -1952,21 +1706,59 @@ class _BookingCardGeneralDetailsState extends State<CancelBookingQueue> {
                         children: [
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.end,
                             children: [
-                              Text(
-                                /* snapshot.data![index].BookFlightId ??
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    /* snapshot.data![index].BookFlightId ??
                                     "",*/
-                                "Srini l",
-                                style: TextStyle(
-                                    fontFamily: "Montserrat",
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.bold),
+                                    "Srini l",
+                                    style: TextStyle(
+                                        fontFamily: "Montserrat",
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  SizedBox(
+                                    width: 120,
+                                  ),
+                                  Text(
+                                    /* snapshot.data![index].BookFlightId ??
+                                    "",*/
+                                    "Services : Holiday",
+                                    style: TextStyle(
+                                        fontFamily: "Montserrat",
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 4,
                               ),
                               Row(
                                 children: [
                                   Text(
                                     // snapshot.data![index].PayMode,
-                                    "Shanthini K",
+                                    "Booking Date : 02/12/2022",
+                                    style: TextStyle(
+                                        fontFamily: "Montserrat",
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 17),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 4,
+                              ),
+                              Row(
+                                children: [
+                                  Text(
+                                    // snapshot.data![index].PayMode,
+                                    "Trip Date : 2022-12-30 - 2022-12-30",
                                     style: TextStyle(
                                         fontFamily: "Montserrat",
                                         fontWeight: FontWeight.w500,
@@ -1976,69 +1768,7 @@ class _BookingCardGeneralDetailsState extends State<CancelBookingQueue> {
                               ),
                             ],
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 10),
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      padding:
-                                          EdgeInsets.fromLTRB(10.0, 5, 10, 5),
-                                      decoration: BoxDecoration(
-                                        color: Colors.orange,
-                                        border: Border.all(
-                                            width: 0.1,
-                                            color: Colors
-                                                .blue), //https://stackoverflow.com/a/67395539/16076689
-                                        borderRadius:
-                                            new BorderRadius.circular(5.0),
-                                      ),
-                                      child: Text(
-                                        "Invoice",
-                                        //snapshot.data![index].paidStatus,
-                                        style: TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.white),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              /*Padding(
-                                padding: const EdgeInsets.only(left: 10),
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      padding:
-                                          EdgeInsets.fromLTRB(10.0, 5, 10, 5),
-                                      decoration: BoxDecoration(
-                                        color: Colors.teal,
-                                        border: Border.all(
-                                            width: 0.1,
-                                            color: Colors
-                                                .blue), //https://stackoverflow.com/a/67395539/16076689
-                                        borderRadius:
-                                            new BorderRadius.circular(5.0),
-                                      ),
-                                      child: Text(
-                                        "Issue",
-                                        //snapshot.data![index].paidStatus,
-                                        style: TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.white),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),*/
-                            ],
-                          ),
+
                           /*Flexible(
                             child: Text(
                               // snapshot.data![index].BookCardPassenger,
@@ -2140,6 +1870,9 @@ class _BookingCardGeneralDetailsState extends State<CancelBookingQueue> {
                           )
                         ],
                       ),*/
+                      SizedBox(
+                        height: 5,
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -2159,7 +1892,7 @@ class _BookingCardGeneralDetailsState extends State<CancelBookingQueue> {
                                         new BorderRadius.circular(5.0),
                                   ),
                                   child: Text(
-                                    "Paid",
+                                    "Approve",
                                     //snapshot.data![index].paidStatus,
                                     style: TextStyle(
                                         fontFamily: "Montserrat",
@@ -2191,33 +1924,7 @@ class _BookingCardGeneralDetailsState extends State<CancelBookingQueue> {
                                     Padding(
                                       padding: const EdgeInsets.only(bottom: 4),
                                       child: Text(
-                                        "Oct 15 2023",
-                                        //snapshot.data![index].tripDate,
-                                        style: TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 15,
-                                            color: Colors.blue),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(bottom: 0),
-                                      child: Image(
-                                        image: AssetImage(
-                                            'assets/images/tickiconpng.png'),
-                                        color: Colors.blue,
-                                        width: 16,
-                                        height: 16,
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(bottom: 4),
-                                      child: Text(
-                                        "Issue",
+                                        "Due Date : 09/12/2022",
                                         //snapshot.data![index].tripDate,
                                         style: TextStyle(
                                             fontFamily: "Montserrat",

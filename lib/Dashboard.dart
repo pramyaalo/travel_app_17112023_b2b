@@ -16,6 +16,8 @@ import 'package:travel_app_17112023_b2b/Booking/PendingPayment.dart';
 import 'package:travel_app_17112023_b2b/Booking/ProductWiseBooking.dart';
 import 'package:travel_app_17112023_b2b/Booking/ServiceRequest.dart';
 import 'package:travel_app_17112023_b2b/Booking/UnConfirmedBooking.dart';
+import 'package:travel_app_17112023_b2b/Queues/ApprovePartPayment.dart';
+import 'package:travel_app_17112023_b2b/Queues/CancelTicketQueue.dart';
 import 'package:travel_app_17112023_b2b/Report/BookingCancellationReport.dart';
 import 'package:travel_app_17112023_b2b/Report/ChangingRequestReport.dart';
 import 'package:travel_app_17112023_b2b/Report/ClientInvoiceReport.dart';
@@ -27,6 +29,16 @@ import 'package:travel_app_17112023_b2b/Report/TicketReport.dart';
 import 'package:travel_app_17112023_b2b/Report/UnConfirmedBooking.dart';
 import 'package:travel_app_17112023_b2b/Report/UnTicketReport.dart';
 import 'package:travel_app_17112023_b2b/Report/sales_report.dart';
+import 'package:travel_app_17112023_b2b/Staff/ActiveStaff.dart';
+import 'package:travel_app_17112023_b2b/Staff/ApproveLeave.dart';
+import 'package:travel_app_17112023_b2b/Staff/ApproveStaff.dart';
+import 'package:travel_app_17112023_b2b/Staff/Block_UnBlocktStaff.dart';
+import 'package:travel_app_17112023_b2b/Staff/LeaveApproved.dart';
+import 'package:travel_app_17112023_b2b/Staff/LeaveRejected.dart';
+import 'package:travel_app_17112023_b2b/Staff/ManageStaff.dart';
+import 'package:travel_app_17112023_b2b/Staff/SalaryStructure.dart';
+import 'package:travel_app_17112023_b2b/Staff/StaffAttendance.dart';
+import 'package:travel_app_17112023_b2b/Staff/StaffLeaveApply.dart';
 
 import 'Queues/CancelBookingQueue.dart';
 import 'Queues/TicketOrderQueue.dart';
@@ -342,22 +354,22 @@ class _CorDashboardState extends State<Dashboard> {
                   ),
                   ListTile(
                     onTap: () {
-                      /* Navigator.push(
+                      Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  CreditNoteInvoiceList()));*/
+                                  CancelTicketQueue()));
                     },
                     title: Text("Cancel Ticket Queue",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
                   ListTile(
                     onTap: () {
-                      /* Navigator.push(
+                      Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  CreditNoteInvoiceList()));*/
+                                  ApprovePartPayment()));
                     },
                     title: Text("Approve Part Payment",
                         style: TextStyle(fontFamily: "Montserrat")),
@@ -480,31 +492,119 @@ class _CorDashboardState extends State<Dashboard> {
               ),
 
               ExpansionTile(
-                title: Text("Charges/Payment",
-                    style: TextStyle(fontFamily: "Montserrat")),
+                title:
+                    Text("Staffs", style: TextStyle(fontFamily: "Montserrat")),
                 leading:
                     Icon(const IconData(0xe4fb, fontFamily: 'MaterialIcons')),
                 children: [
                   ListTile(
                     onTap: () {
-                      /*    Navigator.push(
+                      Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  CancellationCharges()));*/
+                                  ManageStaff()));
                     },
-                    title: Text("Cancellation Charges",
+                    title: Text("Manage Staff",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
                   ListTile(
                     onTap: () {
-                      /*   Navigator.push(
+                      Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  CancelledBookingB2B()));*/
+                                  ApproveStaff()));
                     },
-                    title: Text("Make Payment",
+                    title: Text("Approve Staff",
+                        style: TextStyle(fontFamily: "Montserrat")),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  InActiveStaff()));
+                    },
+                    title: Text("Active Staff",
+                        style: TextStyle(fontFamily: "Montserrat")),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  Block_UnBlocktStaff()));
+                    },
+                    title: Text("Block/UnBlock Staff",
+                        style: TextStyle(fontFamily: "Montserrat")),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  StaffAttendance()));
+                    },
+                    title: Text("Staff Attendance",
+                        style: TextStyle(fontFamily: "Montserrat")),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  StaffLeaveApply()));
+                    },
+                    title: Text("Staff Leave Apply",
+                        style: TextStyle(fontFamily: "Montserrat")),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  ApproveLeave()));
+                    },
+                    title: Text("Approve Leave",
+                        style: TextStyle(fontFamily: "Montserrat")),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  LeaveApproved()));
+                    },
+                    title: Text("Leave Approved",
+                        style: TextStyle(fontFamily: "Montserrat")),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  LeaveRejected()));
+                    },
+                    title: Text("Leave Rejected",
+                        style: TextStyle(fontFamily: "Montserrat")),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  SalaryStructure()));
+                    },
+                    title: Text("Salary Structure",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
                 ],

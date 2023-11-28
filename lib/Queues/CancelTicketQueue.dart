@@ -5,14 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:travel_app_17112023_b2b/Queues/InvoiceReceipt.dart';
 
-class CancelBookingQueue extends StatefulWidget {
-  const CancelBookingQueue({Key? key}) : super(key: key);
+class CancelTicketQueue extends StatefulWidget {
+  const CancelTicketQueue({Key? key}) : super(key: key);
 
   @override
-  State<CancelBookingQueue> createState() => _BookingCardGeneralDetailsState();
+  State<CancelTicketQueue> createState() => _BookingCardGeneralDetailsState();
 }
 
-class _BookingCardGeneralDetailsState extends State<CancelBookingQueue> {
+class _BookingCardGeneralDetailsState extends State<CancelTicketQueue> {
   /* static Future<List<FlightTicketOrderQueueGet>?>
   getFlightTicketOrderQueue() async {
     List<FlightTicketOrderQueueGet> bookingCardData = [];
