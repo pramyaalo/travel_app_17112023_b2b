@@ -16,6 +16,7 @@ import 'package:travel_app_17112023_b2b/Booking/PendingPayment.dart';
 import 'package:travel_app_17112023_b2b/Booking/ProductWiseBooking.dart';
 import 'package:travel_app_17112023_b2b/Booking/ServiceRequest.dart';
 import 'package:travel_app_17112023_b2b/Booking/UnConfirmedBooking.dart';
+import 'package:travel_app_17112023_b2b/Models/DashboardModel.dart';
 import 'package:travel_app_17112023_b2b/Queues/ApprovePartPayment.dart';
 import 'package:travel_app_17112023_b2b/Queues/CancelTicketQueue.dart';
 import 'package:travel_app_17112023_b2b/Report/BookingCancellationReport.dart';
@@ -33,12 +34,25 @@ import 'package:travel_app_17112023_b2b/Staff/ActiveStaff.dart';
 import 'package:travel_app_17112023_b2b/Staff/ApproveLeave.dart';
 import 'package:travel_app_17112023_b2b/Staff/ApproveStaff.dart';
 import 'package:travel_app_17112023_b2b/Staff/Block_UnBlocktStaff.dart';
+import 'package:travel_app_17112023_b2b/Staff/DeductionTypeList.dart';
+import 'package:travel_app_17112023_b2b/Staff/EarningTypeList.dart';
 import 'package:travel_app_17112023_b2b/Staff/LeaveApproved.dart';
 import 'package:travel_app_17112023_b2b/Staff/LeaveRejected.dart';
 import 'package:travel_app_17112023_b2b/Staff/ManageStaff.dart';
 import 'package:travel_app_17112023_b2b/Staff/SalaryStructure.dart';
 import 'package:travel_app_17112023_b2b/Staff/StaffAttendance.dart';
 import 'package:travel_app_17112023_b2b/Staff/StaffLeaveApply.dart';
+import 'package:travel_app_17112023_b2b/Travellers/ActiveTravellers.dart';
+import 'package:travel_app_17112023_b2b/Wallets/CreditBalanceApproval.dart';
+import 'package:travel_app_17112023_b2b/Wallets/CreditRequestReceipt.dart';
+import 'package:travel_app_17112023_b2b/Wallets/FundReceivedHistory.dart';
+import 'package:travel_app_17112023_b2b/Wallets/FundTransferHistory.dart';
+import 'package:travel_app_17112023_b2b/Wallets/DebitUserFund.dart';
+import 'package:travel_app_17112023_b2b/Wallets/FundTransfer.dart';
+import 'package:travel_app_17112023_b2b/Wallets/CreditRequestRejected.dart';
+import 'package:travel_app_17112023_b2b/Wallets/CreditRequestApproved.dart';
+import 'package:travel_app_17112023_b2b/Wallets/CreditBalanceRequest.dart';
+import 'package:travel_app_17112023_b2b/utils/response_handler.dart';
 
 import 'Queues/CancelBookingQueue.dart';
 import 'Queues/TicketOrderQueue.dart';
@@ -53,6 +67,27 @@ class Dashboard extends StatefulWidget {
 }
 
 class _CorDashboardState extends State<Dashboard> {
+  List<DashboardModel> table1Data = [];
+
+  late List<dynamic> table0, table1, table2, table3, table4, table5, table6;
+  Future<String?> getInvoiceReceiptJSON() async {
+    Future<http.Response>? futureLabels =
+        ResponseHandler.performPost("B2BAdminDashboard", "AgencyId=1107");
+    return await futureLabels.then((value) {
+      String jsonResponse = ResponseHandler.parseData(value.body);
+      Map<String, dynamic> map = json.decode(jsonResponse);
+      table0 = map["Table"];
+      table1 = map["Table1"];
+      table2 = map["Table2"];
+      table3 = map["Table3"];
+      table4 = map["Table4"];
+      table5 = map["Table5"];
+      table6 = map["Table6"];
+      log('Response: $jsonResponse');
+      return jsonResponse;
+    });
+  }
+
   Future<http.Response>? __futureLogin;
   GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   bool isInvoiceSelected = false;
@@ -420,6 +455,58 @@ class _CorDashboardState extends State<Dashboard> {
                   ),
                 ],
               ),
+              ExpansionTile(
+                title: Text("Travellers",
+                    style: TextStyle(fontFamily: "Montserrat")),
+                leading:
+                    Icon(const IconData(0xee5e, fontFamily: 'MaterialIcons')),
+                children: [
+                  ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  TicketOrderQueue()));
+                    },
+                    title: Text("Approve Travellers",
+                        style: TextStyle(fontFamily: "Montserrat")),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  CancelBookingQueue()));
+                    },
+                    title: Text("Block/UnBlock Travellers",
+                        style: TextStyle(fontFamily: "Montserrat")),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  ActiveTravellers()));
+                    },
+                    title: Text("Active Travellers",
+                        style: TextStyle(fontFamily: "Montserrat")),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  ApprovePartPayment()));
+                    },
+                    title: Text("Change Password",
+                        style: TextStyle(fontFamily: "Montserrat")),
+                  ),
+                ],
+              ),
               ListTile(
                 onTap: () {
                   setState(() {});
@@ -605,6 +692,28 @@ class _CorDashboardState extends State<Dashboard> {
                                   SalaryStructure()));
                     },
                     title: Text("Salary Structure",
+                        style: TextStyle(fontFamily: "Montserrat")),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  EarningTypeList()));
+                    },
+                    title: Text("Earning TypeList",
+                        style: TextStyle(fontFamily: "Montserrat")),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  DeductionTypeList()));
+                    },
+                    title: Text("Deduction TypeList",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
                 ],
@@ -904,37 +1013,101 @@ class _CorDashboardState extends State<Dashboard> {
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
                   ListTile(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  CreditBalanceRequest()));
+                    },
                     title: Text("Credit Balance Request",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
                   ListTile(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  CreditBalanceApproval()));
+                    },
+                    title: Text("Credit Balance Approval",
+                        style: TextStyle(fontFamily: "Montserrat")),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  CreditRequestApproved()));
+                    },
                     title: Text("Credit Request Approved",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
                   ListTile(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  CreditRequestRejected()));
+                    },
                     title: Text("Credit Request Rejected",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
                   ListTile(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  BalanceReceipt()));
+                    },
                     title: Text("Credit Request Receipt",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
                   ListTile(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  FundTransfer()));
+                    },
                     title: Text("Fund Transfer",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
                   ListTile(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  DebitUserFund()));
+                    },
+                    title: Text("Debit Users Fund",
+                        style: TextStyle(fontFamily: "Montserrat")),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  FundTransferHistory()));
+                    },
                     title: Text("Fund Transfer History",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
                   ListTile(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  FundReceivedHistory()));
+                    },
                     title: Text("Fund Received History",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
@@ -995,247 +1168,321 @@ class _CorDashboardState extends State<Dashboard> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              padding: EdgeInsets.all(20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Material(
-                    elevation: 10,
-                    borderRadius: BorderRadius.circular(20),
-                    child: Container(
-                      width: 150,
-                      height: 100,
-                      decoration: BoxDecoration(
-                          color: Color(0xff41d1d1),
-                          borderRadius: BorderRadius.circular(20)),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Available Credit',
-                            style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(
-                            height: 3,
-                          ),
-                          Text(
-                            'SAR 3400',
-                            style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Material(
-                    elevation: 10,
-                    borderRadius: BorderRadius.circular(20),
-                    child: Container(
-                      width: 150,
-                      height: 100,
-                      decoration: BoxDecoration(
-                          color: Color(0xff3050af),
-                          borderRadius: BorderRadius.circular(20)),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Total Bookings',
-                            style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(
-                            height: 3,
-                          ),
-                          Text(
-                            '39',
-                            style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.all(20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Material(
-                    elevation: 10,
-                    borderRadius: BorderRadius.circular(20),
-                    child: Container(
-                      width: 150,
-                      height: 100,
-                      decoration: BoxDecoration(
-                          color: Color(0xffeb8899),
-                          borderRadius: BorderRadius.circular(20)),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Total Branches',
-                            style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(
-                            height: 3,
-                          ),
-                          Text(
-                            '28',
-                            style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Material(
-                    elevation: 10,
-                    borderRadius: BorderRadius.circular(20),
-                    child: Container(
-                      width: 150,
-                      height: 100,
-                      decoration: BoxDecoration(
-                          color: Color(0xffe7a236),
-                          borderRadius: BorderRadius.circular(20)),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Total Travellers',
-                            style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(
-                            height: 3,
-                          ),
-                          Text(
-                            '39',
-                            style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.all(20),
-              child: Material(
-                elevation: 5,
-                borderRadius: BorderRadius.circular(20),
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(20)),
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                          margin: EdgeInsets.fromLTRB(0, 20, 0, 20),
-                          child: Text(
-                            'Bookings',
-                            style: TextStyle(fontSize: 18),
-                          )),
-                      Container(
-                        width: double.infinity,
-                        height: 300,
-                        child: BookingsChart(),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.all(20),
-              child: Material(
-                elevation: 5,
-                borderRadius: BorderRadius.circular(20),
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(20)),
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                          margin: EdgeInsets.fromLTRB(0, 20, 0, 20),
-                          child: Text(
-                            'Passengers',
-                            style: TextStyle(fontSize: 18),
-                          )),
-                      Container(
-                        width: double.infinity,
-                        height: 300,
-                        child: PassengersChart(),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.all(20),
-              child: Material(
-                elevation: 5,
-                borderRadius: BorderRadius.circular(20),
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(20)),
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                          margin: EdgeInsets.fromLTRB(0, 20, 0, 20),
-                          child: Text(
-                            'Events',
-                            style: TextStyle(fontSize: 18),
-                          )),
-                      Container(
-                        width: double.infinity,
-                        height: 300,
-                        child: EventsChart(),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
+      body: Center(
+        child: FutureBuilder<String?>(
+            future: getInvoiceReceiptJSON(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData &&
+                  snapshot.connectionState == ConnectionState.done) {
+                try {
+                  log('Datagfggg: :${snapshot.data}');
+                  Table0 m0 = Table0.fromJson(table0[0]);
+                  Table1 m1 = Table1.fromJson(table1[0]);
+                  Table2 m2 = Table2.fromJson(table2[0]);
+
+                  Table3 m3 = Table3.fromJson(table3[0]);
+                  Table4 m4 = Table4.fromJson(table4[0]);
+                  Table5 m5 = Table5.fromJson(table5[0]);
+                  Table6 m6 = Table6.fromJson(table6[0]);
+                  log('Datagrrwwfggg: :${m6}');
+                  return SingleChildScrollView(
+                      child: Container(
+                          margin: EdgeInsets.all(0),
+                          child: InkWell(
+                              child: PhysicalModel(
+                            color: Colors.white,
+                            elevation: 8,
+                            shadowColor: Color(0xff9a9ce3),
+                            borderRadius: BorderRadius.circular(4),
+                            child: Container(
+                              padding: EdgeInsets.all(10),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    padding: EdgeInsets.all(10),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Material(
+                                          elevation: 10,
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          child: Container(
+                                            width: 150,
+                                            height: 100,
+                                            decoration: BoxDecoration(
+                                                color: Color(0xff41d1d1),
+                                                borderRadius:
+                                                    BorderRadius.circular(20)),
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Text(
+                                                  'Available Credit',
+                                                  style: TextStyle(
+                                                      fontSize: 18,
+                                                      color: Colors.white,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                                SizedBox(
+                                                  height: 3,
+                                                ),
+                                                Text(
+                                                  m6.availableCredit,
+                                                  style: TextStyle(
+                                                      fontSize: 18,
+                                                      color: Colors.white,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                        Material(
+                                          elevation: 10,
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          child: Container(
+                                            width: 150,
+                                            height: 100,
+                                            decoration: BoxDecoration(
+                                                color: Color(0xff3050af),
+                                                borderRadius:
+                                                    BorderRadius.circular(20)),
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Text(
+                                                  'Total Bookings',
+                                                  style: TextStyle(
+                                                      fontSize: 18,
+                                                      color: Colors.white,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                                SizedBox(
+                                                  height: 3,
+                                                ),
+                                                Text(
+                                                  m0.totalBooking,
+                                                  style: TextStyle(
+                                                      fontSize: 18,
+                                                      color: Colors.white,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Container(
+                                    padding: EdgeInsets.all(10),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Material(
+                                          elevation: 10,
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          child: Container(
+                                            width: 150,
+                                            height: 100,
+                                            decoration: BoxDecoration(
+                                                color: Color(0xffeb8899),
+                                                borderRadius:
+                                                    BorderRadius.circular(20)),
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Text(
+                                                  'Total Branches',
+                                                  style: TextStyle(
+                                                      fontSize: 18,
+                                                      color: Colors.white,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                                SizedBox(
+                                                  height: 3,
+                                                ),
+                                                Text(
+                                                  m0.totalBranch,
+                                                  style: TextStyle(
+                                                      fontSize: 18,
+                                                      color: Colors.white,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                        Material(
+                                          elevation: 10,
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          child: Container(
+                                            width: 150,
+                                            height: 100,
+                                            decoration: BoxDecoration(
+                                                color: Color(0xffe7a236),
+                                                borderRadius:
+                                                    BorderRadius.circular(20)),
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Text(
+                                                  'Total Travellers',
+                                                  style: TextStyle(
+                                                      fontSize: 18,
+                                                      color: Colors.white,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                                SizedBox(
+                                                  height: 3,
+                                                ),
+                                                Text(
+                                                  m0.totalPeople,
+                                                  style: TextStyle(
+                                                      fontSize: 18,
+                                                      color: Colors.white,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.all(20),
+                                    child: Material(
+                                      elevation: 5,
+                                      borderRadius: BorderRadius.circular(20),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius:
+                                                BorderRadius.circular(20)),
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 20, vertical: 20),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Container(
+                                                margin: EdgeInsets.fromLTRB(
+                                                    0, 20, 0, 20),
+                                                child: Text(
+                                                  'Bookings',
+                                                  style:
+                                                      TextStyle(fontSize: 18),
+                                                )),
+                                            Container(
+                                              width: double.infinity,
+                                              height: 300,
+                                              child: BookingsChart(),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.all(20),
+                                    child: Material(
+                                      elevation: 5,
+                                      borderRadius: BorderRadius.circular(20),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius:
+                                                BorderRadius.circular(20)),
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 20, vertical: 20),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Container(
+                                                margin: EdgeInsets.fromLTRB(
+                                                    0, 20, 0, 20),
+                                                child: Text(
+                                                  'Passengers',
+                                                  style:
+                                                      TextStyle(fontSize: 18),
+                                                )),
+                                            Container(
+                                              width: double.infinity,
+                                              height: 300,
+                                              child: PassengersChart(),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.all(20),
+                                    child: Material(
+                                      elevation: 5,
+                                      borderRadius: BorderRadius.circular(20),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius:
+                                                BorderRadius.circular(20)),
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 20, vertical: 20),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Container(
+                                                margin: EdgeInsets.fromLTRB(
+                                                    0, 20, 0, 20),
+                                                child: Text(
+                                                  'Events',
+                                                  style:
+                                                      TextStyle(fontSize: 18),
+                                                )),
+                                            Container(
+                                              width: double.infinity,
+                                              height: 300,
+                                              child: EventsChart(),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ))));
+                } catch (error) {
+                  print('Unexpected error: $error');
+                  return Text('An unexpected error occurred.');
+                }
+              } else {
+                return CircularProgressIndicator();
+              }
+            }),
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,

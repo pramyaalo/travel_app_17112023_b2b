@@ -2,8 +2,7 @@
 
 import 'package:shared_preferences/shared_preferences.dart';
 
-class Prefs{
-
+class Prefs {
   static const String PREFS_USER_TYPE = "UserType";
   static const String PREFS_USER_TYPE_ID = "UserTypeId";
   static const String PREFS_USER_ID = "UserID";
@@ -23,16 +22,21 @@ class Prefs{
   static const String PREFS_DATE_CREATED = "Datecreated";
   static const String PREFS_CURRENCY = "Currency";
 
-  static saveStringValue (String key, String value) async {
+  static saveStringValue(String key, String value) async {
     SharedPreferences prefs;
     prefs = await SharedPreferences.getInstance();
     prefs.setString(key, value);
   }
 
-  static saveBoolValue (String key, bool value) async {
+  static saveBoolValue(String key, bool value) async {
     SharedPreferences prefs;
     prefs = await SharedPreferences.getInstance();
     prefs.setBool(key, value);
   }
 
+  static getStringValue(String key) async {
+    SharedPreferences prefs;
+    prefs = await SharedPreferences.getInstance();
+    return prefs.getString(key);
+  }
 }

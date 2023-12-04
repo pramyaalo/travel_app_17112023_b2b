@@ -24,7 +24,7 @@ if (flutterVersionName == null) {
 
 android {
     namespace "com.example.travel_app_17112023_b2b"
-    compileSdkVersion flutter.compileSdkVersion
+    compileSdkVersion 33
     ndkVersion flutter.ndkVersion
 
     compileOptions {
@@ -33,6 +33,7 @@ android {
     }
 
     defaultConfig {
+        minSdkVersion 27
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.example.travel_app_17112023_b2b"
         // You can update the following values to match your application needs.

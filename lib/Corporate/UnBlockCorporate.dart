@@ -3,15 +3,16 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 
 import 'package:http/http.dart' as http;
+import 'package:travel_app_17112023_b2b/Queues/InvoiceReceipt.dart';
 
-class TicketOrderQueue extends StatefulWidget {
-  const TicketOrderQueue({Key? key}) : super(key: key);
+class UnBlockCorporate extends StatefulWidget {
+  const UnBlockCorporate({Key? key}) : super(key: key);
 
   @override
-  State<TicketOrderQueue> createState() => _BookingCardGeneralDetailsState();
+  State<UnBlockCorporate> createState() => _BookingCardGeneralDetailsState();
 }
 
-class _BookingCardGeneralDetailsState extends State<TicketOrderQueue> {
+class _BookingCardGeneralDetailsState extends State<UnBlockCorporate> {
   /* static Future<List<FlightTicketOrderQueueGet>?>
   getFlightTicketOrderQueue() async {
     List<FlightTicketOrderQueueGet> bookingCardData = [];
@@ -43,7 +44,7 @@ class _BookingCardGeneralDetailsState extends State<TicketOrderQueue> {
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            "Ticket Order Queue",
+            "UnBlock Corporate",
             style: TextStyle(fontFamily: "Montserrat", fontSize: 16),
           ),
           //title: Image.asset('assets/images/logo.png', width: 150, height: 30,),
@@ -94,7 +95,7 @@ class _BookingCardGeneralDetailsState extends State<TicketOrderQueue> {
                                 children: [
                                   Text(
                                     // snapshot.data![index].PayMode,
-                                    "Shanthini C",
+                                    "Shanthini K",
                                     style: TextStyle(
                                         fontFamily: "Montserrat",
                                         fontWeight: FontWeight.w500,
@@ -107,33 +108,44 @@ class _BookingCardGeneralDetailsState extends State<TicketOrderQueue> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 10),
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      padding:
-                                          EdgeInsets.fromLTRB(10.0, 5, 10, 5),
-                                      decoration: BoxDecoration(
-                                        color: Colors.orange,
-                                        border: Border.all(
-                                            width: 0.1,
-                                            color: Colors
-                                                .blue), //https://stackoverflow.com/a/67395539/16076689
-                                        borderRadius:
-                                            new BorderRadius.circular(5.0),
-                                      ),
-                                      child: Text(
-                                        "Invoice",
-                                        //snapshot.data![index].paidStatus,
-                                        style: TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.white),
-                                      ),
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          Receipt(),
                                     ),
-                                  ],
+                                  );
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 10),
+                                  child: Column(
+                                    children: [
+                                      Container(
+                                        padding:
+                                            EdgeInsets.fromLTRB(10.0, 5, 10, 5),
+                                        decoration: BoxDecoration(
+                                          color: Colors.orange,
+                                          border: Border.all(
+                                              width: 0.1,
+                                              color: Colors
+                                                  .blue), //https://stackoverflow.com/a/67395539/16076689
+                                          borderRadius:
+                                              new BorderRadius.circular(5.0),
+                                        ),
+                                        child: Text(
+                                          "Invoice",
+                                          //snapshot.data![index].paidStatus,
+                                          style: TextStyle(
+                                              fontFamily: "Montserrat",
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.white),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                               /*Padding(

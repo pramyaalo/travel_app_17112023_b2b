@@ -1,4 +1,4 @@
-class BookingReportModel {
+class UnconfirmedBookingModel {
   String slNo;
   String bookingId;
   String bookingNumber;
@@ -12,13 +12,11 @@ class BookingReportModel {
   String passenger;
   String bookedProduct;
   String journeyType;
-  String totalAmount;
+  String totalAmt;
   String tripType;
-  String bookCardAmount;
-  String paidStatus;
-  String payMode;
+  String bookingAmount;
 
-  BookingReportModel({
+  UnconfirmedBookingModel({
     required this.slNo,
     required this.bookingId,
     required this.bookingNumber,
@@ -32,15 +30,13 @@ class BookingReportModel {
     required this.passenger,
     required this.bookedProduct,
     required this.journeyType,
-    required this.totalAmount,
+    required this.totalAmt,
     required this.tripType,
-    required this.bookCardAmount,
-    required this.paidStatus,
-    required this.payMode,
+    required this.bookingAmount,
   });
 
-  factory BookingReportModel.fromJson(Map<String, dynamic> json) {
-    return BookingReportModel(
+  factory UnconfirmedBookingModel.fromJson(Map<String, dynamic> json) {
+    return UnconfirmedBookingModel(
       slNo: json['SlNo'].toString(),
       bookingId: json['BookingId'].toString(),
       bookingNumber: json['BookingNumber'].toString(),
@@ -54,11 +50,9 @@ class BookingReportModel {
       passenger: json['Passenger'].toString(),
       bookedProduct: json['BookedProduct'].toString(),
       journeyType: json['JourneyType'].toString(),
-      totalAmount: json['TotalAmt'].toString(),
+      totalAmt: json['TotalAmt'].toString(),
+      bookingAmount: json['BookingAmount'].toString(),
       tripType: json['TripType'].toString(),
-      bookCardAmount: json['BookCardAmount'].toString(),
-      paidStatus: json['PaidStatus'].toString(),
-      payMode: json['PayMode'].toString(),
     );
   }
 }
