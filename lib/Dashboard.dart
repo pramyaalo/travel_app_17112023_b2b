@@ -16,6 +16,7 @@ import 'package:travel_app_17112023_b2b/Booking/PendingPayment.dart';
 import 'package:travel_app_17112023_b2b/Booking/ProductWiseBooking.dart';
 import 'package:travel_app_17112023_b2b/Booking/ServiceRequest.dart';
 import 'package:travel_app_17112023_b2b/Booking/UnConfirmedBooking.dart';
+import 'package:travel_app_17112023_b2b/Branches/ChangePassword.dart';
 import 'package:travel_app_17112023_b2b/Models/DashboardModel.dart';
 import 'package:travel_app_17112023_b2b/Queues/ApprovePartPayment.dart';
 import 'package:travel_app_17112023_b2b/Queues/CancelTicketQueue.dart';
@@ -42,7 +43,11 @@ import 'package:travel_app_17112023_b2b/Staff/ManageStaff.dart';
 import 'package:travel_app_17112023_b2b/Staff/SalaryStructure.dart';
 import 'package:travel_app_17112023_b2b/Staff/StaffAttendance.dart';
 import 'package:travel_app_17112023_b2b/Staff/StaffLeaveApply.dart';
+import 'package:travel_app_17112023_b2b/SubAgency/ApproveSubAgency.dart';
 import 'package:travel_app_17112023_b2b/Travellers/ActiveTravellers.dart';
+import 'package:travel_app_17112023_b2b/Travellers/ApproveTravellers.dart';
+import 'package:travel_app_17112023_b2b/Travellers/ChangePasswordTravellers.dart';
+import 'package:travel_app_17112023_b2b/Travellers/UnBlockTravellers.dart';
 import 'package:travel_app_17112023_b2b/Wallets/CreditBalanceApproval.dart';
 import 'package:travel_app_17112023_b2b/Wallets/CreditRequestReceipt.dart';
 import 'package:travel_app_17112023_b2b/Wallets/FundReceivedHistory.dart';
@@ -467,7 +472,7 @@ class _CorDashboardState extends State<Dashboard> {
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  TicketOrderQueue()));
+                                  ApproveTravellers()));
                     },
                     title: Text("Approve Travellers",
                         style: TextStyle(fontFamily: "Montserrat")),
@@ -478,7 +483,7 @@ class _CorDashboardState extends State<Dashboard> {
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  CancelBookingQueue()));
+                                  UnBlockTravellers()));
                     },
                     title: Text("Block/UnBlock Travellers",
                         style: TextStyle(fontFamily: "Montserrat")),
@@ -500,7 +505,59 @@ class _CorDashboardState extends State<Dashboard> {
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  ApprovePartPayment()));
+                                  ChangePasswordTravellers()));
+                    },
+                    title: Text("Change Password",
+                        style: TextStyle(fontFamily: "Montserrat")),
+                  ),
+                ],
+              ),
+              ExpansionTile(
+                title: Text("Sub Agency",
+                    style: TextStyle(fontFamily: "Montserrat")),
+                leading:
+                    Icon(const IconData(0xee5e, fontFamily: 'MaterialIcons')),
+                children: [
+                  ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  ApproveSubAgency()));
+                    },
+                    title: Text("Approve SubAgency",
+                        style: TextStyle(fontFamily: "Montserrat")),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  UnBlockTravellers()));
+                    },
+                    title: Text("Block/UnBlock Travellers",
+                        style: TextStyle(fontFamily: "Montserrat")),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  ActiveTravellers()));
+                    },
+                    title: Text("Active Travellers",
+                        style: TextStyle(fontFamily: "Montserrat")),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  ChangePasswordTravellers()));
                     },
                     title: Text("Change Password",
                         style: TextStyle(fontFamily: "Montserrat")),

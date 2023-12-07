@@ -64,13 +64,32 @@ class _MyRechargePageState extends State<ChangePassword> {
                   ),
                   SizedBox(height: 16),
                   Padding(
-                      padding: const EdgeInsets.only(left: 10),
-                      child: Text(
-                        'Customer Type',
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w500),
-                      )),
-                  SizedBox(height: 10),
+                    padding: const EdgeInsets.only(
+                      left: 10,
+                      right: 10,
+                    ),
+                    child: Container(
+                      height: 45,
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey),
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: DropdownButton<String>(
+                        isExpanded: true, // Set this property to true
+                        underline: Container(),
+                        items: ['Option 1', 'Option 2', 'Option 3']
+                            .map((String value) => DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(value),
+                                ))
+                            .toList(),
+                        onChanged: (String? value) {
+                          // Handle dropdown change
+                        },
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 16),
                   Padding(
                     padding: const EdgeInsets.only(
                       left: 10,
@@ -101,42 +120,7 @@ class _MyRechargePageState extends State<ChangePassword> {
                   Padding(
                       padding: const EdgeInsets.only(left: 10),
                       child: Text(
-                        'Customer Name',
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w500),
-                      )),
-                  SizedBox(height: 10),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      left: 10,
-                      right: 10,
-                    ),
-                    child: Container(
-                      height: 45,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.grey),
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                      child: DropdownButton<String>(
-                        isExpanded: true, // Set this property to true
-                        underline: Container(),
-                        items: ['Option 1', 'Option 2', 'Option 3']
-                            .map((String value) => DropdownMenuItem<String>(
-                                  value: value,
-                                  child: Text(value),
-                                ))
-                            .toList(),
-                        onChanged: (String? value) {
-                          // Handle dropdown change
-                        },
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 16),
-                  Padding(
-                      padding: const EdgeInsets.only(left: 10),
-                      child: Text(
-                        'Landline Number:',
+                        'Traveller Name: ',
                         style: TextStyle(
                             fontSize: 16, fontWeight: FontWeight.w500),
                       )),
@@ -156,7 +140,7 @@ class _MyRechargePageState extends State<ChangePassword> {
                               width: 2.0, // Set the border width
                             ),
                           ),
-                          hintText: 'Enter Landline Number',
+                          hintText: 'Enter Traveller Name',
                         ),
                       ),
                     ),
@@ -165,42 +149,7 @@ class _MyRechargePageState extends State<ChangePassword> {
                   Padding(
                       padding: const EdgeInsets.only(left: 10),
                       child: Text(
-                        'Choose Your Landline  Operator:',
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w500),
-                      )),
-                  SizedBox(height: 10),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      left: 10,
-                      right: 10,
-                    ),
-                    child: Container(
-                      height: 45,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.grey),
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                      child: DropdownButton<String>(
-                        isExpanded: true, // Set this property to true
-                        underline: Container(),
-                        items: ['Option 1', 'Option 2', 'Option 3']
-                            .map((String value) => DropdownMenuItem<String>(
-                                  value: value,
-                                  child: Text(value),
-                                ))
-                            .toList(),
-                        onChanged: (String? value) {
-                          // Handle dropdown change
-                        },
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 16),
-                  Padding(
-                      padding: const EdgeInsets.only(left: 10),
-                      child: Text(
-                        'Amount',
+                        'User Name: ',
                         style: TextStyle(
                             fontSize: 16, fontWeight: FontWeight.w500),
                       )),
@@ -220,7 +169,65 @@ class _MyRechargePageState extends State<ChangePassword> {
                               width: 2.0, // Set the border width
                             ),
                           ),
-                          hintText: 'Enter Recharge Amount',
+                          hintText: 'Enter User Name',
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 16),
+                  Padding(
+                      padding: const EdgeInsets.only(left: 10),
+                      child: Text(
+                        'Enter New Password: ',
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.w500),
+                      )),
+                  SizedBox(height: 10),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10, right: 10),
+                    child: Container(
+                      height: 45,
+                      child: TextField(
+                        style: TextStyle(),
+                        textAlign: TextAlign.justify,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(5),
+                            borderSide: BorderSide(
+                              color: Colors.black, // Set the border color
+                              width: 2.0, // Set the border width
+                            ),
+                          ),
+                          hintText: 'Enter New Password',
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 16),
+                  Padding(
+                      padding: const EdgeInsets.only(left: 10),
+                      child: Text(
+                        'Enter Confirm Password: ',
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.w500),
+                      )),
+                  SizedBox(height: 10),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10, right: 10),
+                    child: Container(
+                      height: 45,
+                      child: TextField(
+                        style: TextStyle(),
+                        textAlign: TextAlign.justify,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(5),
+                            borderSide: BorderSide(
+                              color: Colors.black, // Set the border color
+                              width: 2.0, // Set the border width
+                            ),
+                          ),
+                          hintText: 'Enter Confirm Password',
                         ),
                       ),
                     ),
@@ -241,7 +248,7 @@ class _MyRechargePageState extends State<ChangePassword> {
                               primary: Colors.orange, // Set button color
                             ),
                             child: Text(
-                              'Recharge Now',
+                              'Confirm',
                               style: TextStyle(fontSize: 18),
                             ),
                           ),
@@ -272,7 +279,7 @@ class _MyRechargePageState extends State<ChangePassword> {
                           SizedBox(height: 10),
                           Text(
                             style: TextStyle(fontWeight: FontWeight.w500),
-                            'You can pay your Landline bill now. You can recharge from wallet balance.',
+                            'You can update the Password in this Form.',
                           ),
                         ],
                       ),

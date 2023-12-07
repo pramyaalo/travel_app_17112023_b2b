@@ -396,7 +396,7 @@ class _BookingCardGeneralDetailsState extends State<ActiveTravellers> {
                                         ),
                                       )*/
                                                     Container(
-                                                      height: 35,
+                                                      height: 28,
                                                       child: Row(
                                                         mainAxisAlignment:
                                                             MainAxisAlignment
