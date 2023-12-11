@@ -70,7 +70,7 @@ class _MyRechargePageState extends State<ViewTravellerDetails> {
             width: 10,
           )
         ],
-        backgroundColor: Color(0xFF152238),
+        backgroundColor:  Color(0xFF1d5e72),
       ),
       body: Center(
           child: FutureBuilder<String?>(
@@ -2162,292 +2162,50 @@ class _MyRechargePageState extends State<ViewTravellerDetails> {
                               ),
                               SizedBox(height: 8.0),
                               Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   Padding(
                                     padding: const EdgeInsets.only(left: 10),
-                                    child: Text(
-                                      "Visibility",
-                                      style: const TextStyle(
-                                          fontSize: 18,
-                                          fontFamily: "Montserrat",
-                                          fontWeight: FontWeight.bold),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Bookings Option Allowed',
+                                          style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+
+                                        // Add more checkboxes as needed
+                                      ],
                                     ),
                                   ),
                                 ],
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 10),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Bookings Option Allowed',
-                                      style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    Row(
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 10),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
-                                        Checkbox(
-                                            value: checkboxStatus == "1",
-                                            onChanged: (bool? newValue) {
-                                              setState(() {
-                                                checkboxStatus =
-                                                    newValue == true
-                                                        ? "1"
-                                                        : "0";
-                                              });
-                                              print(
-                                                  'cjeckbosfstsyd:$checkboxStatus');
-                                            }),
-                                        Text('Issue Ticket / Voucher',
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 14)),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Checkbox(
-                                            value: checkboxStatus1 == "1",
-                                            onChanged: (bool? newValue) {
-                                              setState(() {
-                                                checkboxStatus =
-                                                    newValue == true
-                                                        ? "1"
-                                                        : "0";
-                                              });
-                                              print(
-                                                  'cjeckbosfstsyd:$checkboxStatus');
-                                            }),
-                                        Text('Cancel Booking',
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 14)),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Checkbox(
-                                            value: checkboxStatus == "1",
-                                            onChanged: (bool? newValue) {
-                                              setState(() {
-                                                checkboxStatus =
-                                                    newValue == true
-                                                        ? "1"
-                                                        : "0";
-                                              });
-                                              print(
-                                                  'cjeckbosfstsyd:$checkboxStatus');
-                                            }),
-                                        Text('Change Booking',
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 14)),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Checkbox(
-                                            value: checkboxStatus1 == "1",
-                                            onChanged: (bool? newValue) {
-                                              setState(() {
-                                                checkboxStatus =
-                                                    newValue == true
-                                                        ? "1"
-                                                        : "0";
-                                              });
-                                              print(
-                                                  'cjeckbosfstsyd:$checkboxStatus');
-                                            }),
-                                        Text('Void / Cancel Ticket',
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 14)),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Checkbox(
-                                            value: checkboxStatus == "1",
-                                            onChanged: (bool? newValue) {
-                                              setState(() {
-                                                checkboxStatus =
-                                                    newValue == true
-                                                        ? "1"
-                                                        : "0";
-                                              });
-                                              print(
-                                                  'cjeckbosfstsyd:$checkboxStatus');
-                                            }),
-                                        Text('View Ticket',
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 14)),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Checkbox(
-                                            value: checkboxStatus1 == "1",
-                                            onChanged: (bool? newValue) {
-                                              setState(() {
-                                                checkboxStatus =
-                                                    newValue == true
-                                                        ? "1"
-                                                        : "0";
-                                              });
-                                              print(
-                                                  'cjeckbosfstsyd:$checkboxStatus');
-                                            }),
-                                        Text('Manage Services',
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 14)),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Checkbox(
-                                            value: checkboxStatus == "1",
-                                            onChanged: (bool? newValue) {
-                                              setState(() {
-                                                checkboxStatus =
-                                                    newValue == true
-                                                        ? "1"
-                                                        : "0";
-                                              });
-                                              print(
-                                                  'cjeckbosfstsyd:$checkboxStatus');
-                                            }),
-                                        Text(' Manage Element',
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 14)),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Checkbox(
-                                            value: checkboxStatus1 == "1",
-                                            onChanged: (bool? newValue) {
-                                              setState(() {
-                                                checkboxStatus =
-                                                    newValue == true
-                                                        ? "1"
-                                                        : "0";
-                                              });
-                                              print(
-                                                  'cjeckbosfstsyd:$checkboxStatus');
-                                            }),
-                                        Text('Sync PNR',
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 14)),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Checkbox(
-                                            value: checkboxStatus == "1",
-                                            onChanged: (bool? newValue) {
-                                              setState(() {
-                                                checkboxStatus =
-                                                    newValue == true
-                                                        ? "1"
-                                                        : "0";
-                                              });
-                                              print(
-                                                  'cjeckbosfstsyd:$checkboxStatus');
-                                            }),
-                                        Text('View PNR',
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 14)),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Checkbox(
-                                            value: checkboxStatus1 == "1",
-                                            onChanged: (bool? newValue) {
-                                              setState(() {
-                                                checkboxStatus =
-                                                    newValue == true
-                                                        ? "1"
-                                                        : "0";
-                                              });
-                                              print(
-                                                  'cjeckbosfstsyd:$checkboxStatus');
-                                            }),
-                                        Text('Seat Map',
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 14)),
-                                      ],
-                                    ),
+                                        Text(
+                                          'Global Booking Options',
+                                          style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
 
-                                    // Add more checkboxes as needed
-                                  ],
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 10),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Global Booking Options',
-                                      style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    Row(
-                                      children: [
-                                        Checkbox(
-                                            value: checkboxStatus == "1",
-                                            onChanged: (bool? newValue) {
-                                              setState(() {
-                                                checkboxStatus =
-                                                    newValue == true
-                                                        ? "1"
-                                                        : "0";
-                                              });
-                                              print(
-                                                  'cjeckbosfstsyd:$checkboxStatus');
-                                            }),
-                                        Text('Download Document',
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 14)),
+                                        // Add more checkboxes as needed
                                       ],
                                     ),
-                                    Row(
-                                      children: [
-                                        Checkbox(
-                                            value: checkboxStatus1 == "1",
-                                            onChanged: (bool? newValue) {
-                                              setState(() {
-                                                checkboxStatus =
-                                                    newValue == true
-                                                        ? "1"
-                                                        : "0";
-                                              });
-                                              print(
-                                                  'cjeckbosfstsyd:$checkboxStatus');
-                                            }),
-                                        Text('Booking Options',
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 14)),
-                                      ],
-                                    ),
-
-                                    // Add more checkboxes as needed
-                                  ],
-                                ),
+                                  ),
+                                ],
                               )
                             ],
                           ),

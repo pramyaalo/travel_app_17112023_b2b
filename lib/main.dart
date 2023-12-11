@@ -29,7 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
   String MemberId = '';
   String UserName = '';
   String base64Image = '';
-  bool _passwordVisible = false;
+  bool _showPassword = false;
   Future<http.Response>? __futureLogin;
 
   final TextEditingController _userNameController = TextEditingController();
@@ -70,270 +70,192 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
+  void _togglePasswordVisibility() {
+    setState(() {
+      _showPassword = !_showPassword;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: Color(0xFF152238), // Dark green color
+      statusBarColor: Color(0xFF1d5e72), // Dark green color
     ));
-    return MaterialApp(
-      home: Scaffold(
-          body: Center(
-        child: Container(
-          height: MediaQuery.of(context).size.height / .1,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/images/loginbg8.png'),
-              colorFilter: ColorFilter.mode(
-                Color(0xFF152238),
-                BlendMode.overlay,
-              ),
-              fit: BoxFit.cover,
+    return Container(
+        color: const Color(0xffefefef),
+        child: Center(
+          child: Card(
+            margin: const EdgeInsets.fromLTRB(30, 0, 30, 0),
+            color: Color(0xFF1d5e72),
+            elevation: 16.0,
+            shadowColor: Colors.white,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10.0),
             ),
-          ),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(
-                      top: 170), // Adjust the top padding here
-                  child: Image.asset('assets/images/logonew.png',
-                      width: 250, height: 80),
-                ),
-                SizedBox(height: 10),
-                Text(
-                  'B2B Admin Login Acccount ',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    color: Color(0xFF152238),
+            child: Container(
+              padding: const EdgeInsets.all(20.0),
+              width: double.infinity,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image(
+                          width: 100,
+                          image: AssetImage("assets/images/loginoho.jpg"))
+                    ],
                   ),
-                ),
-                SizedBox(height: 25),
-                SizedBox(
-                  height: 40,
-                  width: 310,
-                  child: TextField(
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500),
-                    controller: _userNameController,
-                    decoration: InputDecoration(
-                      hintText: 'Enter Username',
-                      border: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white),
-                        borderRadius: BorderRadius.circular(1.0),
-                      ),
-                      contentPadding: EdgeInsets.symmetric(
-                          vertical: 10.0, horizontal: 10.0),
-                    ),
-                  ),
-                ),
-                SizedBox(height: 10),
-                SizedBox(
-                  height: 40,
-                  width: 310,
-                  child: TextField(
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500),
-                    obscureText: !_passwordVisible,
-                    controller: _passwordController,
-                    decoration: InputDecoration(
-                      hintText: 'Enter Password',
-                      filled: true,
-                      fillColor: Colors.white,
-                      border: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white),
-                        borderRadius: BorderRadius.circular(1.0),
-                      ),
-                      contentPadding: EdgeInsets.symmetric(
-                          vertical: 10.0, horizontal: 10.0),
-                      suffixIcon: GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            _passwordVisible =
-                                !_passwordVisible; // Toggle password visibility
-                          });
-                        },
-                        child: Icon(
-                          _passwordVisible
-                              ? Icons.visibility
-                              : Icons.visibility_off,
-                          color: Color(0xFF454343),
+                  Container(
+                    margin: const EdgeInsets.symmetric(vertical: 20.0),
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Expanded(child: Divider()),
+                        SizedBox(
+                          width: 10.0,
                         ),
-                      ),
+                        Text(
+                          "Login to your Account",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: "Montserrat",
+                              fontSize: 15,
+                              fontWeight: FontWeight.w400),
+                        ),
+                        SizedBox(
+                          width: 10.0,
+                        ),
+                        Expanded(child: Divider())
+                      ],
                     ),
                   ),
-                ),
-                SizedBox(height: 10),
-                InkWell(
-                  onTap: () {
-                    print('Alert Dialog Clicked');
-                    showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return AlertDialog(
-                            titlePadding: EdgeInsets.all(0),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            title: Container(
-                              height: 50,
-                              decoration: BoxDecoration(
-                                color: Color(0xFF152238),
+                  Container(
+                    child: Column(
+                      children: [
+                        TextField(
+                          decoration: InputDecoration(
+                              hintText: "Username",
+                              hintStyle: TextStyle(
+                                fontFamily: "Montserrat",
+                                color: Colors.white,
                               ),
-                              padding: EdgeInsets.only(top: 15, left: 16),
-                              child: Text(
-                                "Password",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                            contentPadding: EdgeInsets.only(top: 10.0),
-                            content: Container(
-                              width: 100.0,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.stretch,
-                                mainAxisSize: MainAxisSize.min,
-                                children: <Widget>[
-                                  SizedBox(
-                                    height: 8,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        right: 10, left: 10),
-                                    child: SizedBox(
-                                      height: 40,
-                                      width: 310,
-                                      child: TextField(
-                                        controller:
-                                            _forgetpasswordUsercontroller,
-                                        decoration: InputDecoration(
-                                          hintText: 'Enter Username',
-                                          hintStyle: TextStyle(),
-                                          border: OutlineInputBorder(
-                                            borderSide:
-                                                BorderSide(color: Colors.white),
-                                            borderRadius:
-                                                BorderRadius.circular(1.0),
-                                          ),
-                                          contentPadding: EdgeInsets.symmetric(
-                                              vertical: 10.0, horizontal: 10.0),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 16,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 10, right: 10),
-                                    child: SizedBox(
-                                      height: 45,
-                                      width: 310,
-                                      child: ElevatedButton(
-                                        onPressed: () {
-                                          _forgotPassword();
-                                        },
-                                        style: ElevatedButton.styleFrom(
-                                          primary: Color(
-                                              0xFF152238), // Green background color
-                                          onPrimary:
-                                              Colors.white, // White text color
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(
-                                                10), // Circular border radius
-                                          ),
-                                        ),
-                                        child: Text(
-                                          "Forget  Password",
-                                          style: TextStyle(fontSize: 17),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 25,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          );
-                        });
-                    //_forgotPassword();
-                    /*  Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => bankdetails()),
-                    );*/
-                    //_showDialog(context);
-                  },
-                  child: Text(
-                    'Forgot Password?',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                      color: Color(0xFF152238),
-                    ),
-                  ),
-                ),
-                SizedBox(height: 20),
-                SizedBox(
-                  height: 40,
-                  width: 150,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Stack(
-                        alignment: Alignment.center,
-                        children: <Widget>[
-                          CircularProgressIndicator(
-                              color: Colors
-                                  .black), // Place the CircularProgressIndicator on top
-                          SfRadialGauge(
-                            axes: <RadialAxis>[
-                              RadialAxis(
-                                minimum: 0,
-                                maximum: 360,
-                                showAxisLine: false,
-                                showLabels: false,
-                                showTicks: false,
-                                radiusFactor: 0.55,
-                                pointers: <GaugePointer>[
-                                  RangePointer(
-                                    value: 330,
-                                    width: 0.25,
-                                    cornerStyle: CornerStyle.bothCurve,
-                                    sizeUnit: GaugeSizeUnit.factor,
-                                  )
-                                ],
-                              ),
-                            ],
+                              icon: Icon(
+                                Icons.people,
+                                color: Colors.white,
+                              )),
+                          keyboardType: TextInputType.emailAddress,
+                          style: TextStyle(
+                            fontFamily: "Montserrat",
+                            fontSize: 15,
+                            color: Colors.white,
                           ),
-                        ],
-                      );
+                          controller: _userNameController,
+                        ),
+                        const SizedBox(
+                          height: 20.0,
+                        ),
+                        TextField(
+                          controller: _passwordController,
+                          style: const TextStyle(
+                            fontFamily: "Montserrat",
+                            fontSize: 15,
+                            color: Colors.white,
+                          ),
+                          decoration: InputDecoration(
+                            hintText: "Password",
+                            hintStyle: const TextStyle(
+                              fontFamily: "Montserrat",
+                              color: Colors.white,
+                            ),
+                            icon: const Icon(
+                              Icons.password,
+                              color: Colors.white,
+                            ),
+                            suffixIcon: GestureDetector(
+                              onTap: _togglePasswordVisibility,
+                              child: _showPassword
+                                  ? const Icon(
+                                      Icons.visibility,
+                                      color: Colors.white,
+                                    )
+                                  : const Icon(
+                                      Icons.visibility_off,
+                                      color: Colors.white,
+                                    ),
+                            ),
+                          ),
+                          obscureText: _showPassword,
+                        ),
+                        const SizedBox(
+                          height: 20.0,
+                        ),
+                        const Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Text(
+                              "Forgot password?",
+                              style: TextStyle(
+                                  fontFamily: "Montserrat",
+                                  color: Colors.yellow),
+                            )
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 20.0,
+                        ),
+                        SizedBox(
+                          height: 40,
+                          width: 150,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              Stack(
+                                alignment: Alignment.center,
+                                children: <Widget>[
+                                  CircularProgressIndicator(
+                                      color: Colors
+                                          .yellow), // Place the CircularProgressIndicator on top
+                                  SfRadialGauge(
+                                    axes: <RadialAxis>[
+                                      RadialAxis(
+                                        minimum: 0,
+                                        maximum: 360,
+                                        showAxisLine: false,
+                                        showLabels: false,
+                                        showTicks: false,
+                                        radiusFactor: 0.55,
+                                        pointers: <GaugePointer>[
+                                          RangePointer(
+                                            value: 330,
+                                            width: 0.25,
+                                            cornerStyle: CornerStyle.bothCurve,
+                                            sizeUnit: GaugeSizeUnit.factor,
+                                          )
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              );
 
-                      print('JSON Response: ${_userNameController.text}');
-                      __futureLogin = ResponseHandler.performPost(
-                          "B2bLogin",
-                          'Username=' +
-                              _userNameController.text +
-                              '&Password=' +
-                              _passwordController.text);
-                      __futureLogin?.then((value) {
-                        print('Response body: ${value.body}');
+                              print(
+                                  'JSON Response: ${_userNameController.text}');
+                              __futureLogin = ResponseHandler.performPost(
+                                  "B2bLogin",
+                                  'Username=' +
+                                      _userNameController.text +
+                                      '&Password=' +
+                                      _passwordController.text);
+                              __futureLogin?.then((value) {
+                                print('Response body: ${value.body}');
 
-                        String jsonResponse =
-                            ResponseHandler.parseData(value.body);
+                                String jsonResponse =
+                                    ResponseHandler.parseData(value.body);
 
-                        print('JSON Response: ${jsonResponse}');
+                                print('JSON Respertttonse: ${jsonResponse}');
 
-                        /*   try {
+                                /*   try {
                           // Decode JSON
                           Map<String, dynamic>? decodedJsonMap =
                               json.decode(jsonResponse);
@@ -391,89 +313,83 @@ class _LoginScreenState extends State<LoginScreen> {
                         } catch (error) {
                           log(error.toString());
                         }*/
-                        try {
-                          Map<String, dynamic>? decodedJsonMap =
-                              json.decode(jsonResponse);
+                                try {
+                                  Map<String, dynamic>? decodedJsonMap =
+                                      json.decode(jsonResponse);
 
-                          if (decodedJsonMap != null &&
-                              decodedJsonMap.containsKey("Table")) {
-                            if (decodedJsonMap["Table"] is List) {
-                              List<dynamic> tableList = decodedJsonMap["Table"];
+                                  if (decodedJsonMap != null &&
+                                      decodedJsonMap.containsKey("Table")) {
+                                    if (decodedJsonMap["Table"] is List) {
+                                      List<dynamic> tableList =
+                                          decodedJsonMap["Table"];
 
-                              if (tableList.isNotEmpty) {
-                                LoginModel fm =
-                                    LoginModel.fromJson(tableList[0]);
-                                print('Name: ${fm.Name}');
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Dashboard(),
-                                  ),
-                                );
-                              } else {
-                                print('Error: Decoded list is empty.');
-                              }
-                            } else {
-                              print('Error: "Table" key is not a list.');
-                            }
-                          } else {
-                            print(
-                                'Error: "Table" key not found in the decoded JSON.');
-                          }
-                        } catch (e) {
-                          print('Error decoding JSON: $e');
-                        }
-                      });
-                      log('buttonPress' + _userNameController.text);
-                    },
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(
-                        Color(0xFF152238),
-                      ),
-                    ),
-                    child: Text('LOGIN',
-                        style: TextStyle(
-                          fontSize: 16,
-                        )),
-                  ),
-                ),
-                SizedBox(height: 20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Don't have an account?",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                        color: Color(0xFF152238),
-                      ),
-                    ),
-                    SizedBox(width: 5),
-                    GestureDetector(
-                      onTap: () {
-                        /*   Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => signup()),
-                        );*/
-                      },
-                      child: Text(
-                        "Sign Up",
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                          color: Color(0xFF152238),
+                                      if (tableList.isNotEmpty) {
+                                        LoginModel fm =
+                                            LoginModel.fromJson(tableList[0]);
+                                        print('Name: ${fm.Name}');
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => Dashboard(),
+                                          ),
+                                        );
+                                      } else {
+                                        print('Error: Decoded list is empty.');
+                                      }
+                                    } else {
+                                      print(
+                                          'Error: "Table" key is not a list.');
+                                    }
+                                  } else {
+                                    print(
+                                        'Error: "Table" key not found in the decoded JSON.');
+                                  }
+                                } catch (e) {
+                                  print('Error decoding JSON: $e');
+                                }
+                              });
+                              log('buttonPress' + _userNameController.text);
+                            },
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all<Color>(
+                                Colors.yellow,
+                              ),
+                            ),
+                            child: Text('LOGIN',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 16,
+                                )),
+                          ),
                         ),
-                      ),
+                        const SizedBox(
+                          height: 30.0,
+                        ),
+                        const Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "New to AKS Travel? ",
+                              style: TextStyle(
+                                  fontFamily: "Montserrat",
+                                  color: Colors.white),
+                            ),
+                            Text(
+                              "Join now ",
+                              style: TextStyle(
+                                  fontFamily: "Montserrat",
+                                  color: Colors.yellow),
+                            )
+                          ],
+                        )
+                      ],
                     ),
-                  ],
-                ),
-              ],
+                  )
+                ],
+              ),
             ),
           ),
-        ),
-      )),
-    );
+        ));
   }
 }
 

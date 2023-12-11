@@ -58,7 +58,7 @@ class _BookingCardGeneralDetailsState extends State<UnBlockTravellers> {
                   width: 10,
                 )
               ],
-              backgroundColor: Color(0xFF152238),
+              backgroundColor: Color(0xFF1d5e72) ,
             ),
             body: Center(
               child: FutureBuilder<List<UnBlockTravellerModel>?>(

@@ -59,7 +59,7 @@ class _BookingCardGeneralDetailsState extends State<BranchesWalletBalance> {
               width: 10,
             )
           ],
-          backgroundColor: Color(0xFF152238),
+          backgroundColor: Color(0xFF1d5e72) ,
         ),
         body: SingleChildScrollView(
             child: Column(children: [

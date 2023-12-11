@@ -38,7 +38,7 @@ class _MyRechargePageState extends State<ChangePassword> {
             width: 10,
           )
         ],
-        backgroundColor: Color(0xFF152238),
+        backgroundColor: Color(0xFF1d5e72) ,
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(10),

@@ -63,7 +63,7 @@ class _BookingReportState extends State<CheckTransactionReport> {
                   width: 10,
                 )
               ],
-              backgroundColor: Color(0xFF152238),
+              backgroundColor: Color(0xFF1d5e72) ,
             ),
             body: Container(
                 child: SingleChildScrollView(

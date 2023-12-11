@@ -57,7 +57,7 @@ class _BookingReportState extends State<BookingReport> {
                   width: 10,
                 )
               ],
-              backgroundColor: Color(0xFF152238),
+              backgroundColor: Color(0xFF1d5e72) ,
             ),
             body: Center(
                 child: FutureBuilder<List<BookingReportModel>?>(

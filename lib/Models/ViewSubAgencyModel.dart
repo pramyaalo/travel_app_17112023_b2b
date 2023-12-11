@@ -5,18 +5,14 @@ class ViewSubAgentModel {
   List<Tableee1> table1;
   List<Tableee2> table2;
   List<Tableee3> table3;
-  List<Tableee4> table4;
-  List<Tableee5> table5;
-  List<Tableee6> table6;
 
+  List<Tablee7> table7;
   ViewSubAgentModel({
     required this.table0,
     required this.table1,
     required this.table2,
     required this.table3,
-    required this.table4,
-    required this.table5,
-    required this.table6,
+    required this.table7,
   });
   factory ViewSubAgentModel.fromJson(Map<String, dynamic> json) {
     return ViewSubAgentModel(
@@ -32,14 +28,8 @@ class ViewSubAgentModel {
       table3: (json['Table3'] as List<dynamic>)
           .map((e) => Tableee3.fromJson(e as Map<String, dynamic>))
           .toList(),
-      table4: (json['Table4'] as List<dynamic>)
-          .map((e) => Tableee4.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      table5: (json['Table5'] as List<dynamic>)
-          .map((e) => Tableee5.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      table6: (json['Table6'] as List<dynamic>)
-          .map((e) => Tableee6.fromJson(e as Map<String, dynamic>))
+      table7: (json['Table7'] as List<dynamic>)
+          .map((e) => Tablee7.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
   }
@@ -698,373 +688,147 @@ class Tablee0 {
 }
 
 class Tableee1 {
-  String traPassID;
-  String pdTravellerId;
-  String pdPassportNo;
-  String pdDateOfBirth;
-  String pdNationality;
-  String pdIssuingCountry;
-  String pdDateOfExpiry;
-  String pdIsPrimary;
-  String pdDocument;
-  String pdDateOfBirthdt;
-  String pdDateOfExpirydt;
+  String subAgentSalesId;
+  String subAgentId;
+  String emailAddress;
+  String telephone;
+  String mobile;
+  String contactName;
+  String status;
+  String dateCreated;
 
   Tableee1({
-    required this.traPassID,
-    required this.pdTravellerId,
-    required this.pdPassportNo,
-    required this.pdDateOfBirth,
-    required this.pdNationality,
-    required this.pdIssuingCountry,
-    required this.pdDateOfExpiry,
-    required this.pdIsPrimary,
-    required this.pdDocument,
-    required this.pdDateOfBirthdt,
-    required this.pdDateOfExpirydt,
+    required this.subAgentSalesId,
+    required this.subAgentId,
+    required this.emailAddress,
+    required this.telephone,
+    required this.mobile,
+    required this.contactName,
+    required this.status,
+    required this.dateCreated,
   });
 
   factory Tableee1.fromJson(Map<String, dynamic> json) {
     return Tableee1(
-      traPassID: json['TraPassID'].toString(),
-      pdTravellerId: json['PDTravellerId'].toString(),
-      pdPassportNo: json['PDPassportNo'].toString(),
-      pdDateOfBirth: json['PDDateofBirth'].toString(),
-      pdNationality: json['PDNationality'].toString(),
-      pdIssuingCountry: json['PDIssuingCountry'].toString(),
-      pdDateOfExpiry: json['PDDateofExpiry'].toString(),
-      pdIsPrimary: json['PDIsPrimary'].toString(),
-      pdDocument: json['PDDocument'].toString(),
-      pdDateOfBirthdt: json['PDDateofBirthdt'].toString(),
-      pdDateOfExpirydt: json['PDDateofExpirydt'].toString(),
+      subAgentSalesId: json['SubAgentSalesID'].toString(),
+      subAgentId: json['SubAgentID'].toString(),
+      emailAddress: json['EmailAddress'].toString(),
+      telephone: json['Telephone'].toString(),
+      mobile: json['Mobile'].toString(),
+      contactName: json['ContactName'].toString(),
+      status: json['Status'].toString(),
+      dateCreated: json['DateCreated'].toString(),
     );
   }
 }
 
 class Tableee2 {
-  String traVisaId;
-  String vdTravellerId;
-  String vdVisaName;
-  String vdCountryOfVisa;
-  String vdTypeOfVisa;
-  String vdDateOfIssue;
-  String vdDateOfExpiry;
-  String vdDateOfIssuedt;
-  String vdDateOfExpirydt;
+  String subAgentBankId;
+  String subAgentId;
+  String bankName;
+  String bankAddress;
+  String bankSwiftCode;
+  String bankPhoneNo;
+  String bankFaxNo;
+  String bankAccountNo;
+  String status;
+  String dateCreated;
 
   Tableee2({
-    required this.traVisaId,
-    required this.vdTravellerId,
-    required this.vdVisaName,
-    required this.vdCountryOfVisa,
-    required this.vdTypeOfVisa,
-    required this.vdDateOfIssue,
-    required this.vdDateOfExpiry,
-    required this.vdDateOfIssuedt,
-    required this.vdDateOfExpirydt,
+    required this.subAgentBankId,
+    required this.subAgentId,
+    required this.bankName,
+    required this.bankAddress,
+    required this.bankSwiftCode,
+    required this.bankPhoneNo,
+    required this.bankFaxNo,
+    required this.bankAccountNo,
+    required this.status,
+    required this.dateCreated,
   });
 
   factory Tableee2.fromJson(Map<String, dynamic> json) {
     return Tableee2(
-      traVisaId: json['TraVisaID'].toString(),
-      vdTravellerId: json['VDTravellerId'].toString(),
-      vdVisaName: json['VDVisaName'].toString(),
-      vdCountryOfVisa: json['VDCountryOfVisa'].toString(),
-      vdTypeOfVisa: json['VDTypeOfVisa'].toString(),
-      vdDateOfIssue: json['VDDateofIssue'].toString(),
-      vdDateOfExpiry: json['VDDateofExpiry'].toString(),
-      vdDateOfIssuedt: json['VDDateofIssuedt'].toString(),
-      vdDateOfExpirydt: json['VDDateofExpirydt'].toString(),
+      subAgentBankId: json['SubAgentBankID'].toString(),
+      subAgentId: json['SubAgentID'].toString(),
+      bankName: json['BankName'].toString(),
+      bankAddress: json['BankAddress'].toString(),
+      bankSwiftCode: json['BankSwiftCode'].toString(),
+      bankPhoneNo: json['BankPhoneNo'].toString(),
+      bankFaxNo: json['BankFaxNo'].toString(),
+      bankAccountNo: json['BankAccountNo'].toString(),
+      status: json['Status'].toString(),
+      dateCreated: json['DateCreated'].toString(),
     );
   }
 }
 
 class Tableee3 {
-  String traDependantId;
-  String ddTravellerId;
-  String ddTitleId;
-  String ddFirstName;
-  String ddMiddleName;
-  String ddLastName;
-  String ddDOB;
-  String ddRelation;
-  String ddPassportNo;
-  String ddPassportExpiry;
-  String ddNationality;
-  String ddPassportIssuingCountry;
-  String ddEmailId;
-  String ddMobileCC;
-  String ddMobileAC;
-  String ddMobileNo;
-  String ddCountryOfVisa;
-  String ddTypeOfVisa;
-  String ddDateOfIssue;
-  String ddDateOfExpiry;
-  String ddDOBdt;
-  String ddPassportExpirydt;
-  String ddDateOfIssuedt;
-  String ddDateOfExpirydt;
+  int subAgentId;
+  int cardType;
+  String cardTypeName;
+  String card;
+  String cardCompany;
+  String cardNumber;
+  String nameOnTheCard;
+  String expiryDate;
+  String validateDate;
+  String cvvNo;
 
   Tableee3({
-    required this.traDependantId,
-    required this.ddTravellerId,
-    required this.ddTitleId,
-    required this.ddFirstName,
-    required this.ddMiddleName,
-    required this.ddLastName,
-    required this.ddDOB,
-    required this.ddRelation,
-    required this.ddPassportNo,
-    required this.ddPassportExpiry,
-    required this.ddNationality,
-    required this.ddPassportIssuingCountry,
-    required this.ddEmailId,
-    required this.ddMobileCC,
-    required this.ddMobileAC,
-    required this.ddMobileNo,
-    required this.ddCountryOfVisa,
-    required this.ddTypeOfVisa,
-    required this.ddDateOfIssue,
-    required this.ddDateOfExpiry,
-    required this.ddDOBdt,
-    required this.ddPassportExpirydt,
-    required this.ddDateOfIssuedt,
-    required this.ddDateOfExpirydt,
+    required this.subAgentId,
+    required this.cardType,
+    required this.cardTypeName,
+    required this.card,
+    required this.cardCompany,
+    required this.cardNumber,
+    required this.nameOnTheCard,
+    required this.expiryDate,
+    required this.validateDate,
+    required this.cvvNo,
   });
 
   factory Tableee3.fromJson(Map<String, dynamic> json) {
     return Tableee3(
-      traDependantId: json['TraDependantID'].toString(),
-      ddTravellerId: json['DDTravellerId'].toString(),
-      ddTitleId: json['DDTitleID'].toString(),
-      ddFirstName: json['DDFirstName'].toString(),
-      ddMiddleName: json['DDMiddleName'].toString(),
-      ddLastName: json['DDLastName'].toString(),
-      ddDOB: json['DDDOB'].toString(),
-      ddRelation: json['DDRelation'].toString(),
-      ddPassportNo: json['DDPassportNo'].toString(),
-      ddPassportExpiry: json['DDPassportExpiry'].toString(),
-      ddNationality: json['DDNationality'].toString(),
-      ddPassportIssuingCountry: json['DDPassportIssuingCountry'].toString(),
-      ddEmailId: json['DDEmailId'].toString(),
-      ddMobileCC: json['DDMobile_CC'].toString(),
-      ddMobileAC: json['DDMobile_AC'].toString(),
-      ddMobileNo: json['DDMobile_No'].toString(),
-      ddCountryOfVisa: json['DDCountryOfVisa'].toString(),
-      ddTypeOfVisa: json['DDTypeOfVisa'].toString(),
-      ddDateOfIssue: json['DDDateOfIssue'].toString(),
-      ddDateOfExpiry: json['DDDateOfExpiry'].toString(),
-      ddDOBdt: json['DDDOBdt'].toString(),
-      ddPassportExpirydt: json['DDPassportExpirydt'].toString(),
-      ddDateOfIssuedt: json['DDDateofIssuedt'].toString(),
-      ddDateOfExpirydt: json['DDDateofExpirydt'].toString(),
+      subAgentId: json['SubAgentId'],
+      cardType: json['CardType'],
+      cardTypeName: json['CardTypeName'],
+      card: json['Card'],
+      cardCompany: json['CardCompany'],
+      cardNumber: json['CardNumber'],
+      nameOnTheCard: json['NameontheCard'],
+      expiryDate: json['ExpiryDate'],
+      validateDate: json['ValidateDate'],
+      cvvNo: json['CVVNo'],
     );
   }
 }
 
-class Tableee4 {
-  String travellerId;
-  String cardName;
-  String cardOption;
-  String cardType;
-  String nameOnCard;
-  String cardNumber;
-  String expiryMonth;
-  String expiryYear;
-  String billingAddress;
-  String cardLimit;
-  String issuedCountry;
-  String currency;
-  String bankCharges;
-  String paymentPeriod;
-  String ruleAppliedOn;
-  String personal;
-  String corporate;
-  String virtualCard;
-  String physicalCard;
-  String userTypeId;
-  String userId;
-  String cardName1;
-  String cardOption1;
-  String cardType1;
-  String currencyName;
-  String issuedCountryName;
-  String personal1;
-  String corporate1;
-  String virtualCard1;
-  String physicalCard1;
-  String ruleAppliedOnName;
+class Tablee7 {
+  final int subAgentDocumentID;
+  final int subAgentID;
+  final String documentTitle;
+  final String documentFile;
+  final int status;
+  final String dateCreated;
 
-  Tableee4({
-    required this.travellerId,
-    required this.cardName,
-    required this.cardOption,
-    required this.cardType,
-    required this.nameOnCard,
-    required this.cardNumber,
-    required this.expiryMonth,
-    required this.expiryYear,
-    required this.billingAddress,
-    required this.cardLimit,
-    required this.issuedCountry,
-    required this.currency,
-    required this.bankCharges,
-    required this.paymentPeriod,
-    required this.ruleAppliedOn,
-    required this.personal,
-    required this.corporate,
-    required this.virtualCard,
-    required this.physicalCard,
-    required this.userTypeId,
-    required this.userId,
-    required this.cardName1,
-    required this.cardOption1,
-    required this.cardType1,
-    required this.currencyName,
-    required this.issuedCountryName,
-    required this.personal1,
-    required this.corporate1,
-    required this.virtualCard1,
-    required this.physicalCard1,
-    required this.ruleAppliedOnName,
+  Tablee7({
+    required this.subAgentDocumentID,
+    required this.subAgentID,
+    required this.documentTitle,
+    required this.documentFile,
+    required this.status,
+    required this.dateCreated,
   });
 
-  factory Tableee4.fromJson(Map<String, dynamic> json) {
-    return Tableee4(
-      travellerId: json['TravellerId'].toString(),
-      cardName: json['CardName'].toString(),
-      cardOption: json['CardOption'].toString(),
-      cardType: json['CardType'].toString(),
-      nameOnCard: json['NameOnCard'].toString(),
-      cardNumber: json['CardNumber'].toString(),
-      expiryMonth: json['ExpiryMonth'].toString(),
-      expiryYear: json['ExpiryYear'].toString(),
-      billingAddress: json['BillingAddress'].toString(),
-      cardLimit: json['CardLimit'].toString(),
-      issuedCountry: json['IssuedCountry'].toString(),
-      currency: json['Currency'].toString(),
-      bankCharges: json['BankCharges'].toString(),
-      paymentPeriod: json['PaymentPeriod'].toString(),
-      ruleAppliedOn: json['RuleAppliedOn'].toString(),
-      personal: json['Personal'].toString(),
-      corporate: json['Corporate'].toString(),
-      virtualCard: json['VirtualCard'].toString(),
-      physicalCard: json['PhysicalCard'].toString(),
-      userTypeId: json['UserTypeId'].toString(),
-      userId: json['UserId'].toString(),
-      cardName1: json['CardName1'].toString(),
-      cardOption1: json['CardOption1'].toString(),
-      cardType1: json['CardType1'].toString(),
-      currencyName: json['CurrencyName'].toString(),
-      issuedCountryName: json['IssuedCountryName'].toString(),
-      personal1: json['Personal1'].toString(),
-      corporate1: json['Corporate1'].toString(),
-      virtualCard1: json['VirtualCard1'].toString(),
-      physicalCard1: json['PhysicalCard1'].toString(),
-      ruleAppliedOnName: json['RuleAppliedOnName'].toString(),
-    );
-  }
-}
-
-class Tableee5 {
-  String traPreferId;
-  String apTravellerId;
-  String apLonghaulSeat;
-  String apShorthaulSeat;
-  String apMealh;
-  String apStopOver;
-  String apMaxLayout;
-  String apClass;
-  String apOther;
-  String hpRoom;
-  String hpSmoking;
-  String hpFacilities;
-  String hpHotelChain;
-  String hpHotelChainCode;
-  String hpMembershipNo;
-  String apShorthaulSeatName;
-  String apLonghaulSeatName;
-  String apStopOverName;
-  String apMaxLayoutName;
-  String economyPremiumEconomy;
-  String mealPreference;
-  String hpRoomName;
-  String hpSmokingName;
-
-  Tableee5({
-    required this.traPreferId,
-    required this.apTravellerId,
-    required this.apLonghaulSeat,
-    required this.apShorthaulSeat,
-    required this.apMealh,
-    required this.apStopOver,
-    required this.apMaxLayout,
-    required this.apClass,
-    required this.apOther,
-    required this.hpRoom,
-    required this.hpSmoking,
-    required this.hpFacilities,
-    required this.hpHotelChain,
-    required this.hpHotelChainCode,
-    required this.hpMembershipNo,
-    required this.apShorthaulSeatName,
-    required this.apLonghaulSeatName,
-    required this.apStopOverName,
-    required this.apMaxLayoutName,
-    required this.economyPremiumEconomy,
-    required this.mealPreference,
-    required this.hpRoomName,
-    required this.hpSmokingName,
-  });
-
-  factory Tableee5.fromJson(Map<String, dynamic> json) {
-    return Tableee5(
-      traPreferId: json['TraPreferID'].toString(),
-      apTravellerId: json['APTravellerId'].toString(),
-      apLonghaulSeat: json['APLonghaulSeat'].toString(),
-      apShorthaulSeat: json['APShorthaulSeat'].toString(),
-      apMealh: json['APMealh'].toString(),
-      apStopOver: json['APStopOver'].toString(),
-      apMaxLayout: json['APMaxLayout'].toString(),
-      apClass: json['APClass'].toString(),
-      apOther: json['APOther'].toString(),
-      hpRoom: json['HPRoom'].toString(),
-      hpSmoking: json['HPSmoking'].toString(),
-      hpFacilities: json['HPFacilities'].toString(),
-      hpHotelChain: json['HPHotelChain'].toString(),
-      hpHotelChainCode: json['HPHotelChainCode'].toString(),
-      hpMembershipNo: json['HPMembershipNo'].toString(),
-      apShorthaulSeatName: json['APShorthaulSeatName'].toString(),
-      apLonghaulSeatName: json['APLonghaulSeatName'].toString(),
-      apStopOverName: json['APStopOverName'].toString(),
-      apMaxLayoutName: json['APMaxLayoutName'].toString(),
-      economyPremiumEconomy: json['EconomyPremiumEconomy'].toString(),
-      mealPreference: json['MealPreference'].toString(),
-      hpRoomName: json['HPRoomName'].toString(),
-      hpSmokingName: json['HPSmokingName'].toString(),
-    );
-  }
-}
-
-class Tableee6 {
-  String TraFlightID;
-  String PFTravellerId;
-  String PFSelectAirlines;
-  String PFLoyaltyNumber;
-
-  Tableee6({
-    required this.TraFlightID,
-    required this.PFTravellerId,
-    required this.PFSelectAirlines,
-    required this.PFLoyaltyNumber,
-  });
-
-  factory Tableee6.fromJson(Map<String, dynamic> json) {
-    return Tableee6(
-      TraFlightID: json['TraFlightID'].toString(),
-      PFTravellerId: json['PFTravellerId'].toString(),
-      PFSelectAirlines: json['PFSelectAirlines'].toString(),
-      PFLoyaltyNumber: json['PFLoyaltyNumber'].toString(),
+  factory Tablee7.fromJson(Map<String, dynamic> json) {
+    return Tablee7(
+      subAgentDocumentID: json['SubAgentDocumentID'],
+      subAgentID: json['SubAgentID'],
+      documentTitle: json['DocumentTitle'],
+      documentFile: json['DocumentFile'],
+      status: json['Status'],
+      dateCreated: json['DateCreated'],
     );
   }
 }

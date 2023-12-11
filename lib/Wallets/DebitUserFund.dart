@@ -38,7 +38,7 @@ class _MyRechargePageState extends State<DebitUserFund> {
             width: 10,
           )
         ],
-        backgroundColor: Color(0xFF152238),
+        backgroundColor: Color(0xFF1d5e72) ,
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(10),
@@ -254,7 +254,7 @@ class _MyRechargePageState extends State<DebitUserFund> {
                               // Add your recharge logic here
                             },
                             style: ElevatedButton.styleFrom(
-                              primary: Colors.orange, // Set button color
+                              primary: Colors.yellow, // Set button color
                             ),
                             child: Text(
                               'Debit Fund To Users',

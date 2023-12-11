@@ -17,6 +17,11 @@ import 'package:travel_app_17112023_b2b/Booking/ProductWiseBooking.dart';
 import 'package:travel_app_17112023_b2b/Booking/ServiceRequest.dart';
 import 'package:travel_app_17112023_b2b/Booking/UnConfirmedBooking.dart';
 import 'package:travel_app_17112023_b2b/Branches/ChangePassword.dart';
+import 'package:travel_app_17112023_b2b/Branches/ManageBranches.dart';
+import 'package:travel_app_17112023_b2b/Branches/ViewBranchDetail.dart';
+import 'package:travel_app_17112023_b2b/Corporate/ApproveCorporate.dart';
+import 'package:travel_app_17112023_b2b/Corporate/ManageCorporate.dart';
+import 'package:travel_app_17112023_b2b/Corporate/ViewCorporateDetails.dart';
 import 'package:travel_app_17112023_b2b/Models/DashboardModel.dart';
 import 'package:travel_app_17112023_b2b/Queues/ApprovePartPayment.dart';
 import 'package:travel_app_17112023_b2b/Queues/CancelTicketQueue.dart';
@@ -44,9 +49,11 @@ import 'package:travel_app_17112023_b2b/Staff/SalaryStructure.dart';
 import 'package:travel_app_17112023_b2b/Staff/StaffAttendance.dart';
 import 'package:travel_app_17112023_b2b/Staff/StaffLeaveApply.dart';
 import 'package:travel_app_17112023_b2b/SubAgency/ApproveSubAgency.dart';
+import 'package:travel_app_17112023_b2b/SubAgency/ManageSubAgency.dart';
 import 'package:travel_app_17112023_b2b/Travellers/ActiveTravellers.dart';
 import 'package:travel_app_17112023_b2b/Travellers/ApproveTravellers.dart';
 import 'package:travel_app_17112023_b2b/Travellers/ChangePasswordTravellers.dart';
+import 'package:travel_app_17112023_b2b/Travellers/ManageTravellers.dart';
 import 'package:travel_app_17112023_b2b/Travellers/UnBlockTravellers.dart';
 import 'package:travel_app_17112023_b2b/Wallets/CreditBalanceApproval.dart';
 import 'package:travel_app_17112023_b2b/Wallets/CreditRequestReceipt.dart';
@@ -151,7 +158,7 @@ class _CorDashboardState extends State<Dashboard> {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Color(0xFF152238),
+        backgroundColor: Color(0xFF1d5e72),
         automaticallyImplyLeading: false,
         title: Row(
           children: [
@@ -191,11 +198,11 @@ class _CorDashboardState extends State<Dashboard> {
                 ),
               ],
             ),
-            SizedBox(width: 80),
+            SizedBox(width: 100),
             Image.asset(
-              'assets/images/logo.png',
+              'assets/images/loginoho.jpg',
               alignment: Alignment.center,
-              width: 100,
+              width: 70,
               height: 50,
             ),
           ],
@@ -210,7 +217,7 @@ class _CorDashboardState extends State<Dashboard> {
                     style: TextStyle(fontFamily: "Montserrat")),
                 accountEmail: Text("corpadmin@email.com",
                     style: TextStyle(fontFamily: "Montserrat")),
-                decoration: BoxDecoration(color: Colors.blue),
+                decoration: BoxDecoration(color: Color(0xFF1d5e72)),
                 currentAccountPicture: CircleAvatar(
                     backgroundColor: Colors.white,
                     child:
@@ -472,6 +479,17 @@ class _CorDashboardState extends State<Dashboard> {
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) =>
+                                  ManageTravellers()));
+                    },
+                    title: Text("Manage Travellers",
+                        style: TextStyle(fontFamily: "Montserrat")),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
                                   ApproveTravellers()));
                     },
                     title: Text("Approve Travellers",
@@ -513,7 +531,7 @@ class _CorDashboardState extends State<Dashboard> {
                 ],
               ),
               ExpansionTile(
-                title: Text("Sub Agency",
+                title: Text("SubAgency",
                     style: TextStyle(fontFamily: "Montserrat")),
                 leading:
                     Icon(const IconData(0xee5e, fontFamily: 'MaterialIcons')),
@@ -524,9 +542,146 @@ class _CorDashboardState extends State<Dashboard> {
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) =>
+                                  ManageSubAgency()));
+                    },
+                    title: Text("Manage SubAgency",
+                        style: TextStyle(fontFamily: "Montserrat")),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
                                   ApproveSubAgency()));
                     },
                     title: Text("Approve SubAgency",
+                        style: TextStyle(fontFamily: "Montserrat")),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  UnBlockTravellers()));
+                    },
+                    title: Text("Block/UnBlock Travellers",
+                        style: TextStyle(fontFamily: "Montserrat")),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  ActiveTravellers()));
+                    },
+                    title: Text("Active Travellers",
+                        style: TextStyle(fontFamily: "Montserrat")),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  ChangePasswordTravellers()));
+                    },
+                    title: Text("Change Password",
+                        style: TextStyle(fontFamily: "Montserrat")),
+                  ),
+                ],
+              ),
+              ExpansionTile(
+                title: Text("Branches",
+                    style: TextStyle(fontFamily: "Montserrat")),
+                leading:
+                    Icon(const IconData(0xee5e, fontFamily: 'MaterialIcons')),
+                children: [
+                  ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  ManageBranch()));
+                    },
+                    title: Text("Manage Branch",
+                        style: TextStyle(fontFamily: "Montserrat")),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  ViewBranchDetail()));
+                    },
+                    title: Text("Approve Branch",
+                        style: TextStyle(fontFamily: "Montserrat")),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  UnBlockTravellers()));
+                    },
+                    title: Text("Block/UnBlock Travellers",
+                        style: TextStyle(fontFamily: "Montserrat")),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  ActiveTravellers()));
+                    },
+                    title: Text("Active Travellers",
+                        style: TextStyle(fontFamily: "Montserrat")),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  ChangePasswordTravellers()));
+                    },
+                    title: Text("Change Password",
+                        style: TextStyle(fontFamily: "Montserrat")),
+                  ),
+                ],
+              ),
+              ExpansionTile(
+                title: Text("Corporate",
+                    style: TextStyle(fontFamily: "Montserrat")),
+                leading:
+                    Icon(const IconData(0xee5e, fontFamily: 'MaterialIcons')),
+                children: [
+                  ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  ManageCorporate()));
+                    },
+                    title: Text("Manage Corporate",
+                        style: TextStyle(fontFamily: "Montserrat")),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  ViewCorporateDetails()));
+                    },
+                    title: Text("Approve Corporate",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
                   ListTile(
@@ -1543,7 +1698,7 @@ class _CorDashboardState extends State<Dashboard> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
-        backgroundColor: Colors.blue, // Background color
+        backgroundColor: Color(0xFF1d5e72), // Background color
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.white,
         type: BottomNavigationBarType.fixed,

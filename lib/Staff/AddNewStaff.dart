@@ -467,7 +467,7 @@ class _SignUpPageState extends State<AddNewStaff> {
     // Create a MemoryImage from the decoded bytes
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF152238),
+        backgroundColor: Color(0xFF1d5e72),
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back,
@@ -1752,8 +1752,8 @@ class _SignUpPageState extends State<AddNewStaff> {
                                             ReferandEarn()));*/
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.indigo, // Button color
-                    onPrimary: Colors.white, // Text color
+                    primary: Colors.yellow, // Button color
+                    onPrimary: Colors.black, // Text color
                   ),
                   child: SizedBox(
                       width: 130,

@@ -57,7 +57,7 @@ class _BookingCardGeneralDetailsState extends State<ApproveSubAgency> {
         child: Scaffold(
             appBar: AppBar(
               title: Text(
-                "APPROVE TRAVELLER",
+                "APPROVE SUBAGENCY",
                 style: TextStyle(fontFamily: "Montserrat", fontSize: 16),
               ),
               //title: Image.asset('assets/images/logo.png', width: 150, height: 30,),
@@ -71,7 +71,7 @@ class _BookingCardGeneralDetailsState extends State<ApproveSubAgency> {
                   width: 10,
                 )
               ],
-              backgroundColor: Color(0xFF152238),
+              backgroundColor:  Color(0xFF1d5e72),
             ),
             body: Center(
               child: FutureBuilder<List<ApproveSubAgencyModel>?>(

@@ -62,7 +62,7 @@ class _BookingReportState extends State<LeaveRejected> {
             width: 10,
           )
         ],
-        backgroundColor: Color(0xFF152238),
+        backgroundColor:  Color(0xFF1d5e72),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

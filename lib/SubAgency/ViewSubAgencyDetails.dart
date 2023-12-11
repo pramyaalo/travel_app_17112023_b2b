@@ -6,6 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:travel_app_17112023_b2b/Models/ViewSubAgencyModel.dart';
 import 'package:travel_app_17112023_b2b/Models/ViewTravellerModel.dart';
+import 'package:travel_app_17112023_b2b/SubAgency/Tableee4.dart';
+import 'package:travel_app_17112023_b2b/SubAgency/Tableee5.dart';
+import 'package:travel_app_17112023_b2b/SubAgency/Tableee6.dart';
 import 'package:travel_app_17112023_b2b/utils/response_handler.dart';
 
 void main() {
@@ -29,10 +32,24 @@ class ViewSubAgencyDetails extends StatefulWidget {
 class _MyRechargePageState extends State<ViewSubAgencyDetails> {
   String checkboxStatus = "0";
   String checkboxStatus1 = "0";
-  List<ViewSubAgentModel> table1Data = [];
+  String productAccessBusName = "",
+      productAccessCarName = "",
+      productAccessFlightName = "",
+      productAccessHolidayName = "",
+      productAccessHotelName = "";
+  List<Tableee4> table1Data = [];
+  List<Tableee5> table2Data = [];
+  List<Tableee6> table3Data = [];
   bool isIssueTicketChecked = false;
   bool isCancelBookingChecked = false;
-  late List<dynamic> table0, table1, table2, table3, table4, table5, table6;
+  late List<dynamic> table0,
+      table1,
+      table2,
+      table3,
+      table4,
+      table5,
+      table6,
+      table7;
 
   String _userImage = '';
   String datePart = '';
@@ -58,8 +75,8 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
   }
 
   Future<String?> getInvoiceReceiptJSON() async {
-    Future<http.Response>? futureLabels = ResponseHandler.performPost(
-        "SubAgencyViewGet", "SubAgencyID=${subAgencyId}");
+    Future<http.Response>? futureLabels =
+        ResponseHandler.performPost("SubAgencyViewGet", "SubAgencyID=3166");
     return await futureLabels.then((value) {
       String jsonResponse = ResponseHandler.parseData(value.body);
       Map<String, dynamic> map = json.decode(jsonResponse);
@@ -70,11 +87,13 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
       table4 = map["Table4"];
       table5 = map["Table5"];
       table6 = map["Table6"];
+      table7 = map["Table7"];
       log('Response: $jsonResponse');
       return jsonResponse;
     });
   }
 
+  late Tableee4 t1Data;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -94,7 +113,7 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
             width: 10,
           )
         ],
-        backgroundColor: Color(0xFF152238),
+        backgroundColor: Color(0xFF1d5e72) ,
       ),
       body: Center(
           child: FutureBuilder<String?>(
@@ -110,8 +129,33 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
 
                     Tableee3 m3 = Tableee3.fromJson(table3[0]);
                     Tableee4 m4 = Tableee4.fromJson(table4[0]);
+                    table1Data.clear();
+                    for (int i = 0; i < table4.length; i++) {
+                      t1Data = Tableee4.fromJson(table4[i]);
+
+                      table1Data.add(t1Data);
+                      print(
+                          'Index: $i, Table4 Length: ${table4.length}, t1Data: $t1Data');
+                    }
                     Tableee5 m5 = Tableee5.fromJson(table5[0]);
+                    table2Data.clear();
+                    for (int i = 0; i < table5.length; i++) {
+                      Tableee5 t2Data = Tableee5.fromJson(table5[i]);
+
+                      table2Data.add(t2Data);
+                      print(
+                          'Index: $i, Table4 Length: ${table4.length}, t1Data: $t1Data');
+                    }
                     Tableee6 m6 = Tableee6.fromJson(table6[0]);
+                    table3Data.clear();
+                    for (int i = 0; i < table6.length; i++) {
+                      Tableee6 t3Data = Tableee6.fromJson(table6[i]);
+
+                      table3Data.add(t3Data);
+                      print(
+                          'Index: $i, Table4 Length: ${table4.length}, t1Data: $t1Data');
+                    }
+                    Tablee7 m7 = Tablee7.fromJson(table7[0]);
 
                     return SingleChildScrollView(
                       child: Column(
@@ -135,19 +179,10 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "Customer Type",
+                                      "Customer Type            :",
                                       style: const TextStyle(
                                           fontFamily: "Montserrat",
                                           fontWeight: FontWeight.w500),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 40),
-                                      child: Text(
-                                        "  :",
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
-                                      ),
                                     ),
                                     Padding(
                                       padding: EdgeInsets.only(left: 30),
@@ -168,19 +203,10 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "Customer Name",
+                                      "Customer Name          :",
                                       style: const TextStyle(
                                           fontFamily: "Montserrat",
                                           fontWeight: FontWeight.w500),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 71),
-                                      child: Text(
-                                        "  :",
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
-                                      ),
                                     ),
                                     Padding(
                                       padding: EdgeInsets.only(left: 20),
@@ -201,19 +227,10 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "Subagent Name",
+                                      "Subagent Name           :",
                                       style: const TextStyle(
                                           fontFamily: "Montserrat",
                                           fontWeight: FontWeight.w500),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 15),
-                                      child: Text(
-                                        ":",
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
-                                      ),
                                     ),
                                     Padding(
                                       padding: EdgeInsets.only(left: 30),
@@ -234,19 +251,10 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "Date of Operation",
+                                      "Date of Operation        :",
                                       style: const TextStyle(
                                           fontFamily: "Montserrat",
                                           fontWeight: FontWeight.w500),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 80),
-                                      child: Text(
-                                        " :",
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
-                                      ),
                                     ),
                                     Padding(
                                       padding: EdgeInsets.only(left: 30),
@@ -267,22 +275,13 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "Email Address",
+                                      "Email Address              :",
                                       style: const TextStyle(
                                           fontFamily: "Montserrat",
                                           fontWeight: FontWeight.w500),
                                     ),
                                     Padding(
-                                      padding: EdgeInsets.only(left: 45),
-                                      child: Text(
-                                        ":",
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 30),
+                                      padding: EdgeInsets.only(left: 2),
                                       child: Text(
                                         m0.emailAddress,
                                         style: const TextStyle(
@@ -294,20 +293,7 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                 ),
                               ),
                               SizedBox(height: 8.0),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 15),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Choose: ",
-                                      style: const TextStyle(
-                                          fontFamily: "Montserrat",
-                                          fontWeight: FontWeight.w500),
-                                    ),
-                                  ],
-                                ),
-                              ),
+
                               /*  Row(
                                 children: [
                                   Checkbox(
@@ -331,19 +317,10 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "Sales Group",
+                                      "Sales Group                  :",
                                       style: const TextStyle(
                                           fontFamily: "Montserrat",
                                           fontWeight: FontWeight.w500),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 48),
-                                      child: Text(
-                                        ":",
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
-                                      ),
                                     ),
                                     Padding(
                                       padding: EdgeInsets.only(left: 30),
@@ -364,19 +341,10 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "Address Line1",
+                                      "Address Line1              :",
                                       style: const TextStyle(
                                           fontFamily: "Montserrat",
                                           fontWeight: FontWeight.w500),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 11),
-                                      child: Text(
-                                        ":",
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
-                                      ),
                                     ),
                                     Padding(
                                       padding: EdgeInsets.only(left: 30),
@@ -397,19 +365,10 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "Address Line2",
+                                      "Address Line2              :",
                                       style: const TextStyle(
                                           fontFamily: "Montserrat",
                                           fontWeight: FontWeight.w500),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 43),
-                                      child: Text(
-                                        ":",
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
-                                      ),
                                     ),
                                     Padding(
                                       padding: EdgeInsets.only(left: 30),
@@ -430,19 +389,10 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "Address Line3",
+                                      "Address Line3              :",
                                       style: const TextStyle(
                                           fontFamily: "Montserrat",
                                           fontWeight: FontWeight.w500),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 63),
-                                      child: Text(
-                                        " :",
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
-                                      ),
                                     ),
                                     Padding(
                                       padding: EdgeInsets.only(left: 30),
@@ -463,19 +413,10 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "City",
+                                      "City                                 :",
                                       style: const TextStyle(
                                           fontFamily: "Montserrat",
                                           fontWeight: FontWeight.w500),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 20),
-                                      child: Text(
-                                        ":",
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
-                                      ),
                                     ),
                                     Padding(
                                       padding: EdgeInsets.only(left: 30),
@@ -496,19 +437,10 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "State",
+                                      "State                               :",
                                       style: const TextStyle(
                                           fontFamily: "Montserrat",
                                           fontWeight: FontWeight.w500),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 20),
-                                      child: Text(
-                                        " :",
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
-                                      ),
                                     ),
                                     Padding(
                                       padding: EdgeInsets.only(left: 30),
@@ -529,19 +461,10 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "Post Code",
+                                      "Post Code                      :",
                                       style: const TextStyle(
                                           fontFamily: "Montserrat",
                                           fontWeight: FontWeight.w500),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 18),
-                                      child: Text(
-                                        " :",
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
-                                      ),
                                     ),
                                     Padding(
                                       padding: EdgeInsets.only(left: 30),
@@ -562,19 +485,10 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "Country",
+                                      "Country                           :",
                                       style: const TextStyle(
                                           fontFamily: "Montserrat",
                                           fontWeight: FontWeight.w500),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 30),
-                                      child: Text(
-                                        ":",
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
-                                      ),
                                     ),
                                     Padding(
                                       padding: EdgeInsets.only(left: 30),
@@ -595,19 +509,10 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "Telephone",
+                                      "Telephone                      :",
                                       style: const TextStyle(
                                           fontFamily: "Montserrat",
                                           fontWeight: FontWeight.w500),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 60),
-                                      child: Text(
-                                        " :",
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
-                                      ),
                                     ),
                                     Padding(
                                       padding: EdgeInsets.only(left: 30),
@@ -628,19 +533,10 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "Mobile",
+                                      "Mobile                             :",
                                       style: const TextStyle(
                                           fontFamily: "Montserrat",
                                           fontWeight: FontWeight.w500),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 80),
-                                      child: Text(
-                                        "   :",
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
-                                      ),
                                     ),
                                     Padding(
                                       padding: EdgeInsets.only(left: 30),
@@ -661,19 +557,10 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "Fax",
+                                      "Fax                                   :",
                                       style: const TextStyle(
                                           fontFamily: "Montserrat",
                                           fontWeight: FontWeight.w500),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 65),
-                                      child: Text(
-                                        "   :",
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
-                                      ),
                                     ),
                                     Padding(
                                       padding: EdgeInsets.only(left: 30),
@@ -694,19 +581,10 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "Language",
+                                      "Language                        :",
                                       style: const TextStyle(
                                           fontFamily: "Montserrat",
                                           fontWeight: FontWeight.w500),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 65),
-                                      child: Text(
-                                        "   :",
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
-                                      ),
                                     ),
                                     Padding(
                                       padding: EdgeInsets.only(left: 30),
@@ -727,19 +605,10 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "Business Currency",
+                                      "Business Currency        :",
                                       style: const TextStyle(
                                           fontFamily: "Montserrat",
                                           fontWeight: FontWeight.w500),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 65),
-                                      child: Text(
-                                        "   :",
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
-                                      ),
                                     ),
                                     Padding(
                                       padding: EdgeInsets.only(left: 30),
@@ -760,19 +629,10 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "Office Space",
+                                      "Office Space                   :",
                                       style: const TextStyle(
                                           fontFamily: "Montserrat",
                                           fontWeight: FontWeight.w500),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 65),
-                                      child: Text(
-                                        "   :",
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
-                                      ),
                                     ),
                                     Padding(
                                       padding: EdgeInsets.only(left: 30),
@@ -793,19 +653,10 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "Business Type",
+                                      "Business Type                :",
                                       style: const TextStyle(
                                           fontFamily: "Montserrat",
                                           fontWeight: FontWeight.w500),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 65),
-                                      child: Text(
-                                        "   :",
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
-                                      ),
                                     ),
                                     Padding(
                                       padding: EdgeInsets.only(left: 30),
@@ -859,19 +710,10 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "Contact Mobile",
+                                      "Contact Mobile               :",
                                       style: const TextStyle(
                                           fontFamily: "Montserrat",
                                           fontWeight: FontWeight.w500),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 65),
-                                      child: Text(
-                                        "   :",
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
-                                      ),
                                     ),
                                     Padding(
                                       padding: EdgeInsets.only(left: 30),
@@ -892,22 +734,13 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "Contact Email Address",
+                                      "Contact Email Address  :",
                                       style: const TextStyle(
                                           fontFamily: "Montserrat",
                                           fontWeight: FontWeight.w500),
                                     ),
                                     Padding(
-                                      padding: EdgeInsets.only(left: 65),
-                                      child: Text(
-                                        "   :",
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 30),
+                                      padding: EdgeInsets.only(left: 3),
                                       child: Text(
                                         m0.contactEmail,
                                         style: const TextStyle(
@@ -925,19 +758,10 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "Website URL",
+                                      "Website URL                    :",
                                       style: const TextStyle(
                                           fontFamily: "Montserrat",
                                           fontWeight: FontWeight.w500),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 65),
-                                      child: Text(
-                                        "   :",
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
-                                      ),
                                     ),
                                     Padding(
                                       padding: EdgeInsets.only(left: 30),
@@ -958,19 +782,10 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "Longitude",
+                                      "Longitude                         :",
                                       style: const TextStyle(
                                           fontFamily: "Montserrat",
                                           fontWeight: FontWeight.w500),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 65),
-                                      child: Text(
-                                        "   :",
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
-                                      ),
                                     ),
                                     Padding(
                                       padding: EdgeInsets.only(left: 30),
@@ -991,19 +806,10 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "Latitude",
+                                      "Latitude                            :",
                                       style: const TextStyle(
                                           fontFamily: "Montserrat",
                                           fontWeight: FontWeight.w500),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 65),
-                                      child: Text(
-                                        "   :",
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
-                                      ),
                                     ),
                                     Padding(
                                       padding: EdgeInsets.only(left: 30),
@@ -1032,7 +838,7 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                     Padding(
                                       padding: EdgeInsets.only(left: 65),
                                       child: Text(
-                                        "   :",
+                                        "    :",
                                         style: const TextStyle(
                                             fontFamily: "Montserrat",
                                             fontWeight: FontWeight.w500),
@@ -1066,9 +872,10 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                 ),
                               ),
                               SizedBox(height: 5.0),
-                              /* Container(
+                              Container(
                                 height: 100,
-                                margin: EdgeInsets.only(left: 10, right: 10),
+                                width: 330,
+                                margin: EdgeInsets.only(left: 5, right: 5),
                                 padding: EdgeInsets.all(5),
                                 decoration: BoxDecoration(
                                   border: Border.all(
@@ -1082,10 +889,10 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                       fontFamily: "Montserrat",
                                       fontWeight: FontWeight.w500),
                                 ),
-                              ),*/
+                              ),
                             ],
                           ),
-                          /* SizedBox(height: 16.0),
+                          SizedBox(height: 16.0),
                           Row(
                             children: [
                               Padding(
@@ -1108,19 +915,10 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Text(
-                                  "UserName",
+                                  "UserName                        :",
                                   style: const TextStyle(
                                       fontFamily: "Montserrat",
                                       fontWeight: FontWeight.w500),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(left: 50),
-                                  child: Text(
-                                    ":",
-                                    style: const TextStyle(
-                                        fontFamily: "Montserrat",
-                                        fontWeight: FontWeight.w500),
-                                  ),
                                 ),
                                 Padding(
                                   padding: EdgeInsets.only(left: 30),
@@ -1141,19 +939,10 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Text(
-                                  "Password",
+                                  "Password                         :",
                                   style: const TextStyle(
                                       fontFamily: "Montserrat",
                                       fontWeight: FontWeight.w500),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(left: 50),
-                                  child: Text(
-                                    " :",
-                                    style: const TextStyle(
-                                        fontFamily: "Montserrat",
-                                        fontWeight: FontWeight.w500),
-                                  ),
                                 ),
                                 Padding(
                                   padding: EdgeInsets.only(left: 30),
@@ -1167,8 +956,8 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                               ],
                             ),
                           ),
-                          SizedBox(height: 16.0),*/
-                          /*   Row(
+                          SizedBox(height: 16.0),
+                          Row(
                             children: [
                               Padding(
                                 padding: const EdgeInsets.only(left: 10),
@@ -1199,7 +988,7 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                       padding: const EdgeInsets.only(
                                           left: 10, top: 10),
                                       child: Text(
-                                        "Contact Name: " + m1.pdDocument,
+                                        "Contact Name: " + m1.contactName,
                                         style: TextStyle(
                                           fontFamily: "Montserrat",
                                           fontSize: 17,
@@ -1222,7 +1011,7 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                             padding:
                                                 const EdgeInsets.only(right: 0),
                                             child: Text(
-                                              "Mobile: " + m1.pdPassportNo,
+                                              "Mobile: " + m1.mobile,
                                               style: TextStyle(
                                                 fontFamily: "Montserrat",
                                                 fontWeight: FontWeight.w500,
@@ -1249,8 +1038,7 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                             padding:
                                                 const EdgeInsets.only(right: 0),
                                             child: Text(
-                                              "Telephone: " +
-                                                  datePart.toString(),
+                                              "Telephone: " + m1.telephone,
                                               style: TextStyle(
                                                 fontFamily: "Montserrat",
                                                 fontWeight: FontWeight.w500,
@@ -1264,6 +1052,9 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                     Spacer(), // Adds space between the two parts of the row
                                   ],
                                 ),
+                                SizedBox(
+                                  height: 3,
+                                ),
                                 Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
@@ -1273,7 +1064,7 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                         left: 10,
                                       ),
                                       child: Text(
-                                        "Email Address: " + m1.pdDateOfExpirydt,
+                                        "Email Address: " + m1.emailAddress,
                                         style: TextStyle(
                                           fontFamily: "Montserrat",
                                           fontSize: 15,
@@ -1284,12 +1075,12 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                   ],
                                 ),
                                 SizedBox(
-                                  height: 3,
+                                  height: 7,
                                 ),
                               ],
                             ),
                           ),
-                          SizedBox(height: 16.0),
+                          SizedBox(height: 8.0),
                           Row(
                             children: [
                               Padding(
@@ -1320,7 +1111,7 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                       padding: const EdgeInsets.only(
                                           left: 10, top: 10),
                                       child: Text(
-                                        "Bank Name: " + m2.traVisaId,
+                                        "Bank Name: " + m2.bankName,
                                         style: TextStyle(
                                           fontFamily: "Montserrat",
                                           fontSize: 17,
@@ -1343,7 +1134,7 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                             padding:
                                                 const EdgeInsets.only(right: 0),
                                             child: Text(
-                                              "Account No: " + m2.vdTypeOfVisa,
+                                              "Account No: " + m2.bankAccountNo,
                                               style: TextStyle(
                                                 fontFamily: "Montserrat",
                                                 fontWeight: FontWeight.w500,
@@ -1370,8 +1161,7 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                             padding:
                                                 const EdgeInsets.only(right: 0),
                                             child: Text(
-                                              "Swift Code: " +
-                                                  m2.vdCountryOfVisa,
+                                              "Swift Code: " + m2.bankSwiftCode,
                                               style: TextStyle(
                                                 fontFamily: "Montserrat",
                                                 fontWeight: FontWeight.w500,
@@ -1397,7 +1187,7 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                         left: 10,
                                       ),
                                       child: Text(
-                                        "Phone No: " + m2.vdDateOfExpiry,
+                                        "Phone No: " + m2.bankPhoneNo,
                                         style: TextStyle(
                                           fontFamily: "Montserrat",
                                           fontSize: 15,
@@ -1420,7 +1210,7 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                         left: 10,
                                       ),
                                       child: Text(
-                                        "Fax No: " + m2.vdDateOfExpiry,
+                                        "Fax No: " + m2.bankFaxNo,
                                         style: TextStyle(
                                           fontFamily: "Montserrat",
                                           fontSize: 15,
@@ -1443,7 +1233,7 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                         left: 10,
                                       ),
                                       child: Text(
-                                        "Bank Address: " + m2.vdDateOfExpiry,
+                                        "Bank Address: " + m2.bankAddress,
                                         style: TextStyle(
                                           fontFamily: "Montserrat",
                                           fontSize: 15,
@@ -1460,8 +1250,8 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                               ],
                             ),
                           ),
-                          SizedBox(height: 16.0),*/
-                          /*    Row(
+                          SizedBox(height: 16.0),
+                          Row(
                             children: [
                               Padding(
                                 padding: const EdgeInsets.only(left: 10),
@@ -1476,7 +1266,7 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                               Spacer()
                             ],
                           ),
-                          SizedBox(height: 5.0),
+                          SizedBox(height: 8.0),
                           Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -1486,19 +1276,10 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "VAT Number",
+                                      "VAT Number                      :",
                                       style: const TextStyle(
                                           fontFamily: "Montserrat",
                                           fontWeight: FontWeight.w500),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 40),
-                                      child: Text(
-                                        "  :",
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
-                                      ),
                                     ),
                                     Padding(
                                       padding: EdgeInsets.only(left: 30),
@@ -1519,19 +1300,10 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "ABTA Number",
+                                      "ABTA Number                   :",
                                       style: const TextStyle(
                                           fontFamily: "Montserrat",
                                           fontWeight: FontWeight.w500),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 71),
-                                      child: Text(
-                                        "  :",
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
-                                      ),
                                     ),
                                     Padding(
                                       padding: EdgeInsets.only(left: 20),
@@ -1552,19 +1324,10 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "IATA Number:",
+                                      "IATA Number                     :",
                                       style: const TextStyle(
                                           fontFamily: "Montserrat",
                                           fontWeight: FontWeight.w500),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 15),
-                                      child: Text(
-                                        ":",
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
-                                      ),
                                     ),
                                     Padding(
                                       padding: EdgeInsets.only(left: 30),
@@ -1585,19 +1348,10 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "IATA Member(since years)",
+                                      "IATA Member(years)        :",
                                       style: const TextStyle(
                                           fontFamily: "Montserrat",
                                           fontWeight: FontWeight.w500),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 80),
-                                      child: Text(
-                                        " :",
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
-                                      ),
                                     ),
                                     Padding(
                                       padding: EdgeInsets.only(left: 30),
@@ -1618,19 +1372,10 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "ATOL Number",
+                                      "ATOL Number                    :",
                                       style: const TextStyle(
                                           fontFamily: "Montserrat",
                                           fontWeight: FontWeight.w500),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 45),
-                                      child: Text(
-                                        ":",
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
-                                      ),
                                     ),
                                     Padding(
                                       padding: EdgeInsets.only(left: 30),
@@ -1651,19 +1396,10 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "TTA Number",
+                                      "TTA Number                      :",
                                       style: const TextStyle(
                                           fontFamily: "Montserrat",
                                           fontWeight: FontWeight.w500),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 48),
-                                      child: Text(
-                                        ":",
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
-                                      ),
                                     ),
                                     Padding(
                                       padding: EdgeInsets.only(left: 30),
@@ -1684,19 +1420,10 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "Global Travel Group",
+                                      "Global Travel Group          :",
                                       style: const TextStyle(
                                           fontFamily: "Montserrat",
                                           fontWeight: FontWeight.w500),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 11),
-                                      child: Text(
-                                        ":",
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
-                                      ),
                                     ),
                                     Padding(
                                       padding: EdgeInsets.only(left: 30),
@@ -1717,19 +1444,10 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "License Number",
+                                      "License Number                :",
                                       style: const TextStyle(
                                           fontFamily: "Montserrat",
                                           fontWeight: FontWeight.w500),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 43),
-                                      child: Text(
-                                        ":",
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
-                                      ),
                                     ),
                                     Padding(
                                       padding: EdgeInsets.only(left: 30),
@@ -1750,19 +1468,10 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "Service Tax",
+                                      "Service Tax                         :",
                                       style: const TextStyle(
                                           fontFamily: "Montserrat",
                                           fontWeight: FontWeight.w500),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 63),
-                                      child: Text(
-                                        " :",
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
-                                      ),
                                     ),
                                     Padding(
                                       padding: EdgeInsets.only(left: 30),
@@ -1783,19 +1492,10 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "PAN No",
+                                      "PAN No                                :",
                                       style: const TextStyle(
                                           fontFamily: "Montserrat",
                                           fontWeight: FontWeight.w500),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 20),
-                                      child: Text(
-                                        ":",
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
-                                      ),
                                     ),
                                     Padding(
                                       padding: EdgeInsets.only(left: 30),
@@ -1816,19 +1516,10 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "TAN No",
+                                      "TAN No                                :",
                                       style: const TextStyle(
                                           fontFamily: "Montserrat",
                                           fontWeight: FontWeight.w500),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 20),
-                                      child: Text(
-                                        " :",
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
-                                      ),
                                     ),
                                     Padding(
                                       padding: EdgeInsets.only(left: 30),
@@ -1849,19 +1540,10 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "NTN No",
+                                      "NTN No                                :",
                                       style: const TextStyle(
                                           fontFamily: "Montserrat",
                                           fontWeight: FontWeight.w500),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 18),
-                                      child: Text(
-                                        " :",
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
-                                      ),
                                     ),
                                     Padding(
                                       padding: EdgeInsets.only(left: 30),
@@ -1882,19 +1564,10 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "CNPJ No",
+                                      "CNPJ No                              :",
                                       style: const TextStyle(
                                           fontFamily: "Montserrat",
                                           fontWeight: FontWeight.w500),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 30),
-                                      child: Text(
-                                        ":",
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
-                                      ),
                                     ),
                                     Padding(
                                       padding: EdgeInsets.only(left: 30),
@@ -1909,8 +1582,1012 @@ class _MyRechargePageState extends State<ViewSubAgencyDetails> {
                                 ),
                               ),
                               SizedBox(height: 8.0),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 10),
+                                    child: Text(
+                                      "Financial",
+                                      style: const TextStyle(
+                                          fontSize: 18,
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 10),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 15),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "Credit Limit                         :",
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.only(left: 30),
+                                      child: Text(
+                                        m0.creditLimit,
+                                        style: const TextStyle(
+                                            fontFamily: "Montserrat",
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: 8.0),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 15),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "Credit Limit Alert                :",
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.only(left: 20),
+                                      child: Text(
+                                        m0.creditLimitAlert,
+                                        style: const TextStyle(
+                                            fontFamily: "Montserrat",
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: 8.0),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 15),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "Temp Credit Limit               :",
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.only(left: 30),
+                                      child: Text(
+                                        m0.tempCreditLimit,
+                                        style: const TextStyle(
+                                            fontFamily: "Montserrat",
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: 8.0),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 15),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "Temp Credit Limit Start Date:",
+                                      style: const TextStyle(
+                                          fontSize: 13,
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.only(left: 3),
+                                      child: Text(
+                                        m0.tempCreditLimitStartDate,
+                                        style: const TextStyle(
+                                            fontFamily: "Montserrat",
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: 8.0),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 15),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "Temp Credit Limit End Date:",
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.only(left: 3),
+                                      child: Text(
+                                        m0.tempCreditLimitEndDate,
+                                        style: const TextStyle(
+                                            fontSize: 12,
+                                            fontFamily: "Montserrat",
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: 8.0),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 15),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "TDS Applicable (%)               :",
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.only(left: 3),
+                                      child: Text(
+                                        m0.tdsApplicable,
+                                        style: const TextStyle(
+                                            fontSize: 12,
+                                            fontFamily: "Montserrat",
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: 8.0),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 15),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "TDS Exemption (Fixed)          :",
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.only(left: 3),
+                                      child: Text(
+                                        m0.tdsExemption,
+                                        style: const TextStyle(
+                                            fontSize: 12,
+                                            fontFamily: "Montserrat",
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: 8.0),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 15),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "Day Ticket Limit Gen Value    :",
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.only(left: 3),
+                                      child: Text(
+                                        m0.dayTicketLimitGenValue,
+                                        style: const TextStyle(
+                                            fontSize: 12,
+                                            fontFamily: "Montserrat",
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: 8.0),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 10),
+                                    child: Text(
+                                      "Global Markup Details",
+                                      style: const TextStyle(
+                                          fontSize: 18,
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 10),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 15),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "Flight Markup (%)                    :",
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.only(left: 30),
+                                      child: Text(
+                                        m0.flightMarkup,
+                                        style: const TextStyle(
+                                            fontFamily: "Montserrat",
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: 8.0),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 15),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "Hotel Markup (%)                     :",
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.only(left: 20),
+                                      child: Text(
+                                        m0.hotelMarkup,
+                                        style: const TextStyle(
+                                            fontFamily: "Montserrat",
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: 8.0),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 15),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "Car Markup (%)                         :",
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.only(left: 30),
+                                      child: Text(
+                                        m0.carMarkup,
+                                        style: const TextStyle(
+                                            fontFamily: "Montserrat",
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: 8.0),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 15),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "Holiday Markup (%)                      :",
+                                      style: const TextStyle(
+                                          fontSize: 13,
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.only(left: 30),
+                                      child: Text(
+                                        m0.sightSeeingMarkup,
+                                        style: const TextStyle(
+                                            fontFamily: "Montserrat",
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: 8.0),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 15),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "Bus Markup(%)                         :",
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.only(left: 30),
+                                      child: Text(
+                                        m0.busMarkup,
+                                        style: const TextStyle(
+                                            fontSize: 12,
+                                            fontFamily: "Montserrat",
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: 8.0),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 10),
+                                    child: Text(
+                                      "Payment Details",
+                                      style: const TextStyle(
+                                          fontSize: 18,
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 10),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 15),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "Pay Period                             :",
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.only(left: 30),
+                                      child: Text(
+                                        m0.payPeriod,
+                                        style: const TextStyle(
+                                            fontFamily: "Montserrat",
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: 8.0),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 15),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "Payment                                 :",
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.only(left: 20),
+                                      child: Text(
+                                        m0.payment,
+                                        style: const TextStyle(
+                                            fontFamily: "Montserrat",
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: 8.0),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 15),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "Annual Turnover                    :",
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.only(left: 30),
+                                      child: Text(
+                                        m0.annualTurnover,
+                                        style: const TextStyle(
+                                            fontFamily: "Montserrat",
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: 8.0),
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 10),
+                                    child: Text(
+                                      "Credit Card Details",
+                                      style: const TextStyle(
+                                          fontSize: 18,
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                  Spacer()
+                                ],
+                              ),
+                              Card(
+                                margin: const EdgeInsets.only(
+                                    right: 10, left: 10, top: 7),
+                                elevation: 5,
+                                color: Colors.white,
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 10, top: 10),
+                                          child: Text(
+                                            "Card Type: " + m3.cardTypeName,
+                                            style: TextStyle(
+                                              fontFamily: "Montserrat",
+                                              fontSize: 17,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 3,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(left: 10),
+                                          child: Row(
+                                            children: [
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    right: 0),
+                                                child: Text(
+                                                  "Card Number: " +
+                                                      m3.cardNumber,
+                                                  style: TextStyle(
+                                                    fontFamily: "Montserrat",
+                                                    fontWeight: FontWeight.w500,
+                                                    fontSize: 15,
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Spacer(), // Adds space between the two parts of the row
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 3,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(left: 10),
+                                          child: Row(
+                                            children: [
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    right: 0),
+                                                child: Text(
+                                                  "Name on the Card: " +
+                                                      m3.nameOnTheCard,
+                                                  style: TextStyle(
+                                                    fontFamily: "Montserrat",
+                                                    fontWeight: FontWeight.w500,
+                                                    fontSize: 15,
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Spacer(), // Adds space between the two parts of the row
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 3,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                            left: 10,
+                                          ),
+                                          child: Text(
+                                            "Expiry Date: " + m3.expiryDate,
+                                            style: TextStyle(
+                                              fontFamily: "Montserrat",
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
+                                        ),
+                                        Spacer(), // Adds space between the two parts of the row
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 3,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                            left: 10,
+                                          ),
+                                          child: Text(
+                                            "Validate Date: " + m3.validateDate,
+                                            style: TextStyle(
+                                              fontFamily: "Montserrat",
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
+                                        ),
+                                        Spacer(), // Adds space between the two parts of the row
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 3,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                            left: 10,
+                                          ),
+                                          child: Text(
+                                            "	CVV No: " + m3.cvvNo,
+                                            style: TextStyle(
+                                              fontFamily: "Montserrat",
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
+                                        ),
+                                        Spacer(),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(bottom: 0),
+                                          child: Image(
+                                            image: AssetImage(
+                                                'assets/images/tickiconpng.png'),
+                                            color: Colors.blue,
+                                            width: 16,
+                                            height: 16,
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(right: 3),
+                                          child: Text(
+                                            "Card: " + m3.card,
+                                            //snapshot.data![index].tripDate,
+                                            style: TextStyle(
+                                                fontFamily: "Montserrat",
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 15,
+                                                color: Colors.blue),
+                                          ),
+                                        ), // Adds space between the two parts of the row
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 3,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: 16.0),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 15),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "Reserve Volume Monthly           :",
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.only(left: 30),
+                                      child: Text(
+                                        m0.reserveVolumeMonthly,
+                                        style: const TextStyle(
+                                            fontFamily: "Montserrat",
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: 8.0),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 15),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "No of Employees                         :",
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.only(left: 20),
+                                      child: Text(
+                                        m0.noofEmployees,
+                                        style: const TextStyle(
+                                            fontFamily: "Montserrat",
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: 8.0),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 15),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "No of Branches                            :",
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.only(left: 20),
+                                      child: Text(
+                                        m0.noofBranches,
+                                        style: const TextStyle(
+                                            fontFamily: "Montserrat",
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: 8.0),
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 10),
+                                    child: Text(
+                                      "B2B Interface",
+                                      style: const TextStyle(
+                                          fontSize: 18,
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                  Spacer()
+                                ],
+                              ),
+                              SizedBox(height: 8.0),
+                              Container(
+                                margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                                child: Column(
+                                  children: List.generate(
+                                    table1Data.length,
+                                    (index) => Column(
+                                      children: [
+                                        Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Expanded(
+                                                child: Text(
+                                              "Product Access Name: " +
+                                                  "${table1Data[index].productAccessName}",
+                                              style: const TextStyle(
+                                                  fontWeight: FontWeight.w500,
+                                                  fontSize: 15,
+                                                  fontFamily: "Montserrat"),
+                                            )),
+                                          ],
+                                        ),
+                                        const SizedBox(
+                                          height: 3,
+                                        ),
+                                        Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Expanded(
+                                                child: Text(
+                                              "Sub AgentID:" +
+                                                  "${table1Data[index].subAgentId}",
+                                              style: const TextStyle(
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.w500,
+                                                  fontFamily: "Montserrat"),
+                                            )),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(height: 8.0),
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 10),
+                                    child: Text(
+                                      "Enable B2B2C Website",
+                                      style: const TextStyle(
+                                          fontSize: 18,
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                  Spacer()
+                                ],
+                              ),
+                              SizedBox(height: 8.0),
+                              Container(
+                                margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                                child: Column(
+                                  children: List.generate(
+                                    table2Data.length,
+                                    (index) => Column(
+                                      children: [
+                                        Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Expanded(
+                                                child: Text(
+                                              "Product Access Name: " +
+                                                  "${table2Data[index].productAccessName}",
+                                              style: const TextStyle(
+                                                  fontWeight: FontWeight.w500,
+                                                  fontSize: 15,
+                                                  fontFamily: "Montserrat"),
+                                            )),
+                                          ],
+                                        ),
+                                        const SizedBox(
+                                          height: 3,
+                                        ),
+                                        Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Expanded(
+                                                child: Text(
+                                              "Sub AgentID:" +
+                                                  "${table2Data[index].subAgentId}",
+                                              style: const TextStyle(
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.w500,
+                                                  fontFamily: "Montserrat"),
+                                            )),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(height: 8.0),
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 10),
+                                    child: Text(
+                                      "Other Details",
+                                      style: const TextStyle(
+                                          fontSize: 18,
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                  Spacer()
+                                ],
+                              ),
+                              SizedBox(height: 8.0),
+                              Container(
+                                margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                                child: Column(
+                                  children: List.generate(
+                                    table3Data.length,
+                                    (index) => Column(
+                                      children: [
+                                        Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Expanded(
+                                                child: Text(
+                                              "Product Access Name: " +
+                                                  "${table3Data[index].productAccessName}",
+                                              style: const TextStyle(
+                                                  fontWeight: FontWeight.w500,
+                                                  fontSize: 15,
+                                                  fontFamily: "Montserrat"),
+                                            )),
+                                          ],
+                                        ),
+                                        const SizedBox(
+                                          height: 3,
+                                        ),
+                                        Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Expanded(
+                                                child: Text(
+                                              "Sub AgentID:" +
+                                                  "${table3Data[index].subAgentId}",
+                                              style: const TextStyle(
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.w500,
+                                                  fontFamily: "Montserrat"),
+                                            )),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(height: 8.0),
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 10),
+                                    child: Text(
+                                      "Document Details",
+                                      style: const TextStyle(
+                                          fontSize: 18,
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                  Spacer()
+                                ],
+                              ),
+                              Card(
+                                margin: const EdgeInsets.only(
+                                    right: 10, left: 10, top: 7),
+                                elevation: 5,
+                                color: Colors.white,
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 10, top: 10),
+                                          child: Text(
+                                            "Document Title: " +
+                                                m7.documentTitle,
+                                            style: TextStyle(
+                                              fontFamily: "Montserrat",
+                                              fontSize: 17,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 3,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(left: 10),
+                                          child: Row(
+                                            children: [
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    right: 0),
+                                                child: Text(
+                                                  "Document File: " +
+                                                      m7.documentFile,
+                                                  style: TextStyle(
+                                                    fontFamily: "Montserrat",
+                                                    fontWeight: FontWeight.w500,
+                                                    fontSize: 15,
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Spacer(), // Adds space between the two parts of the row
+                                      ],
+                                    ),
+                                    SizedBox(height: 8.0),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: 8.0),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 10),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Bookings Option Allowed',
+                                          style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 8.0),
                             ],
-                          ),*/
+                          ),
                         ],
                       ),
                     );
