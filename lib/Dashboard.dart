@@ -246,6 +246,7 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   FlightsScreen()));*/
                     },
+                    leading: Icon(Icons.align_vertical_bottom),
                     title: Text("Book Now",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
@@ -257,6 +258,7 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   BookingCard()));
                     },
+                    leading: Icon(Icons.ramp_right),
                     title: Text("Booking Card",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
@@ -268,6 +270,7 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   NewBookings()));
                     },
+                    leading: Icon(Icons.contacts),
                     title: Text("New Booking",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
@@ -279,6 +282,7 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   OpenBooking()));
                     },
+                    leading: Icon(Icons.payments_outlined),
                     title: Text("Open Booking",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
@@ -290,6 +294,7 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   PartPayment()));
                     },
+                    leading: Icon(Icons.terminal_rounded),
                     title: Text("Part Payment",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
@@ -301,6 +306,7 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   PendingPayment()));
                     },
+                    leading: Icon(Icons.swipe_up),
                     title: Text("Pending Payment",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
@@ -312,6 +318,7 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   ServiceRequest()));
                     },
+                    leading: Icon(Icons.align_horizontal_left),
                     title: Text("Service Request",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
@@ -323,6 +330,7 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   UnconfirmedBooking()));
                     },
+                    leading: Icon(Icons.shopping_cart_rounded),
                     title: Text("UnConfirmed Booking",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
@@ -334,6 +342,7 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   CancelledBooking()));
                     },
+                    leading: Icon(Icons.payment),
                     title: Text("Cancelled Flight Booking",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
@@ -345,6 +354,7 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   BookingRefundsDue()));
                     },
+                    leading: Icon(Icons.account_tree_sharp),
                     title: Text("Booking Refunds Due",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
@@ -355,6 +365,7 @@ class _CorDashboardState extends State<Dashboard> {
                           MaterialPageRoute(
                               builder: (BuildContext context) => AllBooking()));
                     },
+                    leading: Icon(Icons.rotate_left_rounded),
                     title: Text("All Bookings List",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
@@ -366,6 +377,7 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   AllProductWiseBooking()));
                     },
+                    leading: Icon(Icons.payments_sharp),
                     title: Text("Productwise Bookings",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
@@ -385,6 +397,7 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   TicketOrderQueue()));
                     },
+                    leading: Icon(Icons.threesixty_outlined),
                     title: Text("Ticket Order Queue",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
@@ -396,6 +409,7 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   CancelBookingQueue()));
                     },
+                    leading: Icon(Icons.search),
                     title: Text("Cancel Booking Queue",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
@@ -407,6 +421,7 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   CancelTicketQueue()));
                     },
+                    leading: Icon(Icons.swipe_up_alt),
                     title: Text("Cancel Ticket Queue",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
@@ -418,53 +433,54 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   ApprovePartPayment()));
                     },
+                    leading: Icon(Icons.lock_open_outlined),
                     title: Text("Approve Part Payment",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
-                  ListTile(
+                  /*   ListTile(
                     onTap: () {
-                      /* Navigator.push(
+                      */ /* Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  CreditNoteInvoiceList()));*/
+                                  CreditNoteInvoiceList()));*/ /*
                     },
                     title: Text("Approve Refund OnHold",
                         style: TextStyle(fontFamily: "Montserrat")),
-                  ),
-                  ListTile(
+                  ),*/
+                  /*  ListTile(
                     onTap: () {
-                      /* Navigator.push(
+                      */ /* Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  CreditNoteInvoiceList()));*/
+                                  CreditNoteInvoiceList()));*/ /*
                     },
                     title: Text("Payment Pending Queue",
                         style: TextStyle(fontFamily: "Montserrat")),
-                  ),
-                  ListTile(
+                  ),*/
+                  /* ListTile(
                     onTap: () {
-                      /* Navigator.push(
+                      */ /* Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  CreditNoteInvoiceList()));*/
+                                  CreditNoteInvoiceList()));*/ /*
                     },
                     title: Text("Fraud Check Queue",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
                   ListTile(
                     onTap: () {
-                      /* Navigator.push(
+                      */ /* Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  CreditNoteInvoiceList()));*/
+                                  CreditNoteInvoiceList()));*/ /*
                     },
                     title: Text("Refunded Booking Queue",
                         style: TextStyle(fontFamily: "Montserrat")),
-                  ),
+                  ),*/
                 ],
               ),
               ExpansionTile(
@@ -481,6 +497,7 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   ManageTravellers()));
                     },
+                    leading: Icon(Icons.perm_identity_outlined),
                     title: Text("Manage Travellers",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
@@ -492,6 +509,7 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   ApproveTravellers()));
                     },
+                    leading: Icon(Icons.handshake_outlined),
                     title: Text("Approve Travellers",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
@@ -503,6 +521,7 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   UnBlockTravellers()));
                     },
+                    leading: Icon(Icons.threesixty_outlined),
                     title: Text("Block/UnBlock Travellers",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
@@ -514,6 +533,7 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   ActiveTravellers()));
                     },
+                    leading: Icon(Icons.computer),
                     title: Text("Active Travellers",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
@@ -525,6 +545,7 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   ChangePasswordTravellers()));
                     },
+                    leading: Icon(Icons.password_rounded),
                     title: Text("Change Password",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
@@ -544,6 +565,7 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   ManageSubAgency()));
                     },
+                    leading: Icon(Icons.align_vertical_bottom_outlined),
                     title: Text("Manage SubAgency",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
@@ -555,10 +577,11 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   ApproveSubAgency()));
                     },
+                    leading: Icon(Icons.approval_sharp),
                     title: Text("Approve SubAgency",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
-                  ListTile(
+                  /* ListTile(
                     onTap: () {
                       Navigator.push(
                           context,
@@ -566,6 +589,7 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   UnBlockTravellers()));
                     },
+                    leading: Icon(Icons.calendar_view_day_rounded),
                     title: Text("Block/UnBlock Travellers",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
@@ -577,6 +601,7 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   ActiveTravellers()));
                     },
+                    leading: Icon(Icons.payments_outlined),
                     title: Text("Active Travellers",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
@@ -588,9 +613,10 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   ChangePasswordTravellers()));
                     },
+                    leading: Icon(Icons.password),
                     title: Text("Change Password",
                         style: TextStyle(fontFamily: "Montserrat")),
-                  ),
+                  ),*/
                 ],
               ),
               ExpansionTile(
@@ -607,6 +633,7 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   ManageBranch()));
                     },
+                    leading: Icon(Icons.computer_outlined),
                     title: Text("Manage Branch",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
@@ -618,6 +645,7 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   ViewBranchDetail()));
                     },
+                    leading: Icon(Icons.pause_presentation_outlined),
                     title: Text("Approve Branch",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
@@ -629,7 +657,8 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   UnBlockTravellers()));
                     },
-                    title: Text("Block/UnBlock Travellers",
+                    leading: Icon(Icons.surround_sound),
+                    title: Text("Block/UnBlock Branch",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
                   ListTile(
@@ -640,7 +669,8 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   ActiveTravellers()));
                     },
-                    title: Text("Active Travellers",
+                    leading: Icon(Icons.add_card),
+                    title: Text("Active Branch",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
                   ListTile(
@@ -649,8 +679,9 @@ class _CorDashboardState extends State<Dashboard> {
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  ChangePasswordTravellers()));
+                                  ChangeBPassword()));
                     },
+                    leading: Icon(Icons.password_outlined),
                     title: Text("Change Password",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
@@ -670,6 +701,7 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   ManageCorporate()));
                     },
+                    leading: Icon(Icons.person),
                     title: Text("Manage Corporate",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
@@ -679,8 +711,9 @@ class _CorDashboardState extends State<Dashboard> {
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  ViewCorporateDetails()));
+                                  ApproveCorporate()));
                     },
+                    leading: Icon(Icons.computer),
                     title: Text("Approve Corporate",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
@@ -692,7 +725,8 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   UnBlockTravellers()));
                     },
-                    title: Text("Block/UnBlock Travellers",
+                    leading: Icon(Icons.person),
+                    title: Text("Block/UnBlock Corporate",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
                   ListTile(
@@ -703,7 +737,8 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   ActiveTravellers()));
                     },
-                    title: Text("Active Travellers",
+                    leading: Icon(Icons.threesixty_outlined),
+                    title: Text("Active Corporate",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
                   ListTile(
@@ -714,82 +749,12 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   ChangePasswordTravellers()));
                     },
+                    leading: Icon(Icons.password),
                     title: Text("Change Password",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
                 ],
               ),
-              ListTile(
-                onTap: () {
-                  setState(() {});
-                  Navigator.pop(context);
-                  /*    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (BuildContext context) => IssueVouchers()));*/
-                },
-                leading: Icon(Icons.home),
-                title: Text("Issue Vouchers",
-                    style: TextStyle(fontFamily: "Montserrat")),
-              ),
-              // ListTile(onTap: (){}, leading: Icon(Icons.book_online_outlined), title:  Text("Bookings", style: TextStyle(fontFamily: "Montserrat")),),
-
-              ExpansionTile(
-                title: Text("Invoices",
-                    style: TextStyle(fontFamily: "Montserrat")),
-                leading:
-                    Icon(const IconData(0xee5e, fontFamily: 'MaterialIcons')),
-                children: [
-                  ListTile(
-                    onTap: () {
-                      /*  Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  InvoiceList()));*/
-                    },
-                    title: Text("Invoice List",
-                        style: TextStyle(fontFamily: "Montserrat")),
-                  ),
-                  ListTile(
-                    onTap: () {
-                      /* Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  ClientInvoiceList()));*/
-                    },
-                    title: Text("Client Invoice List",
-                        style: TextStyle(fontFamily: "Montserrat")),
-                  ),
-                  ListTile(
-                    onTap: () {
-                      /* Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  CreditNoteInvoiceList()));*/
-                    },
-                    title: Text("Credit Note",
-                        style: TextStyle(fontFamily: "Montserrat")),
-                  ),
-                ],
-              ),
-              ListTile(
-                onTap: () {
-                  setState(() {});
-                  Navigator.pop(context);
-
-                  /*   Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (BuildContext context) => EmailTicket()));*/
-                },
-                leading: Icon(Icons.home),
-                title: Text("SMS/Email Ticket",
-                    style: TextStyle(fontFamily: "Montserrat")),
-              ),
-
               ExpansionTile(
                 title:
                     Text("Staffs", style: TextStyle(fontFamily: "Montserrat")),
@@ -804,6 +769,7 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   ManageStaff()));
                     },
+                    leading: Icon(Icons.people),
                     title: Text("Manage Staff",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
@@ -815,10 +781,11 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   ApproveStaff()));
                     },
+                    leading: Icon(Icons.approval),
                     title: Text("Approve Staff",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
-                  ListTile(
+                  /*   ListTile(
                     onTap: () {
                       Navigator.push(
                           context,
@@ -826,6 +793,7 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   InActiveStaff()));
                     },
+                    leading: Icon(Icons.vertical_align_bottom_outlined),
                     title: Text("Active Staff",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
@@ -837,6 +805,7 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   Block_UnBlocktStaff()));
                     },
+                    leading: Icon(Icons.upcoming_outlined),
                     title: Text("Block/UnBlock Staff",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
@@ -848,6 +817,7 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   StaffAttendance()));
                     },
+                    leading: Icon(Icons.power_settings_new_outlined),
                     title: Text("Staff Attendance",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
@@ -905,7 +875,7 @@ class _CorDashboardState extends State<Dashboard> {
                     },
                     title: Text("Salary Structure",
                         style: TextStyle(fontFamily: "Montserrat")),
-                  ),
+                  ),*/
                   ListTile(
                     onTap: () {
                       Navigator.push(
@@ -914,6 +884,7 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   EarningTypeList()));
                     },
+                    leading: Icon(Icons.phonelink_ring_outlined),
                     title: Text("Earning TypeList",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
@@ -925,156 +896,15 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   DeductionTypeList()));
                     },
+                    leading: Icon(Icons.phone_android_rounded),
                     title: Text("Deduction TypeList",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
                 ],
               ),
-
               ExpansionTile(
-                title: Text("Recharges",
-                    style: TextStyle(fontFamily: "Montserrat")),
-                leading:
-                    Icon(const IconData(0xe140, fontFamily: 'MaterialIcons')),
-                children: [
-                  ListTile(
-                    onTap: () {
-                      /* Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  MobilePrepaidRecharge()));*/
-                    },
-                    title: Text("Mobile Prepaid",
-                        style: TextStyle(fontFamily: "Montserrat")),
-                  ),
-                  ListTile(
-                    onTap: () {
-                      /*  Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  MobilePostpaidRecharge()));*/
-                    },
-                    title: Text("Mobile Postpaid",
-                        style: TextStyle(fontFamily: "Montserrat")),
-                  ),
-                  ListTile(
-                    onTap: () {
-                      /*  Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  LandlineRecharge()));*/
-                    },
-                    title: Text("Landline Phone",
-                        style: TextStyle(fontFamily: "Montserrat")),
-                  ),
-                  ListTile(
-                    onTap: () {
-                      /*   Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  BroadbandPayment()));*/
-                    },
-                    title: Text("BroadBand",
-                        style: TextStyle(fontFamily: "Montserrat")),
-                  ),
-                  ListTile(
-                    onTap: () {
-                      /*  Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  DataCardRecharge()));*/
-                    },
-                    title: Text("Data Card",
-                        style: TextStyle(fontFamily: "Montserrat")),
-                  ),
-                  ListTile(
-                    onTap: () {
-                      /* Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  DTHRecharge()));*/
-                    },
-                    title:
-                        Text("DTH", style: TextStyle(fontFamily: "Montserrat")),
-                  ),
-                  ListTile(
-                    onTap: () {
-                      /*    Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  ElectricityPayment()));*/
-                    },
-                    title: Text("Electricity",
-                        style: TextStyle(fontFamily: "Montserrat")),
-                  ),
-                  ListTile(
-                    onTap: () {
-                      /* Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  GasBillPaymets()));*/
-                    },
-                    title:
-                        Text("Gas", style: TextStyle(fontFamily: "Montserrat")),
-                  ),
-                  ListTile(
-                    onTap: () {
-                      /*   Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  LifeInsurancePayment()));*/
-                    },
-                    title: Text("Life Insurance",
-                        style: TextStyle(fontFamily: "Montserrat")),
-                  ),
-                  ListTile(
-                    onTap: () {
-                      /*   Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  pendingRecharge()));*/
-                    },
-                    title: Text("Pending Recharge",
-                        style: TextStyle(fontFamily: "Montserrat")),
-                  ),
-                  ListTile(
-                    onTap: () {
-                      /* Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  RechargeHistoryReport()));*/
-                    },
-                    title: Text("Recharge History",
-                        style: TextStyle(fontFamily: "Montserrat")),
-                  ),
-                  ListTile(
-                    onTap: () {
-                      /*  Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  CheckTransactionReport()));*/
-                    },
-                    title: Text("Check Transaction",
-                        style: TextStyle(fontFamily: "Montserrat")),
-                  ),
-                ],
-              ),
-
-              ExpansionTile(
-                title: Text("Reporting",
-                    style: TextStyle(fontFamily: "Montserrat")),
+                title:
+                    Text("Reports", style: TextStyle(fontFamily: "Montserrat")),
                 leading:
                     Icon(const IconData(0xe621, fontFamily: 'MaterialIcons')),
                 children: [
@@ -1086,6 +916,7 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   BookingReport()));
                     },
+                    leading: Icon(Icons.computer),
                     title: Text("Booking Report",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
@@ -1097,6 +928,7 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   BookingCancellationReport()));
                     },
+                    leading: Icon(Icons.arrow_circle_left_outlined),
                     title: Text("Booking Cancellation Report",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
@@ -1108,6 +940,7 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   UnConfirmedBooking()));
                     },
+                    leading: Icon(Icons.adjust_rounded),
                     title: Text("UnConfirmed Booking",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
@@ -1119,6 +952,7 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   RequestCancellationReport()));
                     },
+                    leading: Icon(Icons.volume_down_alt),
                     title: Text("Request Cancellation Report",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
@@ -1130,6 +964,7 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   ChangingRequestReport()));
                     },
+                    leading: Icon(Icons.minimize),
                     title: Text("Changing Request Report",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
@@ -1141,6 +976,7 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   ClientInvoiceReport()));
                     },
+                    leading: Icon(Icons.attach_money_outlined),
                     title: Text("Client Invoice Report",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
@@ -1152,6 +988,7 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   InvoiceReport()));
                     },
+                    leading: Icon(Icons.book_online_sharp),
                     title: Text("Invoice Report",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
@@ -1163,6 +1000,7 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   LedgerSttementReport()));
                     },
+                    leading: Icon(Icons.payments_sharp),
                     title: Text("Ledger Statement Report",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
@@ -1174,6 +1012,7 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   PaymentCollectionReport()));
                     },
+                    leading: Icon(Icons.payments_rounded),
                     title: Text("Payment Collection Report",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
@@ -1185,6 +1024,7 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   SalesReport()));
                     },
+                    leading: Icon(Icons.handshake),
                     title: Text("Sales Report",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
@@ -1196,6 +1036,7 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   TicketReport()));
                     },
+                    leading: Icon(Icons.handshake_outlined),
                     title: Text("Ticket Report",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
@@ -1207,13 +1048,13 @@ class _CorDashboardState extends State<Dashboard> {
                               builder: (BuildContext context) =>
                                   UnTicketReport()));
                     },
+                    leading: Icon(Icons.album_rounded),
                     title: Text("Unticket Report",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
                 ],
               ),
-
-              ExpansionTile(
+              /*  ExpansionTile(
                 title:
                     Text("Wallets", style: TextStyle(fontFamily: "Montserrat")),
                 leading:
@@ -1325,7 +1166,6 @@ class _CorDashboardState extends State<Dashboard> {
                   ),
                 ],
               ),
-
               ExpansionTile(
                 title: Text("Help/Support",
                     style: TextStyle(fontFamily: "Montserrat")),
@@ -1334,32 +1174,32 @@ class _CorDashboardState extends State<Dashboard> {
                 children: [
                   ListTile(
                     onTap: () {
-                      /* Navigator.push(
+                      */ /* Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  CreateTicket()));*/
+                                  CreateTicket()));*/ /*
                     },
                     title: Text("Create Ticket",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
                   ListTile(
                     onTap: () {
-                      /*    Navigator.push(
+                      */ /*    Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (BuildContext context) => OpenTicket()));*/
+                              builder: (BuildContext context) => OpenTicket()));*/ /*
                     },
                     title: Text("Open Ticket",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
                   ListTile(
                     onTap: () {
-                      /* Navigator.push(
+                      */ /* Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  ResolvedTickets()));*/
+                                  ResolvedTickets()));*/ /*
                     },
                     title: Text("Resolved Tickets",
                         style: TextStyle(fontFamily: "Montserrat")),
@@ -1375,7 +1215,7 @@ class _CorDashboardState extends State<Dashboard> {
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
                 ],
-              ),
+              ),*/
             ],
           ),
         ),

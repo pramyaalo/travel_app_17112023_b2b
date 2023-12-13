@@ -51,10 +51,10 @@ class _BookingReportState extends State<StaffAttendance> {
           "Staff Attendance",
           style: TextStyle(fontFamily: "Montserrat"),
         ),
-        //title: Image.asset('assets/images/logo.png', width: 150, height: 30,),
+        //title: Image.asset('assets/images/loginoho.jpg', width: 150, height: 30,),
         actions: [
           Image.asset(
-            'assets/images/logo.png',
+            'assets/images/loginoho.jpg',
             width: 120,
             height: 30,
           ),

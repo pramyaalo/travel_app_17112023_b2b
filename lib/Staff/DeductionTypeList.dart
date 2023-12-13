@@ -47,22 +47,37 @@ class _BookingReportState extends State<DeductionTypeList> {
     return SafeArea(
         child: Scaffold(
             appBar: AppBar(
-              title: Text(
-                "Deduction Type List",
-                style: TextStyle(fontFamily: "Montserrat"),
+              automaticallyImplyLeading: false,
+              titleSpacing: 1,
+              title: Row(
+                children: [
+                  IconButton(
+                    icon: Icon(
+                      Icons.arrow_back,
+                      color: Colors.white,
+                      size: 27,
+                    ),
+                    onPressed: () {  Navigator.pop(context);},
+                  ),
+
+                  SizedBox(width: 1), // Set the desired width
+                  Text(
+                    "Deduction Type List",
+                    style: TextStyle(fontFamily: "Montserrat", fontSize: 19),
+                  ),
+                ],
               ),
-              //title: Image.asset('assets/images/logo.png', width: 150, height: 30,),
               actions: [
                 Image.asset(
-                  'assets/images/logo.png',
-                  width: 120,
-                  height: 30,
+                  'assets/images/loginoho.jpg',
+                  width: 70,
+                  height: 50,
                 ),
                 SizedBox(
                   width: 10,
                 )
               ],
-              backgroundColor: Color(0xFF1d5e72) ,
+              backgroundColor: Color(0xFF1d5e72),
             ),
             /*  floatingActionButton: FloatingActionButton(
         onPressed: () {

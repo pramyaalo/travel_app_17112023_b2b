@@ -27,12 +27,12 @@ class _MyRechargePageState extends State<DebitUserFund> {
           "DEBIT USERS FUND DETAILS",
           style: TextStyle(fontFamily: "Montserrat", fontSize: 17),
         ),
-        //title: Image.asset('assets/images/logo.png', width: 150, height: 30,),
+        //title: Image.asset('assets/images/loginoho.jpg', width: 150, height: 30,),
         actions: [
           Image.asset(
-            'assets/images/logo.png',
-            width: 120,
-            height: 30,
+            'assets/images/loginoho.jpg',
+            width: 70,
+            height: 50,
           ),
           SizedBox(
             width: 10,

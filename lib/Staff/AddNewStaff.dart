@@ -491,9 +491,9 @@ class _SignUpPageState extends State<AddNewStaff> {
           Padding(
             padding: EdgeInsets.only(right: 16.0, bottom: 10),
             child: Image.asset(
-              'assets/images/logo.png', // Replace 'your_image.png' with your image asset path
-              width: 120,
-              height: 35,
+              'assets/images/loginoho.jpg', // Replace 'your_image.png' with your image asset path
+              width: 70,
+              height: 50,
             ),
           ),
         ],
