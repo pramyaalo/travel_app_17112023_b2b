@@ -17,6 +17,7 @@ import 'package:travel_app_17112023_b2b/Models/ManageStaffModel.dart';
 import 'package:travel_app_17112023_b2b/Models/ManageSubAgencyModel.dart';
 import 'package:travel_app_17112023_b2b/Models/ManageTravelerModel.dart';
 import 'package:travel_app_17112023_b2b/Queues/InvoiceReceipt.dart';
+import 'package:travel_app_17112023_b2b/Staff/ViewStaffDetails.dart';
 import 'package:travel_app_17112023_b2b/SubAgency/ViewSubAgencyDetails.dart';
 import 'package:travel_app_17112023_b2b/Travellers/ViewTravellerDetails.dart';
 import 'package:travel_app_17112023_b2b/utils/response_handler.dart';
@@ -73,12 +74,14 @@ class _BookingCardGeneralDetailsState extends State<ManageStaff> {
                       color: Colors.white,
                       size: 27,
                     ),
-                    onPressed: () {  Navigator.pop(context);},
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
                   ),
 
                   SizedBox(width: 1), // Set the desired width
                   Text(
-                    "Manage Staff",
+                    "Staff List",
                     style: TextStyle(fontFamily: "Montserrat", fontSize: 19),
                   ),
                 ],
@@ -440,7 +443,7 @@ class _BookingCardGeneralDetailsState extends State<ManageStaff> {
                                                                         context,
                                                                         MaterialPageRoute(
                                                                           builder: (context) =>
-                                                                              ViewCorporateDetails(),
+                                                                              ViewStaffDetails(),
                                                                         ),
                                                                       );
                                                                     },

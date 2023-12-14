@@ -498,7 +498,7 @@ class _CorDashboardState extends State<Dashboard> {
                                   ManageTravellers()));
                     },
                     leading: Icon(Icons.perm_identity_outlined),
-                    title: Text("Manage Travellers",
+                    title: Text("Travellers",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
                   ListTile(
@@ -566,7 +566,7 @@ class _CorDashboardState extends State<Dashboard> {
                                   ManageSubAgency()));
                     },
                     leading: Icon(Icons.align_vertical_bottom_outlined),
-                    title: Text("Manage SubAgency",
+                    title: Text("SubAgency",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
                   ListTile(
@@ -634,7 +634,7 @@ class _CorDashboardState extends State<Dashboard> {
                                   ManageBranch()));
                     },
                     leading: Icon(Icons.computer_outlined),
-                    title: Text("Manage Branch",
+                    title: Text("Branches",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
                   ListTile(
@@ -687,7 +687,7 @@ class _CorDashboardState extends State<Dashboard> {
                   ),
                 ],
               ),
-              ExpansionTile(
+         /*     ExpansionTile(
                 title: Text("Corporate",
                     style: TextStyle(fontFamily: "Montserrat")),
                 leading:
@@ -702,7 +702,7 @@ class _CorDashboardState extends State<Dashboard> {
                                   ManageCorporate()));
                     },
                     leading: Icon(Icons.person),
-                    title: Text("Manage Corporate",
+                    title: Text("Corporate",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
                   ListTile(
@@ -754,7 +754,7 @@ class _CorDashboardState extends State<Dashboard> {
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
                 ],
-              ),
+              ),*/
               ExpansionTile(
                 title:
                     Text("Staffs", style: TextStyle(fontFamily: "Montserrat")),
@@ -770,7 +770,7 @@ class _CorDashboardState extends State<Dashboard> {
                                   ManageStaff()));
                     },
                     leading: Icon(Icons.people),
-                    title: Text("Manage Staff",
+                    title: Text("Staff",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
                   ListTile(

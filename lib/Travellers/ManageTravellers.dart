@@ -77,8 +77,11 @@ class _BookingCardGeneralDetailsState extends State<ManageTravellers> {
 
                   SizedBox(width: 1), // Set the desired width
                   Text(
-                    "Manage Travellers",
-                    style: TextStyle(fontFamily: "Montserrat", fontSize: 19),
+                    "Travellers",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: "Montserrat",
+                        fontSize: 19),
                   ),
                 ],
               ),
@@ -490,7 +493,7 @@ class _BookingCardGeneralDetailsState extends State<ManageTravellers> {
                                                                           5.0,
                                                                           2.5,
                                                                           5,
-                                                                          2.5),
+                                                                          2.8),
                                                                       decoration:
                                                                           BoxDecoration(
                                                                         color: Colors

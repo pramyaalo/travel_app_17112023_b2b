@@ -51,10 +51,11 @@ class _TicketReportState extends State<UnTicketReport> {
                       color: Colors.white,
                       size: 27,
                     ),
-                    onPressed: () {Navigator.pop(context);},
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
                   ),
-
-                  SizedBox(width: 1), // Set the desired width
+                  SizedBox(width: 1),
                   Text(
                     "UnTicket Report",
                     style: TextStyle(fontFamily: "Montserrat", fontSize: 19),

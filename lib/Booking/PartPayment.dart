@@ -39,39 +39,42 @@ class _BookingCardGeneralDetailsState extends State<PartPayment> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-          appBar: AppBar(
-            automaticallyImplyLeading: false,
-            titleSpacing: 1,
-            title: Row(
-              children: [
-                IconButton(
-                  icon: Icon(
-                    Icons.arrow_back,
-                    color: Colors.white,
-                    size: 27,
-                  ),
-                  onPressed: () {Navigator.pop(context);},
-                ),
-
-                SizedBox(width: 1), // Set the desired width
-                Text(
-                  "Part Payment",
-                  style: TextStyle(fontFamily: "Montserrat", fontSize: 19),
-                ),
-              ],
-            ),
-            actions: [
-              Image.asset(
-                'assets/images/loginoho.jpg',
-                width: 70,
-                height: 50,
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        titleSpacing: 1,
+        title: Row(
+          children: [
+            IconButton(
+              icon: Icon(
+                Icons.arrow_back,
+                color: Colors.white,
+                size: 27,
               ),
-              SizedBox(
-                width: 10,
-              )
-            ],
-            backgroundColor: Color(0xFF1d5e72),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+
+            SizedBox(width: 1), // Set the desired width
+            Text(
+              "Part Payment",
+              style: TextStyle(
+                  color: Colors.white, fontFamily: "Montserrat", fontSize: 19),
+            ),
+          ],
+        ),
+        actions: [
+          Image.asset(
+            'assets/images/loginoho.jpg',
+            width: 70,
+            height: 50,
           ),
+          SizedBox(
+            width: 10,
+          )
+        ],
+        backgroundColor: Color(0xFF1d5e72),
+      ),
       body: Center(
         child: FutureBuilder<List<PartPaymentModel>?>(
           future: getPartPaymentData(),

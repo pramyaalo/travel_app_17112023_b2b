@@ -79,7 +79,7 @@ class _BookingCardGeneralDetailsState extends State<ManageCorporate> {
 
                   SizedBox(width: 1), // Set the desired width
                   Text(
-                    "Manage Corporate",
+                    "Corporates",
                     style: TextStyle(fontFamily: "Montserrat", fontSize: 19),
                   ),
                 ],

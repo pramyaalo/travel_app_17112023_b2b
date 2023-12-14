@@ -82,13 +82,12 @@ class _LoginScreenState extends State<LoginScreen> {
       statusBarColor: Color(0xFF1d5e72), // Dark green color
     ));
     return Container(
-        color: const Color(0xffefefef),
+        color: const Color(0xFF1d5e72),
         child: Center(
           child: Card(
             margin: const EdgeInsets.fromLTRB(30, 0, 30, 0),
             color: Color(0xFF1d5e72),
             elevation: 16.0,
-            shadowColor: Colors.white,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10.0),
             ),
@@ -117,7 +116,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           width: 10.0,
                         ),
                         Text(
-                          "Login to your Account",
+                          "Login to B2B Account",
                           style: TextStyle(
                               color: Colors.white,
                               fontFamily: "Montserrat",
@@ -369,7 +368,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              "New to AKS Travel? ",
+                              "New to BOQOL Travel? ",
                               style: TextStyle(
                                   fontFamily: "Montserrat",
                                   color: Colors.white),

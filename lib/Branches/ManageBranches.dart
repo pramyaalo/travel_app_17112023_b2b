@@ -75,7 +75,7 @@ class _BookingCardGeneralDetailsState extends State<ManageBranch> {
 
                   SizedBox(width: 1), // Set the desired width
                   Text(
-                    "Manage Branch List",
+                    "Branches",
                     style: TextStyle(fontFamily: "Montserrat", fontSize: 19),
                   ),
                 ],

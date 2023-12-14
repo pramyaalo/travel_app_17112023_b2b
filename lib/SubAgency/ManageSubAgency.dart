@@ -78,7 +78,7 @@ class _BookingCardGeneralDetailsState extends State<ManageSubAgency> {
 
                   SizedBox(width: 1), // Set the desired width
                   Text(
-                    "Manage SubAgency",
+                    "SubAgency",
                     style: TextStyle(fontFamily: "Montserrat", fontSize: 19),
                   ),
                 ],

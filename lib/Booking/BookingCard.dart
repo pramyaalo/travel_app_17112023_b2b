@@ -147,9 +147,7 @@ class _BookingCardsState extends State<BookingCard> {
                                                       width: 5,
                                                     ),
                                                     Text(
-                                                      "Passengers: " +
-                                                          snapshot.data![index]
-                                                              .bookCardPassenger,
+                                                      "Passengers: Chandan Misra",
                                                       style: TextStyle(
                                                           fontFamily:
                                                               "Montserrat",
@@ -220,10 +218,8 @@ class _BookingCardsState extends State<BookingCard> {
                                                           color: Colors.blue,
                                                         ),
                                                         Text(
-                                                          "BookedOnDt: " +
-                                                              snapshot
-                                                                  .data![index]
-                                                                  .bookedOnDt,
+                                                          snapshot.data![index]
+                                                              .bookedOnDt,
                                                           style: const TextStyle(
                                                               fontFamily:
                                                                   "Montserrat",
