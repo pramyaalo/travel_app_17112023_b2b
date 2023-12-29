@@ -2,21 +2,19 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:travel_app_17112023_b2b/Booking/ViewBookingDetails.dart';
 import 'package:travel_app_17112023_b2b/Models/BookingCardModel.dart';
 import '../utils/response_handler.dart';
 import 'package:http/http.dart' as http;
 
 class BookingCard extends StatefulWidget {
-  const BookingCard({Key? key}) : super(key: key);
-
   @override
   _BookingCardsState createState() => _BookingCardsState();
 }
 
 class _BookingCardsState extends State<BookingCard> {
-  static String Passenger = '';
-  static String extractedText = '';
+  static String? Id;
   static Future<List<BookingCardModel>?> getLabels() async {
     List<BookingCardModel> bookingCardData = [];
     Future<http.Response>? __futureLabels = ResponseHandler.performPost(
@@ -30,9 +28,7 @@ class _BookingCardsState extends State<BookingCard> {
         List<dynamic> list = map["Table"];
         for (int i = 0; i < list.length; i++) {
           BookingCardModel lm = BookingCardModel.fromJson(list[i]);
-          Passenger = lm.bookCardPassenger;
 
-          print('Name: $extractedText');
           bookingCardData.add(lm);
         }
       } catch (error) {
@@ -294,7 +290,13 @@ class _BookingCardsState extends State<BookingCard> {
                                               ],
                                             ),
                                             InkWell(
-                                              onTap: () {
+                                              onTap: () async {
+                                                await saveIdToPreferences(
+                                                    snapshot.data![index]
+                                                        .bookFlightId);
+                                                print('prami' +
+                                                    snapshot.data![index]
+                                                        .bookFlightId);
                                                 Navigator.push(
                                                   context,
                                                   MaterialPageRoute(
@@ -407,4 +409,9 @@ Color _getBackgroundColor(String bookingStatus) {
   } else {
     return Colors.black;
   }
+}
+
+Future<void> saveIdToPreferences(String id) async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  prefs.setString('userId', id);
 }

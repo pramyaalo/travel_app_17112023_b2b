@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'CreditNoteReceipt.dart';
+
 class CreditNoteInvoiceList extends StatefulWidget {
   const CreditNoteInvoiceList({Key? key}) : super(key: key);
 
@@ -29,7 +31,7 @@ class _BookingCardGeneralDetailsState extends State<CreditNoteInvoiceList> {
             width: 10,
           )
         ],
-        backgroundColor: Color(0xFF1d5e72) ,
+        backgroundColor: Color(0xFF1d5e72),
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -148,13 +150,13 @@ class _BookingCardGeneralDetailsState extends State<CreditNoteInvoiceList> {
                                 ),
                                 child: GestureDetector(
                                   onTap: () {
-                                    /*  Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (BuildContext context) =>
-                                                CreditNoteReceipt(),
-                                          ),
-                                        );*/
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (BuildContext context) =>
+                                            CreditNoteReceipt(),
+                                      ),
+                                    );
                                   },
                                   child: Row(
                                     children: [

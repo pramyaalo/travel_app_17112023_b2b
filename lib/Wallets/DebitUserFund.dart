@@ -38,7 +38,7 @@ class _MyRechargePageState extends State<DebitUserFund> {
             width: 10,
           )
         ],
-        backgroundColor: Color(0xFF1d5e72) ,
+        backgroundColor: Color(0xFF1d5e72),
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(10),
@@ -258,7 +258,8 @@ class _MyRechargePageState extends State<DebitUserFund> {
                             ),
                             child: Text(
                               'Debit Fund To Users',
-                              style: TextStyle(fontSize: 18),
+                              style:
+                                  TextStyle(fontSize: 18, color: Colors.black),
                             ),
                           ),
                         ),

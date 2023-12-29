@@ -274,7 +274,7 @@ class _BookingCardGeneralDetailsState extends State<ApproveSubAgency> {
                                                                         right:
                                                                             3),
                                                                 child: Text(
-                                                                  "State: " +
+                                                                  "Country: " +
                                                                       snapshot
                                                                           .data![
                                                                               index]

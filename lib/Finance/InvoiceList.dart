@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../Queues/InvoiceReceipt.dart';
+import 'InvoiceListReceipt.dart';
+
 class InvoiceList extends StatefulWidget {
   const InvoiceList({Key? key}) : super(key: key);
 
@@ -28,7 +31,7 @@ class _BookingCardGeneralDetailsState extends State<InvoiceList> {
             width: 10,
           )
         ],
-        backgroundColor: Color(0xFF1d5e72) ,
+        backgroundColor: Color(0xFF1d5e72),
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -114,13 +117,13 @@ class _BookingCardGeneralDetailsState extends State<InvoiceList> {
                                 ),
                                 child: GestureDetector(
                                   onTap: () {
-                                    /*  Navigator.push(
+                                    Navigator.push(
                                       context,
                                       MaterialPageRoute(
                                         builder: (BuildContext context) =>
-                                            Receipt(),
+                                            InvoiceListReceipt(),
                                       ),
-                                    );*/
+                                    );
                                   },
                                   child: Row(
                                     children: [

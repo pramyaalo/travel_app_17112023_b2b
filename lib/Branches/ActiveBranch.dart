@@ -2,9 +2,11 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:travel_app_17112023_b2b/Branches/ActiveBranchModls.dart';
 import 'package:travel_app_17112023_b2b/Staff/AddNewStaff.dart';
 
 import 'package:http/http.dart' as http;
+import 'package:travel_app_17112023_b2b/utils/response_handler.dart';
 
 class ActiveBranch extends StatefulWidget {
   const ActiveBranch({Key? key}) : super(key: key);
@@ -14,11 +16,12 @@ class ActiveBranch extends StatefulWidget {
 }
 
 class _BookingReportState extends State<ActiveBranch> {
-  /* static Future<List<BookingReportModel>?> getLabels() async {
-    List<BookingReportModel> labelData = [];
+  static String dateOnly = '';
+  static Future<List<ActiveBranchModel>?> getLabels() async {
+    List<ActiveBranchModel> labelData = [];
     Future<http.Response>? __futureLabels = ResponseHandler.performPost(
-        "BookingReportGet",
-        "FromDate=1001&ToDate=&UserId=&UserTypeId=ALL&StaffId=1");
+        "ActiveBranchReportGet",
+        "UserTypeId=2&UserId=1107&AgencyBranchId=1216&Status=1");
 
     return await __futureLabels?.then((value) {
       String jsonResponse = ResponseHandler.parseData(value.body);
@@ -26,21 +29,15 @@ class _BookingReportState extends State<ActiveBranch> {
         Map<String, dynamic> map = json.decode(jsonResponse);
         List<dynamic> list = map["Table"];
         for (int i = 0; i < list.length; i++) {
-          BookingReportModel lm = BookingReportModel.fromJson(list[i]);
+          ActiveBranchModel lm = ActiveBranchModel.fromJson(list[i]);
           labelData.add(lm);
+          String dateTimeString = lm.createdDate;
+          dateOnly = dateTimeString.substring(0, 10);
         }
-        Map<String, dynamic> table1Data = map["Table1"];
-        List<dynamic> table1List = table1Data["Table1"];
-        for (int i = 0; i < table1List.length; i++) {
-          BookingReportModel lm = BookingReportModel.fromJson(list[i]);
-          labelData.add(lm);
-        }
-      } catch (error) {
-        Fluttertoast.showToast(msg: error.toString());
-      }
+      } catch (error) {}
       return labelData;
     });
-  }*/
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +54,9 @@ class _BookingReportState extends State<ActiveBranch> {
                 color: Colors.white,
                 size: 27,
               ),
-              onPressed: () {Navigator.pop(context);},
+              onPressed: () {
+                Navigator.pop(context);
+              },
             ),
 
             SizedBox(width: 1), // Set the desired width
@@ -79,1147 +78,400 @@ class _BookingReportState extends State<ActiveBranch> {
         ],
         backgroundColor: Color(0xFF1d5e72),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (BuildContext context) => AddNewStaff()));
-        },
-        backgroundColor: Colors.orange,
-        child: const Icon(Icons.add),
-      ),
-      body: SingleChildScrollView(
-          child: Column(children: [
-        Container(
-          margin: EdgeInsets.fromLTRB(10, 5, 10, 5),
-          child: PhysicalModel(
-            color: Colors.white,
-            elevation: 8,
-            shadowColor: Color(0xff9a9ce3),
-            borderRadius: BorderRadius.circular(4),
-            child: Container(
-              padding: EdgeInsets.all(10.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Staff Name", //snapshot.data?[index].Processfor ?? "",
-                        style: TextStyle(
-                            fontFamily: "Montserrat",
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
+      body: Center(
+          child: FutureBuilder<List<ActiveBranchModel>?>(
+              future: getLabels(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData &&
+                    snapshot.connectionState == ConnectionState.done) {
+                  return ListView.builder(
+                      itemCount: snapshot.data?.length,
+                      itemBuilder: (context, index) {
+                        return SingleChildScrollView(
+                            child: Container(
+                                margin: EdgeInsets.all(10),
+                                child: InkWell(
+                                  child: PhysicalModel(
+                                      color: Colors.white,
+                                      elevation: 8,
+                                      shadowColor: Color(0xff9a9ce3),
+                                      borderRadius: BorderRadius.circular(4),
+                                      child: Container(
+                                        padding: EdgeInsets.all(10.0),
+                                        child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    snapshot.data![index]
+                                                        .agencyBranchName,
+                                                    style: TextStyle(
+                                                        fontFamily:
+                                                            "Montserrat",
+                                                        fontSize: 17,
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                  ),
+                                                ],
+                                              ),
+                                              SizedBox(
+                                                height: 3,
+                                              ),
+                                              Row(
+                                                children: [
+                                                  Text(
+                                                    // snapshot.data![index].PayMode,
 
-/* Flexible(child: Text('Muscat (MCT), Delhi (DEL) Dubai (DXB), Muscat (MCT) Muscat (MCT), Dubai (DXB) Delhi (DEL), Muscat (MCT)',
-                                style: TextStyle(fontFamily: "Montserrat", fontSize: 12),),)*/
-                    ],
-                  ),
-                  SizedBox(
-                    height: 4,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            " 8567543234", //snapshot.data?[index].IsApproval == "1" ?"Approved" : "Not approved" ?? "",
-                            style: TextStyle(
-                                fontFamily: "Montserrat",
-                                fontWeight: FontWeight.w500,
-                                fontSize: 15),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            " gs@gmail.com", //snapshot.data?[index].IsApproval == "1" ?"Approved" : "Not approved" ?? "",
-                            style: TextStyle(
-                                fontFamily: "Montserrat",
-                                fontWeight: FontWeight.w500,
-                                fontSize: 15),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 3,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10),
-                        child: Column(
-                          children: [
-                            Container(
-                              padding: EdgeInsets.fromLTRB(10.0, 5, 10, 5),
-                              decoration: BoxDecoration(
-                                color: Colors.orange,
-                                border: Border.all(
-                                    width: 0.1,
-                                    color: Colors
-                                        .blue), //https://stackoverflow.com/a/67395539/16076689
-                                borderRadius: new BorderRadius.circular(5.0),
-                              ),
-                              child: Text(
-                                "Active",
-                                //snapshot.data![index].paidStatus,
-                                style: TextStyle(
-                                    fontFamily: "Montserrat",
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.white),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Row(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(bottom: 15),
-                                  child: Image(
-                                    image: AssetImage(
-                                        'assets/images/tickiconpng.png'),
-                                    color: Colors.blue,
-                                    width: 16,
-                                    height: 16,
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(bottom: 15),
-                                  child: Text(
-                                    "Oct 15 2023",
-                                    //snapshot.data![index].tripDate,
-                                    style: TextStyle(
-                                        fontFamily: "Montserrat",
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 15,
-                                        color: Colors.blue),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-        Container(
-          margin: EdgeInsets.fromLTRB(10, 5, 10, 5),
-          child: PhysicalModel(
-            color: Colors.white,
-            elevation: 8,
-            shadowColor: Color(0xff9a9ce3),
-            borderRadius: BorderRadius.circular(4),
-            child: Container(
-              padding: EdgeInsets.all(10.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Staff Name", //snapshot.data?[index].Processfor ?? "",
-                        style: TextStyle(
-                            fontFamily: "Montserrat",
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-
-/* Flexible(child: Text('Muscat (MCT), Delhi (DEL) Dubai (DXB), Muscat (MCT) Muscat (MCT), Dubai (DXB) Delhi (DEL), Muscat (MCT)',
-                                style: TextStyle(fontFamily: "Montserrat", fontSize: 12),),)*/
-                    ],
-                  ),
-                  SizedBox(
-                    height: 4,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            " 8567543234", //snapshot.data?[index].IsApproval == "1" ?"Approved" : "Not approved" ?? "",
-                            style: TextStyle(
-                                fontFamily: "Montserrat",
-                                fontWeight: FontWeight.w500,
-                                fontSize: 15),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            " gs@gmail.com", //snapshot.data?[index].IsApproval == "1" ?"Approved" : "Not approved" ?? "",
-                            style: TextStyle(
-                                fontFamily: "Montserrat",
-                                fontWeight: FontWeight.w500,
-                                fontSize: 15),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 3,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10),
-                        child: Column(
-                          children: [
-                            Container(
-                              padding: EdgeInsets.fromLTRB(10.0, 5, 10, 5),
-                              decoration: BoxDecoration(
-                                color: Colors.orange,
-                                border: Border.all(
-                                    width: 0.1,
-                                    color: Colors
-                                        .blue), //https://stackoverflow.com/a/67395539/16076689
-                                borderRadius: new BorderRadius.circular(5.0),
-                              ),
-                              child: Text(
-                                "Status",
-                                //snapshot.data![index].paidStatus,
-                                style: TextStyle(
-                                    fontFamily: "Montserrat",
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.white),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Row(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(bottom: 15),
-                                  child: Image(
-                                    image: AssetImage(
-                                        'assets/images/tickiconpng.png'),
-                                    color: Colors.blue,
-                                    width: 16,
-                                    height: 16,
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(bottom: 15),
-                                  child: Text(
-                                    "Oct 15 2023",
-                                    //snapshot.data![index].tripDate,
-                                    style: TextStyle(
-                                        fontFamily: "Montserrat",
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 15,
-                                        color: Colors.blue),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-        Container(
-          margin: EdgeInsets.fromLTRB(10, 5, 10, 5),
-          child: PhysicalModel(
-            color: Colors.white,
-            elevation: 8,
-            shadowColor: Color(0xff9a9ce3),
-            borderRadius: BorderRadius.circular(4),
-            child: Container(
-              padding: EdgeInsets.all(10.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Staff Name", //snapshot.data?[index].Processfor ?? "",
-                        style: TextStyle(
-                            fontFamily: "Montserrat",
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-
-/* Flexible(child: Text('Muscat (MCT), Delhi (DEL) Dubai (DXB), Muscat (MCT) Muscat (MCT), Dubai (DXB) Delhi (DEL), Muscat (MCT)',
-                                style: TextStyle(fontFamily: "Montserrat", fontSize: 12),),)*/
-                    ],
-                  ),
-                  SizedBox(
-                    height: 4,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            " 8567543234", //snapshot.data?[index].IsApproval == "1" ?"Approved" : "Not approved" ?? "",
-                            style: TextStyle(
-                                fontFamily: "Montserrat",
-                                fontWeight: FontWeight.w500,
-                                fontSize: 15),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            " gs@gmail.com", //snapshot.data?[index].IsApproval == "1" ?"Approved" : "Not approved" ?? "",
-                            style: TextStyle(
-                                fontFamily: "Montserrat",
-                                fontWeight: FontWeight.w500,
-                                fontSize: 15),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 3,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10),
-                        child: Column(
-                          children: [
-                            Container(
-                              padding: EdgeInsets.fromLTRB(10.0, 5, 10, 5),
-                              decoration: BoxDecoration(
-                                color: Colors.orange,
-                                border: Border.all(
-                                    width: 0.1,
-                                    color: Colors
-                                        .blue), //https://stackoverflow.com/a/67395539/16076689
-                                borderRadius: new BorderRadius.circular(5.0),
-                              ),
-                              child: Text(
-                                "Status",
-                                //snapshot.data![index].paidStatus,
-                                style: TextStyle(
-                                    fontFamily: "Montserrat",
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.white),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Row(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(bottom: 15),
-                                  child: Image(
-                                    image: AssetImage(
-                                        'assets/images/tickiconpng.png'),
-                                    color: Colors.blue,
-                                    width: 16,
-                                    height: 16,
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(bottom: 15),
-                                  child: Text(
-                                    "Oct 15 2023",
-                                    //snapshot.data![index].tripDate,
-                                    style: TextStyle(
-                                        fontFamily: "Montserrat",
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 15,
-                                        color: Colors.blue),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-        Container(
-          margin: EdgeInsets.fromLTRB(10, 5, 10, 5),
-          child: PhysicalModel(
-            color: Colors.white,
-            elevation: 8,
-            shadowColor: Color(0xff9a9ce3),
-            borderRadius: BorderRadius.circular(4),
-            child: Container(
-              padding: EdgeInsets.all(10.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Staff Name", //snapshot.data?[index].Processfor ?? "",
-                        style: TextStyle(
-                            fontFamily: "Montserrat",
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-
-/* Flexible(child: Text('Muscat (MCT), Delhi (DEL) Dubai (DXB), Muscat (MCT) Muscat (MCT), Dubai (DXB) Delhi (DEL), Muscat (MCT)',
-                                style: TextStyle(fontFamily: "Montserrat", fontSize: 12),),)*/
-                    ],
-                  ),
-                  SizedBox(
-                    height: 4,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            " 8567543234", //snapshot.data?[index].IsApproval == "1" ?"Approved" : "Not approved" ?? "",
-                            style: TextStyle(
-                                fontFamily: "Montserrat",
-                                fontWeight: FontWeight.w500,
-                                fontSize: 15),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            " gs@gmail.com", //snapshot.data?[index].IsApproval == "1" ?"Approved" : "Not approved" ?? "",
-                            style: TextStyle(
-                                fontFamily: "Montserrat",
-                                fontWeight: FontWeight.w500,
-                                fontSize: 15),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 3,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10),
-                        child: Column(
-                          children: [
-                            Container(
-                              padding: EdgeInsets.fromLTRB(10.0, 5, 10, 5),
-                              decoration: BoxDecoration(
-                                color: Colors.orange,
-                                border: Border.all(
-                                    width: 0.1,
-                                    color: Colors
-                                        .blue), //https://stackoverflow.com/a/67395539/16076689
-                                borderRadius: new BorderRadius.circular(5.0),
-                              ),
-                              child: Text(
-                                "Status",
-                                //snapshot.data![index].paidStatus,
-                                style: TextStyle(
-                                    fontFamily: "Montserrat",
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.white),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Row(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(bottom: 15),
-                                  child: Image(
-                                    image: AssetImage(
-                                        'assets/images/tickiconpng.png'),
-                                    color: Colors.blue,
-                                    width: 16,
-                                    height: 16,
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(bottom: 15),
-                                  child: Text(
-                                    "Oct 15 2023",
-                                    //snapshot.data![index].tripDate,
-                                    style: TextStyle(
-                                        fontFamily: "Montserrat",
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 15,
-                                        color: Colors.blue),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-        Container(
-          margin: EdgeInsets.fromLTRB(10, 5, 10, 5),
-          child: PhysicalModel(
-            color: Colors.white,
-            elevation: 8,
-            shadowColor: Color(0xff9a9ce3),
-            borderRadius: BorderRadius.circular(4),
-            child: Container(
-              padding: EdgeInsets.all(10.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Staff Name", //snapshot.data?[index].Processfor ?? "",
-                        style: TextStyle(
-                            fontFamily: "Montserrat",
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-
-/* Flexible(child: Text('Muscat (MCT), Delhi (DEL) Dubai (DXB), Muscat (MCT) Muscat (MCT), Dubai (DXB) Delhi (DEL), Muscat (MCT)',
-                                style: TextStyle(fontFamily: "Montserrat", fontSize: 12),),)*/
-                    ],
-                  ),
-                  SizedBox(
-                    height: 4,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            " 8567543234", //snapshot.data?[index].IsApproval == "1" ?"Approved" : "Not approved" ?? "",
-                            style: TextStyle(
-                                fontFamily: "Montserrat",
-                                fontWeight: FontWeight.w500,
-                                fontSize: 15),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            " gs@gmail.com", //snapshot.data?[index].IsApproval == "1" ?"Approved" : "Not approved" ?? "",
-                            style: TextStyle(
-                                fontFamily: "Montserrat",
-                                fontWeight: FontWeight.w500,
-                                fontSize: 15),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 3,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10),
-                        child: Column(
-                          children: [
-                            Container(
-                              padding: EdgeInsets.fromLTRB(10.0, 5, 10, 5),
-                              decoration: BoxDecoration(
-                                color: Colors.orange,
-                                border: Border.all(
-                                    width: 0.1,
-                                    color: Colors
-                                        .blue), //https://stackoverflow.com/a/67395539/16076689
-                                borderRadius: new BorderRadius.circular(5.0),
-                              ),
-                              child: Text(
-                                "Status",
-                                //snapshot.data![index].paidStatus,
-                                style: TextStyle(
-                                    fontFamily: "Montserrat",
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.white),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Row(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(bottom: 15),
-                                  child: Image(
-                                    image: AssetImage(
-                                        'assets/images/tickiconpng.png'),
-                                    color: Colors.blue,
-                                    width: 16,
-                                    height: 16,
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(bottom: 15),
-                                  child: Text(
-                                    "Oct 15 2023",
-                                    //snapshot.data![index].tripDate,
-                                    style: TextStyle(
-                                        fontFamily: "Montserrat",
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 15,
-                                        color: Colors.blue),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-        Container(
-          margin: EdgeInsets.fromLTRB(10, 5, 10, 5),
-          child: PhysicalModel(
-            color: Colors.white,
-            elevation: 8,
-            shadowColor: Color(0xff9a9ce3),
-            borderRadius: BorderRadius.circular(4),
-            child: Container(
-              padding: EdgeInsets.all(10.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Staff Name", //snapshot.data?[index].Processfor ?? "",
-                        style: TextStyle(
-                            fontFamily: "Montserrat",
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-
-/* Flexible(child: Text('Muscat (MCT), Delhi (DEL) Dubai (DXB), Muscat (MCT) Muscat (MCT), Dubai (DXB) Delhi (DEL), Muscat (MCT)',
-                                style: TextStyle(fontFamily: "Montserrat", fontSize: 12),),)*/
-                    ],
-                  ),
-                  SizedBox(
-                    height: 4,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            " 8567543234", //snapshot.data?[index].IsApproval == "1" ?"Approved" : "Not approved" ?? "",
-                            style: TextStyle(
-                                fontFamily: "Montserrat",
-                                fontWeight: FontWeight.w500,
-                                fontSize: 15),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            " gs@gmail.com", //snapshot.data?[index].IsApproval == "1" ?"Approved" : "Not approved" ?? "",
-                            style: TextStyle(
-                                fontFamily: "Montserrat",
-                                fontWeight: FontWeight.w500,
-                                fontSize: 15),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 3,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10),
-                        child: Column(
-                          children: [
-                            Container(
-                              padding: EdgeInsets.fromLTRB(10.0, 5, 10, 5),
-                              decoration: BoxDecoration(
-                                color: Colors.orange,
-                                border: Border.all(
-                                    width: 0.1,
-                                    color: Colors
-                                        .blue), //https://stackoverflow.com/a/67395539/16076689
-                                borderRadius: new BorderRadius.circular(5.0),
-                              ),
-                              child: Text(
-                                "Status",
-                                //snapshot.data![index].paidStatus,
-                                style: TextStyle(
-                                    fontFamily: "Montserrat",
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.white),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Row(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(bottom: 15),
-                                  child: Image(
-                                    image: AssetImage(
-                                        'assets/images/tickiconpng.png'),
-                                    color: Colors.blue,
-                                    width: 16,
-                                    height: 16,
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(bottom: 15),
-                                  child: Text(
-                                    "Oct 15 2023",
-                                    //snapshot.data![index].tripDate,
-                                    style: TextStyle(
-                                        fontFamily: "Montserrat",
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 15,
-                                        color: Colors.blue),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-        Container(
-          margin: EdgeInsets.fromLTRB(10, 5, 10, 5),
-          child: PhysicalModel(
-            color: Colors.white,
-            elevation: 8,
-            shadowColor: Color(0xff9a9ce3),
-            borderRadius: BorderRadius.circular(4),
-            child: Container(
-              padding: EdgeInsets.all(10.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Staff Name", //snapshot.data?[index].Processfor ?? "",
-                        style: TextStyle(
-                            fontFamily: "Montserrat",
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-
-/* Flexible(child: Text('Muscat (MCT), Delhi (DEL) Dubai (DXB), Muscat (MCT) Muscat (MCT), Dubai (DXB) Delhi (DEL), Muscat (MCT)',
-                                style: TextStyle(fontFamily: "Montserrat", fontSize: 12),),)*/
-                    ],
-                  ),
-                  SizedBox(
-                    height: 4,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            " 8567543234", //snapshot.data?[index].IsApproval == "1" ?"Approved" : "Not approved" ?? "",
-                            style: TextStyle(
-                                fontFamily: "Montserrat",
-                                fontWeight: FontWeight.w500,
-                                fontSize: 15),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            " gs@gmail.com", //snapshot.data?[index].IsApproval == "1" ?"Approved" : "Not approved" ?? "",
-                            style: TextStyle(
-                                fontFamily: "Montserrat",
-                                fontWeight: FontWeight.w500,
-                                fontSize: 15),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 3,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10),
-                        child: Column(
-                          children: [
-                            Container(
-                              padding: EdgeInsets.fromLTRB(10.0, 5, 10, 5),
-                              decoration: BoxDecoration(
-                                color: Colors.orange,
-                                border: Border.all(
-                                    width: 0.1,
-                                    color: Colors
-                                        .blue), //https://stackoverflow.com/a/67395539/16076689
-                                borderRadius: new BorderRadius.circular(5.0),
-                              ),
-                              child: Text(
-                                "Status",
-                                //snapshot.data![index].paidStatus,
-                                style: TextStyle(
-                                    fontFamily: "Montserrat",
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.white),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Row(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(bottom: 15),
-                                  child: Image(
-                                    image: AssetImage(
-                                        'assets/images/tickiconpng.png'),
-                                    color: Colors.blue,
-                                    width: 16,
-                                    height: 16,
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(bottom: 15),
-                                  child: Text(
-                                    "Oct 15 2023",
-                                    //snapshot.data![index].tripDate,
-                                    style: TextStyle(
-                                        fontFamily: "Montserrat",
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 15,
-                                        color: Colors.blue),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-        Container(
-          margin: EdgeInsets.fromLTRB(10, 5, 10, 5),
-          child: PhysicalModel(
-            color: Colors.white,
-            elevation: 8,
-            shadowColor: Color(0xff9a9ce3),
-            borderRadius: BorderRadius.circular(4),
-            child: Container(
-              padding: EdgeInsets.all(10.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Staff Name", //snapshot.data?[index].Processfor ?? "",
-                        style: TextStyle(
-                            fontFamily: "Montserrat",
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-
-/* Flexible(child: Text('Muscat (MCT), Delhi (DEL) Dubai (DXB), Muscat (MCT) Muscat (MCT), Dubai (DXB) Delhi (DEL), Muscat (MCT)',
-                                style: TextStyle(fontFamily: "Montserrat", fontSize: 12),),)*/
-                    ],
-                  ),
-                  SizedBox(
-                    height: 4,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            " 8567543234", //snapshot.data?[index].IsApproval == "1" ?"Approved" : "Not approved" ?? "",
-                            style: TextStyle(
-                                fontFamily: "Montserrat",
-                                fontWeight: FontWeight.w500,
-                                fontSize: 15),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            " gs@gmail.com", //snapshot.data?[index].IsApproval == "1" ?"Approved" : "Not approved" ?? "",
-                            style: TextStyle(
-                                fontFamily: "Montserrat",
-                                fontWeight: FontWeight.w500,
-                                fontSize: 15),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 3,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10),
-                        child: Column(
-                          children: [
-                            Container(
-                              padding: EdgeInsets.fromLTRB(10.0, 5, 10, 5),
-                              decoration: BoxDecoration(
-                                color: Colors.orange,
-                                border: Border.all(
-                                    width: 0.1,
-                                    color: Colors
-                                        .blue), //https://stackoverflow.com/a/67395539/16076689
-                                borderRadius: new BorderRadius.circular(5.0),
-                              ),
-                              child: Text(
-                                "Status",
-                                //snapshot.data![index].paidStatus,
-                                style: TextStyle(
-                                    fontFamily: "Montserrat",
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.white),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Row(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(bottom: 15),
-                                  child: Image(
-                                    image: AssetImage(
-                                        'assets/images/tickiconpng.png'),
-                                    color: Colors.blue,
-                                    width: 16,
-                                    height: 16,
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(bottom: 15),
-                                  child: Text(
-                                    "Oct 15 2023",
-                                    //snapshot.data![index].tripDate,
-                                    style: TextStyle(
-                                        fontFamily: "Montserrat",
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 15,
-                                        color: Colors.blue),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-      ])),
+                                                    snapshot.data![index].email,
+                                                    style: TextStyle(
+                                                        fontFamily:
+                                                            "Montserrat",
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        fontSize: 15),
+                                                  ),
+                                                ],
+                                              ),
+                                              SizedBox(
+                                                height: 4,
+                                              ),
+                                              Row(
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            left: 0),
+                                                    child: Row(
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                                  right: 0),
+                                                          child: Text(
+                                                            "Mobile: " +
+                                                                snapshot
+                                                                    .data![
+                                                                        index]
+                                                                    .phone,
+                                                            style: TextStyle(
+                                                              fontFamily:
+                                                                  "Montserrat",
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500,
+                                                              fontSize: 15,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Spacer(), // Adds space between the two parts of the row
+                                                  Row(
+                                                    children: [
+                                                      Image(
+                                                        image: AssetImage(
+                                                            'assets/images/tickiconpng.png'),
+                                                        width: 16,
+                                                        height: 16,
+                                                        color: Colors.blue,
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .only(right: 3),
+                                                        child: Text(
+                                                          "State: " +
+                                                              snapshot
+                                                                  .data![index]
+                                                                  .state,
+                                                          style: TextStyle(
+                                                            fontFamily:
+                                                                "Montserrat",
+                                                            fontWeight:
+                                                                FontWeight.w500,
+                                                            fontSize: 15,
+                                                            color: Colors.blue,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                              SizedBox(
+                                                height: 4,
+                                              ),
+                                              Row(
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            left: 0),
+                                                    child: Row(
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                                  right: 3),
+                                                          child: Text(
+                                                            "Date: " + dateOnly,
+                                                            style: TextStyle(
+                                                              fontFamily:
+                                                                  "Montserrat",
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500,
+                                                              fontSize: 15,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Spacer(), // Adds space between the two parts of the row
+                                                  Row(
+                                                    children: [
+                                                      Image(
+                                                        image: AssetImage(
+                                                            'assets/images/tickiconpng.png'),
+                                                        width: 16,
+                                                        height: 16,
+                                                        color: Colors.blue,
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .only(right: 3),
+                                                        child: Text(
+                                                          "City: " +
+                                                              snapshot
+                                                                  .data![index]
+                                                                  .city,
+                                                          style: TextStyle(
+                                                            fontFamily:
+                                                                "Montserrat",
+                                                            fontWeight:
+                                                                FontWeight.w500,
+                                                            fontSize: 15,
+                                                            color: Colors.blue,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                              SizedBox(
+                                                height: 4,
+                                              ),
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  SizedBox(
+                                                    width: 320,
+                                                    height: 1,
+                                                    child: DecoratedBox(
+                                                      decoration:
+                                                          const BoxDecoration(
+                                                              color: Color(
+                                                                  0xffededed)),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              /*Container(
+                                        height: 35,
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Row(
+                                              children: [
+                                                Icon(
+                                                  Icons.book_outlined,
+                                                  size: 12,
+                                                ),
+                                                SizedBox(
+                                                  width: 5,
+                                                ),
+                                                Text(
+                                                  "Traveller ID: ",
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      fontFamily: "Montserrat",
+                                                      fontSize: 15),
+                                                ),
+                                                Text(
+                                                  snapshot
+                                                      .data![index].TravellerId,
+                                                  style: TextStyle(
+                                                      fontFamily: "Montserrat",
+                                                      fontSize: 15,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 2),
+                                                  child: Column(
+                                                    children: [
+                                                      Container(
+                                                        padding:
+                                                            EdgeInsets.fromLTRB(
+                                                                10.0, 5, 10, 5),
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: Colors.green,
+                                                          border: Border.all(
+                                                              width: 0.1,
+                                                              color: Colors
+                                                                  .blue), //https://stackoverflow.com/a/67395539/16076689
+                                                          borderRadius:
+                                                              new BorderRadius
+                                                                  .circular(
+                                                                  5.0),
+                                                        ),
+                                                        child: Text(
+                                                          snapshot.data![index]
+                                                                      .IsActive ==
+                                                                  1
+                                                              ? 'InActive'
+                                                              : 'Active',
+                                                          style: TextStyle(
+                                                              fontFamily:
+                                                                  "Montserrat",
+                                                              fontSize: 15,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500,
+                                                              color:
+                                                                  Colors.white),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      )*/
+                                              Container(
+                                                height: 28,
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              left: 0),
+                                                      child: Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        children: [
+                                                          Icon(
+                                                            Icons.book_outlined,
+                                                            size: 14,
+                                                          ),
+                                                          Text(
+                                                            "Branch ID: ",
+                                                            style: TextStyle(
+                                                                fontFamily:
+                                                                    "Montserrat",
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                                fontSize: 15),
+                                                          ),
+                                                          Text(
+                                                            snapshot
+                                                                .data![index]
+                                                                .agencyBranchCode,
+                                                            style: TextStyle(
+                                                                fontFamily:
+                                                                    "Montserrat",
+                                                                fontSize: 15,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              top: 4, left: 2),
+                                                      child: Column(
+                                                        children: [
+                                                          Container(
+                                                            padding: EdgeInsets
+                                                                .fromLTRB(
+                                                                    5.0,
+                                                                    2.5,
+                                                                    5,
+                                                                    2.5),
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              color:
+                                                                  Colors.green,
+                                                              border: Border.all(
+                                                                  width: 0.1,
+                                                                  color: Colors
+                                                                      .blue), //https://stackoverflow.com/a/67395539/16076689
+                                                              borderRadius:
+                                                                  new BorderRadius
+                                                                      .circular(
+                                                                      5.0),
+                                                            ),
+                                                            child: Text(
+                                                              snapshot.data![index]
+                                                                          .status ==
+                                                                      "1"
+                                                                  ? 'Active'
+                                                                  : 'InActive',
+                                                              style: TextStyle(
+                                                                  fontFamily:
+                                                                      "Montserrat",
+                                                                  fontSize: 15,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500,
+                                                                  color: Colors
+                                                                      .white),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                            ]),
+                                      )),
+                                )));
+                      });
+                } else {
+                  return CircularProgressIndicator();
+                }
+              })),
     ));
 
     /*  child: Container(

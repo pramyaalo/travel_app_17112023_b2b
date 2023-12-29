@@ -103,9 +103,9 @@ class _BookingCardGeneralDetailsState extends State<PartPayment> {
                                 Text(
                                   snapshot.data![index].BookingId,
                                   style: TextStyle(
-                                    fontWeight: FontWeight.w500,
+                                    fontWeight: FontWeight.bold,
                                     fontFamily: "Montserrat",
-                                    fontSize: 15,
+                                    fontSize: 16.5,
                                   ),
                                 ),
                                 SizedBox(
@@ -117,67 +117,11 @@ class _BookingCardGeneralDetailsState extends State<PartPayment> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      snapshot.data![index].FullName ?? "",
+                                      '${snapshot.data![index].UserType ?? ""}',
                                       style: TextStyle(
                                           fontFamily: "Montserrat",
-                                          fontSize: 17,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    Row(
-                                      children: [
-                                        Icon(
-                                          const IconData(0xe19f,
-                                              fontFamily: 'MaterialIcons'),
-                                          size: 15,
-                                        ),
-                                        SizedBox(
-                                          width: 3,
-                                        ),
-                                        Text(
-                                          snapshot.data![index].UserType,
-                                          style: TextStyle(
-                                              fontFamily: "Montserrat",
-                                              fontWeight: FontWeight.w500,
-                                              fontSize: 15),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(
-                                  height: 3,
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(right: 10),
-                                      child: Row(
-                                        children: [
-                                          Container(
-                                            padding: EdgeInsets.fromLTRB(
-                                                5.0, 2.5, 5, 2.5),
-                                            decoration: BoxDecoration(
-                                              color: Color(0xFF16D39A),
-                                              border: Border.all(
-                                                  width: 0.1,
-                                                  color: Colors.blue),
-                                              borderRadius:
-                                                  BorderRadius.circular(5.0),
-                                            ),
-                                            child: Text(
-                                              snapshot.data![index].BookingType,
-                                              style: TextStyle(
-                                                fontFamily: "Montserrat",
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.w500,
-                                                color: Colors.white,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w500),
                                     ),
                                     Padding(
                                         padding:
@@ -205,8 +149,9 @@ class _BookingCardGeneralDetailsState extends State<PartPayment> {
                                                         const EdgeInsets.only(
                                                             bottom: 0),
                                                     child: Text(
-                                                      snapshot.data![index]
-                                                          .BookedOnDt,
+                                                      "Due Date: " +
+                                                          snapshot.data![index]
+                                                              .DueDate,
                                                       style: TextStyle(
                                                         fontFamily:
                                                             "Montserrat",
@@ -222,6 +167,74 @@ class _BookingCardGeneralDetailsState extends State<PartPayment> {
                                             ])),
                                   ],
                                 ),
+                                SizedBox(
+                                  height: 3,
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(snapshot.data![index].FullName ?? "",
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 15,
+                                        )),
+                                    Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 10),
+                                        child: Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.end,
+                                            children: [
+                                              Row(
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            bottom: 0),
+                                                    child: Image(
+                                                      image: AssetImage(
+                                                          'assets/images/tickiconpng.png'),
+                                                      color: Colors.blue,
+                                                      width: 16,
+                                                      height: 16,
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            bottom: 0),
+                                                    child: Text(
+                                                      "Booking Date: " +
+                                                          snapshot.data![index]
+                                                              .BookedOnDt,
+                                                      style: TextStyle(
+                                                        fontFamily:
+                                                            "Montserrat",
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        fontSize: 14,
+                                                        color: Colors.blue,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ])),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 3,
+                                ),
+                                Text(
+                                    "Trip Date: " +
+                                            snapshot
+                                                .data![index].DateOfPayment ??
+                                        "",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 15,
+                                    )),
                                 SizedBox(
                                   height: 0,
                                 ),
@@ -252,27 +265,35 @@ class _BookingCardGeneralDetailsState extends State<PartPayment> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Row(
-                                        children: [
-                                          Icon(
-                                            Icons.book_outlined,
-                                            size: 14,
-                                          ),
-                                          Text(
-                                            "Payment ID: ",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.w500,
-                                                fontFamily: "Montserrat",
-                                                fontSize: 15),
-                                          ),
-                                          Text(
-                                            snapshot.data![index].CustPaymentId,
-                                            style: TextStyle(
-                                                fontFamily: "Montserrat",
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                        ],
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(right: 5),
+                                        child: Row(
+                                          children: [
+                                            Container(
+                                              padding: EdgeInsets.fromLTRB(
+                                                  5.0, 2.5, 5, 2.5),
+                                              decoration: BoxDecoration(
+                                                color: Colors.orange,
+                                                border: Border.all(
+                                                    width: 0.1,
+                                                    color: Colors.orange),
+                                                borderRadius:
+                                                    BorderRadius.circular(5.0),
+                                              ),
+                                              child: Text(
+                                                snapshot
+                                                    .data![index].BookingType,
+                                                style: TextStyle(
+                                                  fontFamily: "Montserrat",
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                       Text(
                                         "${snapshot.data![index].Currency} ${snapshot.data![index].BookingAmount}",

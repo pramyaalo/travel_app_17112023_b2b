@@ -16,6 +16,7 @@ import 'package:travel_app_17112023_b2b/Booking/PendingPayment.dart';
 import 'package:travel_app_17112023_b2b/Booking/ProductWiseBooking.dart';
 import 'package:travel_app_17112023_b2b/Booking/ServiceRequest.dart';
 import 'package:travel_app_17112023_b2b/Booking/UnConfirmedBooking.dart';
+import 'package:travel_app_17112023_b2b/Branches/ActiveBranch.dart';
 import 'package:travel_app_17112023_b2b/Branches/ChangePassword.dart';
 import 'package:travel_app_17112023_b2b/Branches/ManageBranches.dart';
 import 'package:travel_app_17112023_b2b/Branches/ViewBranchDetail.dart';
@@ -66,9 +67,25 @@ import 'package:travel_app_17112023_b2b/Wallets/CreditRequestApproved.dart';
 import 'package:travel_app_17112023_b2b/Wallets/CreditBalanceRequest.dart';
 import 'package:travel_app_17112023_b2b/utils/response_handler.dart';
 
+import 'Branches/ApproveBranches.dart';
+import 'Corporate/UnBlockCorporate.dart';
+import 'Finance/AssetEntry.dart';
+import 'Finance/BalanceSheet.dart';
+import 'Finance/ClientInvoices.dart';
+import 'Finance/CreditNotes.dart';
+import 'Finance/DebtorAgingReport.dart';
+import 'Finance/FinancialBook.dart';
+import 'Finance/InvoiceList.dart';
+import 'Finance/JournalEntry.dart';
+import 'Finance/ProfitandLoss.dart';
+import 'Finance/TransactionReport.dart';
+import 'Finance/TrialBalance.dart';
+import 'Finance/Vouchers.dart';
 import 'Queues/CancelBookingQueue.dart';
 import 'Queues/TicketOrderQueue.dart';
 import 'Report/BookingReport.dart';
+import 'SubAgency/ActiveSubAgency.dart';
+import 'SubAgency/UnBlockSubAgency.dart';
 import 'home/bookings_chart.dart';
 import 'home/events_chart.dart';
 import 'home/passengers_chart.dart';
@@ -581,16 +598,16 @@ class _CorDashboardState extends State<Dashboard> {
                     title: Text("Approve SubAgency",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
-                  /* ListTile(
+                  ListTile(
                     onTap: () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  UnBlockTravellers()));
+                                  ActiveSubAgency()));
                     },
                     leading: Icon(Icons.calendar_view_day_rounded),
-                    title: Text("Block/UnBlock Travellers",
+                    title: Text("Active SubAgency",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
                   ListTile(
@@ -599,10 +616,10 @@ class _CorDashboardState extends State<Dashboard> {
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  ActiveTravellers()));
+                                  UnBlockSubAgency()));
                     },
                     leading: Icon(Icons.payments_outlined),
-                    title: Text("Active Travellers",
+                    title: Text("Block SubAgency",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
                   ListTile(
@@ -616,7 +633,7 @@ class _CorDashboardState extends State<Dashboard> {
                     leading: Icon(Icons.password),
                     title: Text("Change Password",
                         style: TextStyle(fontFamily: "Montserrat")),
-                  ),*/
+                  ),
                 ],
               ),
               ExpansionTile(
@@ -643,7 +660,7 @@ class _CorDashboardState extends State<Dashboard> {
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  ViewBranchDetail()));
+                                  ApproveBranches()));
                     },
                     leading: Icon(Icons.pause_presentation_outlined),
                     title: Text("Approve Branch",
@@ -667,7 +684,7 @@ class _CorDashboardState extends State<Dashboard> {
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  ActiveTravellers()));
+                                  ActiveBranch()));
                     },
                     leading: Icon(Icons.add_card),
                     title: Text("Active Branch",
@@ -687,7 +704,7 @@ class _CorDashboardState extends State<Dashboard> {
                   ),
                 ],
               ),
-         /*     ExpansionTile(
+              ExpansionTile(
                 title: Text("Corporate",
                     style: TextStyle(fontFamily: "Montserrat")),
                 leading:
@@ -723,38 +740,14 @@ class _CorDashboardState extends State<Dashboard> {
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  UnBlockTravellers()));
+                                  UnBlockCorporate()));
                     },
                     leading: Icon(Icons.person),
                     title: Text("Block/UnBlock Corporate",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
-                  ListTile(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  ActiveTravellers()));
-                    },
-                    leading: Icon(Icons.threesixty_outlined),
-                    title: Text("Active Corporate",
-                        style: TextStyle(fontFamily: "Montserrat")),
-                  ),
-                  ListTile(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  ChangePasswordTravellers()));
-                    },
-                    leading: Icon(Icons.password),
-                    title: Text("Change Password",
-                        style: TextStyle(fontFamily: "Montserrat")),
-                  ),
                 ],
-              ),*/
+              ),
               ExpansionTile(
                 title:
                     Text("Staffs", style: TextStyle(fontFamily: "Montserrat")),
@@ -785,7 +778,7 @@ class _CorDashboardState extends State<Dashboard> {
                     title: Text("Approve Staff",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
-                  /*   ListTile(
+                  /*    ListTile(
                     onTap: () {
                       Navigator.push(
                           context,
@@ -1054,7 +1047,7 @@ class _CorDashboardState extends State<Dashboard> {
                   ),
                 ],
               ),
-              /*  ExpansionTile(
+              ExpansionTile(
                 title:
                     Text("Wallets", style: TextStyle(fontFamily: "Montserrat")),
                 leading:
@@ -1167,55 +1160,143 @@ class _CorDashboardState extends State<Dashboard> {
                 ],
               ),
               ExpansionTile(
-                title: Text("Help/Support",
-                    style: TextStyle(fontFamily: "Montserrat")),
+                title:
+                    Text("Finance", style: TextStyle(fontFamily: "Montserrat")),
                 leading:
                     Icon(const IconData(0xe2eb, fontFamily: 'MaterialIcons')),
                 children: [
                   ListTile(
                     onTap: () {
-                      */ /* Navigator.push(
+                      Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  CreateTicket()));*/ /*
+                              builder: (BuildContext context) => AssetEntry()));
                     },
-                    title: Text("Create Ticket",
+                    title: Text("Asset Entry",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
                   ListTile(
                     onTap: () {
-                      */ /*    Navigator.push(
+                      Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (BuildContext context) => OpenTicket()));*/ /*
+                              builder: (BuildContext context) => Vouchers()));
                     },
-                    title: Text("Open Ticket",
+                    title: Text("Vouchers List",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
                   ListTile(
                     onTap: () {
-                      */ /* Navigator.push(
+                      Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  ResolvedTickets()));*/ /*
+                                  InvoiceList()));
                     },
-                    title: Text("Resolved Tickets",
+                    title: Text("Invoice List",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
                   ListTile(
-                    onTap: () {},
-                    title: Text("Closed Tickets",
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  CreditNoteInvoiceList()));
+                    }, //
+                    title: Text("Credit Notes",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
                   ListTile(
-                    onTap: () {},
-                    title: Text("Archived Tickets",
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  ClientInvoiceList()));
+                    }, //
+                    title: Text("Client Invoices",
+                        style: TextStyle(fontFamily: "Montserrat")),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  JournalEntry()));
+                    }, //JournalEntry
+                    title: Text("Journal Entry",
+                        style: TextStyle(fontFamily: "Montserrat")),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  CheckTransactionReport()));
+                    }, //CheckTransactionReport
+                    title: Text("Transactions Report",
+                        style: TextStyle(fontFamily: "Montserrat")),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  FinancialBook()));
+                    }, //FinancialBook
+                    title: Text("Financial Book",
+                        style: TextStyle(fontFamily: "Montserrat")),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  DebtorAgingReport()));
+                    }, //DebtorAgingReport
+                    title: Text("Debtor Aging Report",
+                        style: TextStyle(fontFamily: "Montserrat")),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  ProfitandLoss()));
+                    }, //ProfitandLoss
+                    title: Text("Profit and Loss",
+                        style: TextStyle(fontFamily: "Montserrat")),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  BalanceSheet()));
+                    }, //BalanceSheet
+                    title: Text("Balance Sheet",
+                        style: TextStyle(fontFamily: "Montserrat")),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  TrialBalance()));
+                    }, //TrialBalance
+                    title: Text("Trial Balance",
                         style: TextStyle(fontFamily: "Montserrat")),
                   ),
                 ],
-              ),*/
+              ),
             ],
           ),
         ),

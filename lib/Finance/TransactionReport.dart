@@ -63,851 +63,968 @@ class _BookingReportState extends State<CheckTransactionReport> {
                   width: 10,
                 )
               ],
-              backgroundColor: Color(0xFF1d5e72) ,
+              backgroundColor: Color(0xFF1d5e72),
             ),
-            body: Container(
-                child: SingleChildScrollView(
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                  Column(children: [
-                    Card(
-                      margin:
-                          const EdgeInsets.only(right: 10, left: 10, top: 7),
-                      elevation: 5,
+            body: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Container(
+                    margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+                    child: PhysicalModel(
                       color: Colors.white,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 15, top: 10),
-                                child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                      elevation: 8,
+                      shadowColor: const Color(0xff9a9ce3),
+                      borderRadius: BorderRadius.circular(4),
+                      child: Container(
+                        padding: const EdgeInsets.all(10),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: [
-                                        Text(
-                                          "Passenger",
-                                          //snapshot.data![index].passenger,
-                                          style: TextStyle(
-                                              fontFamily: "Montserrat",
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                        SizedBox(width: 70),
-                                        Text(
-                                          "Transaction :0",
-                                          //snapshot.data![index].passenger,
-                                          style: TextStyle(
-                                              fontFamily: "Montserrat",
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 5,
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(right: 20),
-                                          child: Text(
-                                            "mobile:453543543",
-                                            //snapshot.data![index].bookedProduct}",
-                                            style: TextStyle(
-                                                fontFamily: "Montserrat",
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: 15),
-                                          ),
-                                        ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Image(
-                                                image: AssetImage(
-                                                    'assets/images/tickiconpng.png'),
-                                                width: 16,
-                                                height: 16,
-                                                color: Colors.blue),
-                                            Text(
-                                              "Connect Broadband",
-                                              //snapshot.data![index].journeyType,
-                                              style: TextStyle(
-                                                  fontFamily: "Montserrat",
-                                                  fontWeight: FontWeight.w500,
-                                                  fontSize: 15,
-                                                  color: Colors.blue),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: 5,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 10),
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      padding:
-                                          EdgeInsets.fromLTRB(10.0, 5, 10, 5),
-                                      decoration: BoxDecoration(
-                                        color: Colors.orange,
-                                        border: Border.all(
-                                            width: 0.1,
-                                            color: Colors
-                                                .blue), //https://stackoverflow.com/a/67395539/16076689
-                                        borderRadius:
-                                            new BorderRadius.circular(5.0),
-                                      ),
-                                      child: Text(
-                                        "Success",
-                                        //snapshot.data![index].paidStatus,
+                                    const Text("Transaction Date:   ",
                                         style: TextStyle(
-                                            fontFamily: "Montserrat",
                                             fontSize: 15,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.white),
-                                      ),
+                                            fontFamily: "Montserrat",
+                                            fontWeight: FontWeight.bold)),
+                                    Text(
+                                      "30 November 2023",
+                                      style: const TextStyle(
+                                          fontSize: 15,
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
                                     ),
                                   ],
                                 ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(right: 20),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.end,
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    Row(
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(bottom: 15),
-                                          child: Image(
-                                            image: AssetImage(
-                                                'assets/images/tickiconpng.png'),
-                                            color: Colors.blue,
-                                            width: 16,
-                                            height: 16,
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(bottom: 15),
-                                          child: Text(
-                                            "Amount :800",
-                                            //snapshot.data![index].tripDate,
-                                            style: TextStyle(
-                                                fontFamily: "Montserrat",
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: 15,
-                                                color: Colors.blue),
-                                          ),
-                                        ),
-                                      ],
+                                    const Text("Debit   :   ",
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontFamily: "Montserrat",
+                                            fontWeight: FontWeight.bold)),
+                                    Text(
+                                      "BRL20",
+                                      style: const TextStyle(
+                                          fontSize: 15,
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
                                     ),
                                   ],
                                 ),
-                              )
-                            ],
-                          ),
-                          SizedBox(
-                            height: 35,
-                          )
-                        ],
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    const Text("Credit    :   ",
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontFamily: "Montserrat",
+                                            fontWeight: FontWeight.bold)),
+                                    Text(
+                                      "		BRL1500.00",
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text("	Sccount Type :   ",
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        fontFamily: "Montserrat",
+                                        fontWeight: FontWeight.bold)),
+                                Expanded(
+                                  child: Text(
+                                    "Capital Account",
+                                    style: const TextStyle(
+                                        fontFamily: "Montserrat",
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                    Card(
-                      margin:
-                          const EdgeInsets.only(right: 10, left: 10, top: 7),
-                      elevation: 5,
+                  ),
+                  Container(
+                    margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+                    child: PhysicalModel(
                       color: Colors.white,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 15, top: 10),
-                                child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                      elevation: 8,
+                      shadowColor: const Color(0xff9a9ce3),
+                      borderRadius: BorderRadius.circular(4),
+                      child: Container(
+                        padding: const EdgeInsets.all(10),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: [
-                                        Text(
-                                          "Passenger",
-                                          //snapshot.data![index].passenger,
-                                          style: TextStyle(
-                                              fontFamily: "Montserrat",
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                        SizedBox(width: 70),
-                                        Text(
-                                          "Transaction :0",
-                                          //snapshot.data![index].passenger,
-                                          style: TextStyle(
-                                              fontFamily: "Montserrat",
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 5,
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(right: 20),
-                                          child: Text(
-                                            "mobile:453543543",
-                                            //snapshot.data![index].bookedProduct}",
-                                            style: TextStyle(
-                                                fontFamily: "Montserrat",
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: 15),
-                                          ),
-                                        ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Image(
-                                                image: AssetImage(
-                                                    'assets/images/tickiconpng.png'),
-                                                width: 16,
-                                                height: 16,
-                                                color: Colors.blue),
-                                            Text(
-                                              "Connect Broadband",
-                                              //snapshot.data![index].journeyType,
-                                              style: TextStyle(
-                                                  fontFamily: "Montserrat",
-                                                  fontWeight: FontWeight.w500,
-                                                  fontSize: 15,
-                                                  color: Colors.blue),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: 5,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 10),
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      padding:
-                                          EdgeInsets.fromLTRB(10.0, 5, 10, 5),
-                                      decoration: BoxDecoration(
-                                        color: Colors.orange,
-                                        border: Border.all(
-                                            width: 0.1,
-                                            color: Colors
-                                                .blue), //https://stackoverflow.com/a/67395539/16076689
-                                        borderRadius:
-                                            new BorderRadius.circular(5.0),
-                                      ),
-                                      child: Text(
-                                        "Success",
-                                        //snapshot.data![index].paidStatus,
+                                    const Text("Transaction Date:   ",
                                         style: TextStyle(
-                                            fontFamily: "Montserrat",
                                             fontSize: 15,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.white),
-                                      ),
+                                            fontFamily: "Montserrat",
+                                            fontWeight: FontWeight.bold)),
+                                    Text(
+                                      "30 November 2023",
+                                      style: const TextStyle(
+                                          fontSize: 15,
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
                                     ),
                                   ],
                                 ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(right: 20),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.end,
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    Row(
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(bottom: 15),
-                                          child: Image(
-                                            image: AssetImage(
-                                                'assets/images/tickiconpng.png'),
-                                            color: Colors.blue,
-                                            width: 16,
-                                            height: 16,
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(bottom: 15),
-                                          child: Text(
-                                            "Amount :800",
-                                            //snapshot.data![index].tripDate,
-                                            style: TextStyle(
-                                                fontFamily: "Montserrat",
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: 15,
-                                                color: Colors.blue),
-                                          ),
-                                        ),
-                                      ],
+                                    const Text("Debit   :   ",
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontFamily: "Montserrat",
+                                            fontWeight: FontWeight.bold)),
+                                    Text(
+                                      "BRL20",
+                                      style: const TextStyle(
+                                          fontSize: 15,
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
                                     ),
                                   ],
                                 ),
-                              )
-                            ],
-                          ),
-                          SizedBox(
-                            height: 35,
-                          )
-                        ],
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    const Text("Credit    :   ",
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontFamily: "Montserrat",
+                                            fontWeight: FontWeight.bold)),
+                                    Text(
+                                      "		BRL1500.00",
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text("	Sccount Type :   ",
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        fontFamily: "Montserrat",
+                                        fontWeight: FontWeight.bold)),
+                                Expanded(
+                                  child: Text(
+                                    "Capital Account",
+                                    style: const TextStyle(
+                                        fontFamily: "Montserrat",
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                    Card(
-                      margin:
-                          const EdgeInsets.only(right: 10, left: 10, top: 7),
-                      elevation: 5,
+                  ),
+                  Container(
+                    margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+                    child: PhysicalModel(
                       color: Colors.white,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 15, top: 10),
-                                child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                      elevation: 8,
+                      shadowColor: const Color(0xff9a9ce3),
+                      borderRadius: BorderRadius.circular(4),
+                      child: Container(
+                        padding: const EdgeInsets.all(10),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: [
-                                        Text(
-                                          "Passenger",
-                                          //snapshot.data![index].passenger,
-                                          style: TextStyle(
-                                              fontFamily: "Montserrat",
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                        SizedBox(width: 70),
-                                        Text(
-                                          "Transaction :0",
-                                          //snapshot.data![index].passenger,
-                                          style: TextStyle(
-                                              fontFamily: "Montserrat",
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 5,
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(right: 20),
-                                          child: Text(
-                                            "mobile:453543543",
-                                            //snapshot.data![index].bookedProduct}",
-                                            style: TextStyle(
-                                                fontFamily: "Montserrat",
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: 15),
-                                          ),
-                                        ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Image(
-                                                image: AssetImage(
-                                                    'assets/images/tickiconpng.png'),
-                                                width: 16,
-                                                height: 16,
-                                                color: Colors.blue),
-                                            Text(
-                                              "Connect Broadband",
-                                              //snapshot.data![index].journeyType,
-                                              style: TextStyle(
-                                                  fontFamily: "Montserrat",
-                                                  fontWeight: FontWeight.w500,
-                                                  fontSize: 15,
-                                                  color: Colors.blue),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: 5,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 10),
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      padding:
-                                          EdgeInsets.fromLTRB(10.0, 5, 10, 5),
-                                      decoration: BoxDecoration(
-                                        color: Colors.orange,
-                                        border: Border.all(
-                                            width: 0.1,
-                                            color: Colors
-                                                .blue), //https://stackoverflow.com/a/67395539/16076689
-                                        borderRadius:
-                                            new BorderRadius.circular(5.0),
-                                      ),
-                                      child: Text(
-                                        "Success",
-                                        //snapshot.data![index].paidStatus,
+                                    const Text("Transaction Date:   ",
                                         style: TextStyle(
-                                            fontFamily: "Montserrat",
                                             fontSize: 15,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.white),
-                                      ),
+                                            fontFamily: "Montserrat",
+                                            fontWeight: FontWeight.bold)),
+                                    Text(
+                                      "30 November 2023",
+                                      style: const TextStyle(
+                                          fontSize: 15,
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
                                     ),
                                   ],
                                 ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(right: 20),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.end,
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    Row(
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(bottom: 15),
-                                          child: Image(
-                                            image: AssetImage(
-                                                'assets/images/tickiconpng.png'),
-                                            color: Colors.blue,
-                                            width: 16,
-                                            height: 16,
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(bottom: 15),
-                                          child: Text(
-                                            "Amount :800",
-                                            //snapshot.data![index].tripDate,
-                                            style: TextStyle(
-                                                fontFamily: "Montserrat",
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: 15,
-                                                color: Colors.blue),
-                                          ),
-                                        ),
-                                      ],
+                                    const Text("Debit   :   ",
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontFamily: "Montserrat",
+                                            fontWeight: FontWeight.bold)),
+                                    Text(
+                                      "BRL20",
+                                      style: const TextStyle(
+                                          fontSize: 15,
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
                                     ),
                                   ],
                                 ),
-                              )
-                            ],
-                          ),
-                          SizedBox(
-                            height: 35,
-                          )
-                        ],
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    const Text("Credit    :   ",
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontFamily: "Montserrat",
+                                            fontWeight: FontWeight.bold)),
+                                    Text(
+                                      "		BRL1500.00",
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text("	Sccount Type :   ",
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        fontFamily: "Montserrat",
+                                        fontWeight: FontWeight.bold)),
+                                Expanded(
+                                  child: Text(
+                                    "Capital Account",
+                                    style: const TextStyle(
+                                        fontFamily: "Montserrat",
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                    Card(
-                      margin:
-                          const EdgeInsets.only(right: 10, left: 10, top: 7),
-                      elevation: 5,
+                  ),
+                  Container(
+                    margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+                    child: PhysicalModel(
                       color: Colors.white,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 15, top: 10),
-                                child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                      elevation: 8,
+                      shadowColor: const Color(0xff9a9ce3),
+                      borderRadius: BorderRadius.circular(4),
+                      child: Container(
+                        padding: const EdgeInsets.all(10),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: [
-                                        Text(
-                                          "Passenger",
-                                          //snapshot.data![index].passenger,
-                                          style: TextStyle(
-                                              fontFamily: "Montserrat",
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                        SizedBox(width: 70),
-                                        Text(
-                                          "Transaction :0",
-                                          //snapshot.data![index].passenger,
-                                          style: TextStyle(
-                                              fontFamily: "Montserrat",
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 5,
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(right: 20),
-                                          child: Text(
-                                            "mobile:453543543",
-                                            //snapshot.data![index].bookedProduct}",
-                                            style: TextStyle(
-                                                fontFamily: "Montserrat",
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: 15),
-                                          ),
-                                        ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Image(
-                                                image: AssetImage(
-                                                    'assets/images/tickiconpng.png'),
-                                                width: 16,
-                                                height: 16,
-                                                color: Colors.blue),
-                                            Text(
-                                              "Connect Broadband",
-                                              //snapshot.data![index].journeyType,
-                                              style: TextStyle(
-                                                  fontFamily: "Montserrat",
-                                                  fontWeight: FontWeight.w500,
-                                                  fontSize: 15,
-                                                  color: Colors.blue),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: 5,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 10),
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      padding:
-                                          EdgeInsets.fromLTRB(10.0, 5, 10, 5),
-                                      decoration: BoxDecoration(
-                                        color: Colors.orange,
-                                        border: Border.all(
-                                            width: 0.1,
-                                            color: Colors
-                                                .blue), //https://stackoverflow.com/a/67395539/16076689
-                                        borderRadius:
-                                            new BorderRadius.circular(5.0),
-                                      ),
-                                      child: Text(
-                                        "Success",
-                                        //snapshot.data![index].paidStatus,
+                                    const Text("Transaction Date:   ",
                                         style: TextStyle(
-                                            fontFamily: "Montserrat",
                                             fontSize: 15,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.white),
-                                      ),
+                                            fontFamily: "Montserrat",
+                                            fontWeight: FontWeight.bold)),
+                                    Text(
+                                      "30 November 2023",
+                                      style: const TextStyle(
+                                          fontSize: 15,
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
                                     ),
                                   ],
                                 ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(right: 20),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.end,
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    Row(
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(bottom: 15),
-                                          child: Image(
-                                            image: AssetImage(
-                                                'assets/images/tickiconpng.png'),
-                                            color: Colors.blue,
-                                            width: 16,
-                                            height: 16,
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(bottom: 15),
-                                          child: Text(
-                                            "Amount :800",
-                                            //snapshot.data![index].tripDate,
-                                            style: TextStyle(
-                                                fontFamily: "Montserrat",
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: 15,
-                                                color: Colors.blue),
-                                          ),
-                                        ),
-                                      ],
+                                    const Text("Debit   :   ",
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontFamily: "Montserrat",
+                                            fontWeight: FontWeight.bold)),
+                                    Text(
+                                      "BRL20",
+                                      style: const TextStyle(
+                                          fontSize: 15,
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
                                     ),
                                   ],
                                 ),
-                              )
-                            ],
-                          ),
-                          SizedBox(
-                            height: 35,
-                          )
-                        ],
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    const Text("Credit    :   ",
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontFamily: "Montserrat",
+                                            fontWeight: FontWeight.bold)),
+                                    Text(
+                                      "		BRL1500.00",
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text("	Sccount Type :   ",
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        fontFamily: "Montserrat",
+                                        fontWeight: FontWeight.bold)),
+                                Expanded(
+                                  child: Text(
+                                    "Capital Account",
+                                    style: const TextStyle(
+                                        fontFamily: "Montserrat",
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                    Card(
-                      margin:
-                          const EdgeInsets.only(right: 10, left: 10, top: 7),
-                      elevation: 5,
+                  ),
+                  Container(
+                    margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+                    child: PhysicalModel(
                       color: Colors.white,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 15, top: 10),
-                                child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                      elevation: 8,
+                      shadowColor: const Color(0xff9a9ce3),
+                      borderRadius: BorderRadius.circular(4),
+                      child: Container(
+                        padding: const EdgeInsets.all(10),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: [
-                                        Text(
-                                          "Passenger",
-                                          //snapshot.data![index].passenger,
-                                          style: TextStyle(
-                                              fontFamily: "Montserrat",
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                        SizedBox(width: 70),
-                                        Text(
-                                          "Transaction :0",
-                                          //snapshot.data![index].passenger,
-                                          style: TextStyle(
-                                              fontFamily: "Montserrat",
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 5,
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(right: 20),
-                                          child: Text(
-                                            "mobile:453543543",
-                                            //snapshot.data![index].bookedProduct}",
-                                            style: TextStyle(
-                                                fontFamily: "Montserrat",
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: 15),
-                                          ),
-                                        ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Image(
-                                                image: AssetImage(
-                                                    'assets/images/tickiconpng.png'),
-                                                width: 16,
-                                                height: 16,
-                                                color: Colors.blue),
-                                            Text(
-                                              "Connect Broadband",
-                                              //snapshot.data![index].journeyType,
-                                              style: TextStyle(
-                                                  fontFamily: "Montserrat",
-                                                  fontWeight: FontWeight.w500,
-                                                  fontSize: 15,
-                                                  color: Colors.blue),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: 5,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 10),
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      padding:
-                                          EdgeInsets.fromLTRB(10.0, 5, 10, 5),
-                                      decoration: BoxDecoration(
-                                        color: Colors.orange,
-                                        border: Border.all(
-                                            width: 0.1,
-                                            color: Colors
-                                                .blue), //https://stackoverflow.com/a/67395539/16076689
-                                        borderRadius:
-                                            new BorderRadius.circular(5.0),
-                                      ),
-                                      child: Text(
-                                        "Success",
-                                        //snapshot.data![index].paidStatus,
+                                    const Text("Transaction Date:   ",
                                         style: TextStyle(
-                                            fontFamily: "Montserrat",
                                             fontSize: 15,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.white),
-                                      ),
+                                            fontFamily: "Montserrat",
+                                            fontWeight: FontWeight.bold)),
+                                    Text(
+                                      "30 November 2023",
+                                      style: const TextStyle(
+                                          fontSize: 15,
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
                                     ),
                                   ],
                                 ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(right: 20),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.end,
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    Row(
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(bottom: 15),
-                                          child: Image(
-                                            image: AssetImage(
-                                                'assets/images/tickiconpng.png'),
-                                            color: Colors.blue,
-                                            width: 16,
-                                            height: 16,
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(bottom: 15),
-                                          child: Text(
-                                            "Amount :800",
-                                            //snapshot.data![index].tripDate,
-                                            style: TextStyle(
-                                                fontFamily: "Montserrat",
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: 15,
-                                                color: Colors.blue),
-                                          ),
-                                        ),
-                                      ],
+                                    const Text("Debit   :   ",
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontFamily: "Montserrat",
+                                            fontWeight: FontWeight.bold)),
+                                    Text(
+                                      "BRL20",
+                                      style: const TextStyle(
+                                          fontSize: 15,
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
                                     ),
                                   ],
                                 ),
-                              )
-                            ],
-                          ),
-                          SizedBox(
-                            height: 35,
-                          )
-                        ],
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    const Text("Credit    :   ",
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontFamily: "Montserrat",
+                                            fontWeight: FontWeight.bold)),
+                                    Text(
+                                      "		BRL1500.00",
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text("	Sccount Type :   ",
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        fontFamily: "Montserrat",
+                                        fontWeight: FontWeight.bold)),
+                                Expanded(
+                                  child: Text(
+                                    "Capital Account",
+                                    style: const TextStyle(
+                                        fontFamily: "Montserrat",
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ]),
-                ])))));
+                  ),
+                  Container(
+                    margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+                    child: PhysicalModel(
+                      color: Colors.white,
+                      elevation: 8,
+                      shadowColor: const Color(0xff9a9ce3),
+                      borderRadius: BorderRadius.circular(4),
+                      child: Container(
+                        padding: const EdgeInsets.all(10),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    const Text("Transaction Date:   ",
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontFamily: "Montserrat",
+                                            fontWeight: FontWeight.bold)),
+                                    Text(
+                                      "30 November 2023",
+                                      style: const TextStyle(
+                                          fontSize: 15,
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    const Text("Debit   :   ",
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontFamily: "Montserrat",
+                                            fontWeight: FontWeight.bold)),
+                                    Text(
+                                      "BRL20",
+                                      style: const TextStyle(
+                                          fontSize: 15,
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    const Text("Credit    :   ",
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontFamily: "Montserrat",
+                                            fontWeight: FontWeight.bold)),
+                                    Text(
+                                      "		BRL1500.00",
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text("	Sccount Type :   ",
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        fontFamily: "Montserrat",
+                                        fontWeight: FontWeight.bold)),
+                                Expanded(
+                                  child: Text(
+                                    "Capital Account",
+                                    style: const TextStyle(
+                                        fontFamily: "Montserrat",
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+                    child: PhysicalModel(
+                      color: Colors.white,
+                      elevation: 8,
+                      shadowColor: const Color(0xff9a9ce3),
+                      borderRadius: BorderRadius.circular(4),
+                      child: Container(
+                        padding: const EdgeInsets.all(10),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    const Text("Transaction Date:   ",
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontFamily: "Montserrat",
+                                            fontWeight: FontWeight.bold)),
+                                    Text(
+                                      "30 November 2023",
+                                      style: const TextStyle(
+                                          fontSize: 15,
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    const Text("Debit   :   ",
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontFamily: "Montserrat",
+                                            fontWeight: FontWeight.bold)),
+                                    Text(
+                                      "BRL20",
+                                      style: const TextStyle(
+                                          fontSize: 15,
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    const Text("Credit    :   ",
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontFamily: "Montserrat",
+                                            fontWeight: FontWeight.bold)),
+                                    Text(
+                                      "		BRL1500.00",
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text("	Sccount Type :   ",
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        fontFamily: "Montserrat",
+                                        fontWeight: FontWeight.bold)),
+                                Expanded(
+                                  child: Text(
+                                    "Capital Account",
+                                    style: const TextStyle(
+                                        fontFamily: "Montserrat",
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+                    child: PhysicalModel(
+                      color: Colors.white,
+                      elevation: 8,
+                      shadowColor: const Color(0xff9a9ce3),
+                      borderRadius: BorderRadius.circular(4),
+                      child: Container(
+                        padding: const EdgeInsets.all(10),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    const Text("Transaction Date:   ",
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontFamily: "Montserrat",
+                                            fontWeight: FontWeight.bold)),
+                                    Text(
+                                      "30 November 2023",
+                                      style: const TextStyle(
+                                          fontSize: 15,
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    const Text("Debit   :   ",
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontFamily: "Montserrat",
+                                            fontWeight: FontWeight.bold)),
+                                    Text(
+                                      "BRL20",
+                                      style: const TextStyle(
+                                          fontSize: 15,
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    const Text("Credit    :   ",
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontFamily: "Montserrat",
+                                            fontWeight: FontWeight.bold)),
+                                    Text(
+                                      "		BRL1500.00",
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text("	Sccount Type :   ",
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        fontFamily: "Montserrat",
+                                        fontWeight: FontWeight.bold)),
+                                Expanded(
+                                  child: Text(
+                                    "Capital Account",
+                                    style: const TextStyle(
+                                        fontFamily: "Montserrat",
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+                    child: PhysicalModel(
+                      color: Colors.white,
+                      elevation: 8,
+                      shadowColor: const Color(0xff9a9ce3),
+                      borderRadius: BorderRadius.circular(4),
+                      child: Container(
+                        padding: const EdgeInsets.all(10),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    const Text("Transaction Date:   ",
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontFamily: "Montserrat",
+                                            fontWeight: FontWeight.bold)),
+                                    Text(
+                                      "30 November 2023",
+                                      style: const TextStyle(
+                                          fontSize: 15,
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    const Text("Debit   :   ",
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontFamily: "Montserrat",
+                                            fontWeight: FontWeight.bold)),
+                                    Text(
+                                      "BRL20",
+                                      style: const TextStyle(
+                                          fontSize: 15,
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    const Text("Credit    :   ",
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontFamily: "Montserrat",
+                                            fontWeight: FontWeight.bold)),
+                                    Text(
+                                      "		BRL1500.00",
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text("	Sccount Type :   ",
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        fontFamily: "Montserrat",
+                                        fontWeight: FontWeight.bold)),
+                                Expanded(
+                                  child: Text(
+                                    "Capital Account",
+                                    style: const TextStyle(
+                                        fontFamily: "Montserrat",
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            )));
     /*  child: Container(
               margin: EdgeInsets.all(10),
               child: PhysicalModel(

@@ -28,7 +28,7 @@ class _BookingCardGeneralDetailsState extends State<Receipt> {
               width: 10,
             )
           ],
-          backgroundColor:  Color(0xFF1d5e72),
+          backgroundColor: Color(0xFF1d5e72),
         ),
         body: SingleChildScrollView(
           child: Container(

@@ -53,7 +53,9 @@ class _BookingCardGeneralDetailsState extends State<ActiveTravellers> {
                     color: Colors.white,
                     size: 27,
                   ),
-                  onPressed: () {Navigator.pop(context);},
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                 ),
 
                 SizedBox(width: 1), // Set the desired width
@@ -491,7 +493,7 @@ class _BookingCardGeneralDetailsState extends State<ActiveTravellers> {
                                                                   ),
                                                                   child: Text(
                                                                     snapshot.data![index].IsActive ==
-                                                                            1
+                                                                            "0"
                                                                         ? 'InActive'
                                                                         : 'Active',
                                                                     style: TextStyle(

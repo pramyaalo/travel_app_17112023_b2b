@@ -6,8 +6,6 @@ import 'package:travel_app_17112023_b2b/Booking/ContactDetaails.dart';
 import 'package:travel_app_17112023_b2b/Booking/PaymentTransactions.dart';
 
 class ViewBookingDetails extends StatefulWidget {
-  const ViewBookingDetails({super.key});
-
   @override
   State<ViewBookingDetails> createState() =>
       _BookingCardsDetailsContainerState();
@@ -26,7 +24,9 @@ class _BookingCardsDetailsContainerState extends State<ViewBookingDetails>
   int index = 0;
 
   var tabs = [
-    BookedItemDetail(),
+    BookedItemDetail(
+      id: '',
+    ),
     ContactDetaails(),
     PaymentTransactions(),
     ChangingDetails(),

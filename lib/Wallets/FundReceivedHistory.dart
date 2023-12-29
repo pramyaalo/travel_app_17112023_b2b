@@ -37,18 +37,35 @@ class _WalletStatementReportState extends State<FundReceivedHistory> {
     return SafeArea(
         child: Scaffold(
             appBar: AppBar(
-              title: const Text(
-                "Fund Received History",
-                style: TextStyle(fontFamily: "Montserrat"),
+              automaticallyImplyLeading: false,
+              titleSpacing: 1,
+              title: Row(
+                children: [
+                  IconButton(
+                    icon: Icon(
+                      Icons.arrow_back,
+                      color: Colors.white,
+                      size: 27,
+                    ),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+
+                  SizedBox(width: 1), // Set the desired width
+                  Text(
+                    "Fund Received History",
+                    style: TextStyle(fontFamily: "Montserrat", fontSize: 19),
+                  ),
+                ],
               ),
-              //title: Image.asset('assets/images/loginoho.jpg', width: 150, height: 30,),
               actions: [
                 Image.asset(
                   'assets/images/loginoho.jpg',
-                  width: 750,
+                  width: 70,
                   height: 50,
                 ),
-                const SizedBox(
+                SizedBox(
                   width: 10,
                 )
               ],

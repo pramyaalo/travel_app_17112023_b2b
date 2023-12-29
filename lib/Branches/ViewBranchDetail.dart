@@ -137,993 +137,1401 @@ class _MyRechargePageState extends State<ViewBranchDetail> {
                     ViewBranchDetailsModel m0 =
                         ViewBranchDetailsModel.fromJson(table0[0]);
                     return SingleChildScrollView(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Padding(padding: EdgeInsets.only(top: 20)),
-                          InkWell(
-                            onTap: () {
-                              print('Button Clicked');
-                              //_showSelectionDialog(context);
-                            },
-                            child: Stack(
-                              alignment: Alignment.bottomRight,
-                              children: [
-                                CircleAvatar(
-                                  radius: 50,
-                                  backgroundColor: Colors.transparent,
-                                  // Adjust the size as needed
-                                  child: ClipOval(
-                                    /* child:  Image.network(
-                                      'https://traveldemo.org/travelapp/Images/Traveller/nofile' +
-                                          m0.agencyBranchLogo!,
-                                      width: 100,
-                                      height: 100,
-                                    ),*/
-                                    child: Image.asset(
-                                      'assets/images/profile.png', // Replace with your placeholder image asset path
-                                      width: 100,
-                                      height: 100,
-                                    ),
-                                  ),
-                                ),
-                                Icon(Icons.camera_alt),
-                              ],
-                            ),
+                      child: Container(
+                        margin: EdgeInsets.only(left: 9, right: 9, top: 7),
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Colors.grey, // Border color
+                            width: 1.0, // Border width
                           ),
-                          SizedBox(
-                            height: 8,
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 15),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Customer Type        :",
-                                      style: const TextStyle(
-                                          fontFamily: "Montserrat",
-                                          fontWeight: FontWeight.w500),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 2),
-                                      child: Text(
-                                        m0.customerType,
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              SizedBox(height: 8.0),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 15),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Customer Name      :",
-                                      style: const TextStyle(
-                                          fontFamily: "Montserrat",
-                                          fontWeight: FontWeight.w500),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 2),
-                                      child: Text(
-                                        m0.customerName,
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              SizedBox(height: 8.0),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 15),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Branch Code            :",
-                                      style: const TextStyle(
-                                          fontFamily: "Montserrat",
-                                          fontWeight: FontWeight.w500),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 2),
-                                      child: Text(
-                                        m0.agencyBranchCode,
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              SizedBox(height: 8.0),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 15),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Branch Name           :",
-                                      style: const TextStyle(
-                                          fontFamily: "Montserrat",
-                                          fontWeight: FontWeight.w500),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 2),
-                                      child: Text(
-                                        m0.agencyBranchName,
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              SizedBox(height: 8.0),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 15),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Branch Head            :",
-                                      style: const TextStyle(
-                                          fontFamily: "Montserrat",
-                                          fontWeight: FontWeight.w500),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 2),
-                                      child: Text(
-                                        m0.agencyBranchHead,
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              SizedBox(height: 8.0),
-
-                              /*  Row(
+                          borderRadius: BorderRadius.all(Radius.circular(
+                              8.0)), // Optional: Add rounded corners
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Padding(padding: EdgeInsets.only(top: 20)),
+                            InkWell(
+                              onTap: () {
+                                print('Button Clicked');
+                                //_showSelectionDialog(context);
+                              },
+                              child: Stack(
+                                alignment: Alignment.bottomRight,
                                 children: [
-                                  Checkbox(
-                                      value: checkboxStatus == "1",
-                                      onChanged: (bool? newValue) {
-                                        setState(() {
-                                          checkboxStatus =
-                                              newValue == true ? "1" : "0";
-                                        });
-                                        print('cjeckbosfstsyd:$checkboxStatus');
-                                      }),
-                                  Text('Distributor/GSA',
-                                      style: const TextStyle(
-                                          fontFamily: "Montserrat",
-                                          fontWeight: FontWeight.w500)),
+                                  CircleAvatar(
+                                    radius: 50,
+                                    backgroundColor: Colors.transparent,
+                                    // Adjust the size as needed
+                                    child: ClipOval(
+                                      /* child:  Image.network(
+                                        'https://traveldemo.org/travelapp/Images/Traveller/nofile' +
+                                            m0.agencyBranchLogo!,
+                                        width: 100,
+                                        height: 100,
+                                      ),*/
+                                      child: Image.asset(
+                                        'assets/images/profile.png', // Replace with your placeholder image asset path
+                                        width: 100,
+                                        height: 100,
+                                      ),
+                                    ),
+                                  ),
+                                  Icon(Icons.camera_alt),
                                 ],
-                              ),*/
-                              Padding(
-                                padding: const EdgeInsets.only(left: 15),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "AddressLine1          :",
-                                      style: const TextStyle(
-                                          fontFamily: "Montserrat",
-                                          fontWeight: FontWeight.w500),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 8,
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: <Widget>[
+                                SizedBox(height: 8),
+                                Row(
+                                  children: <Widget>[
+                                    Expanded(
+                                      child: Align(
+                                        alignment:
+                                            AlignmentDirectional.centerStart,
+                                        child: Text(
+                                          "    Customer Type",
+                                          style: const TextStyle(
+                                              fontFamily: "Montserrat",
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                      ),
                                     ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 2),
-                                      child: Text(
-                                        m0.addressLine1,
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
+                                    Align(
+                                      alignment: AlignmentDirectional.center,
+                                      child: Center(
+                                        child: Text(" : "),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Align(
+                                        alignment:
+                                            AlignmentDirectional.centerStart,
+                                        child: Text(
+                                          m0.customerType,
+                                          style: const TextStyle(
+                                              fontFamily: "Montserrat",
+                                              fontWeight: FontWeight.w500),
+                                        ),
                                       ),
                                     ),
                                   ],
                                 ),
-                              ),
-                              SizedBox(height: 8.0),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 15),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "AddressLine2          :",
-                                      style: const TextStyle(
-                                          fontFamily: "Montserrat",
-                                          fontWeight: FontWeight.w500),
+                                SizedBox(height: 8.0),
+                                Row(
+                                  children: <Widget>[
+                                    Expanded(
+                                      child: Align(
+                                        alignment:
+                                            AlignmentDirectional.centerStart,
+                                        child: Text(
+                                          "    Customer Name",
+                                          style: const TextStyle(
+                                              fontFamily: "Montserrat",
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                      ),
                                     ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 2),
-                                      child: Text(
-                                        m0.addressLine2,
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
+                                    Align(
+                                      alignment: AlignmentDirectional.center,
+                                      child: Center(
+                                        child: Text(" : "),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Align(
+                                        alignment:
+                                            AlignmentDirectional.centerStart,
+                                        child: Text(
+                                          m0.customerName,
+                                          style: const TextStyle(
+                                              fontFamily: "Montserrat",
+                                              fontWeight: FontWeight.w500),
+                                        ),
                                       ),
                                     ),
                                   ],
                                 ),
-                              ),
-                              SizedBox(height: 8.0),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 15),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "AddressLine3          :",
-                                      style: const TextStyle(
-                                          fontFamily: "Montserrat",
-                                          fontWeight: FontWeight.w500),
+                                SizedBox(height: 8.0),
+                                Row(
+                                  children: <Widget>[
+                                    Expanded(
+                                      child: Align(
+                                        alignment:
+                                            AlignmentDirectional.centerStart,
+                                        child: Text(
+                                          "    Branch Code",
+                                          style: const TextStyle(
+                                              fontFamily: "Montserrat",
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                      ),
                                     ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 2),
-                                      child: Text(
-                                        m0.addressLine3,
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
+                                    Align(
+                                      alignment: AlignmentDirectional.center,
+                                      child: Center(
+                                        child: Text(" : "),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Align(
+                                        alignment:
+                                            AlignmentDirectional.centerStart,
+                                        child: Text(
+                                          m0.agencyBranchCode,
+                                          style: const TextStyle(
+                                              fontFamily: "Montserrat",
+                                              fontWeight: FontWeight.w500),
+                                        ),
                                       ),
                                     ),
                                   ],
                                 ),
-                              ),
-                              SizedBox(height: 8.0),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 15),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "City                            :",
-                                      style: const TextStyle(
-                                          fontFamily: "Montserrat",
-                                          fontWeight: FontWeight.w500),
+                                SizedBox(height: 8.0),
+                                Row(
+                                  children: <Widget>[
+                                    Expanded(
+                                      child: Align(
+                                        alignment:
+                                            AlignmentDirectional.centerStart,
+                                        child: Text(
+                                          "    Branch Name",
+                                          style: const TextStyle(
+                                              fontFamily: "Montserrat",
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                      ),
                                     ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 2),
-                                      child: Text(
-                                        m0.city,
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
+                                    Align(
+                                      alignment: AlignmentDirectional.center,
+                                      child: Center(
+                                        child: Text(" : "),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Align(
+                                        alignment:
+                                            AlignmentDirectional.centerStart,
+                                        child: Text(
+                                          m0.agencyBranchName,
+                                          style: const TextStyle(
+                                              fontFamily: "Montserrat",
+                                              fontWeight: FontWeight.w500),
+                                        ),
                                       ),
                                     ),
                                   ],
                                 ),
-                              ),
-                              SizedBox(height: 8.0),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 15),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "State                         :",
-                                      style: const TextStyle(
-                                          fontFamily: "Montserrat",
-                                          fontWeight: FontWeight.w500),
+                                SizedBox(height: 8.0),
+                                Row(
+                                  children: <Widget>[
+                                    Expanded(
+                                      child: Align(
+                                        alignment:
+                                            AlignmentDirectional.centerStart,
+                                        child: Text(
+                                          "    Branch Head",
+                                          style: const TextStyle(
+                                              fontFamily: "Montserrat",
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                      ),
                                     ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 2),
-                                      child: Text(
-                                        m0.state,
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
+                                    Align(
+                                      alignment: AlignmentDirectional.center,
+                                      child: Center(
+                                        child: Text(" : "),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Align(
+                                        alignment:
+                                            AlignmentDirectional.centerStart,
+                                        child: Text(
+                                          m0.agencyBranchHead,
+                                          style: const TextStyle(
+                                              fontFamily: "Montserrat",
+                                              fontWeight: FontWeight.w500),
+                                        ),
                                       ),
                                     ),
                                   ],
                                 ),
-                              ),
-                              SizedBox(height: 8.0),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 15),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Post Code                :",
-                                      style: const TextStyle(
-                                          fontFamily: "Montserrat",
-                                          fontWeight: FontWeight.w500),
+                                SizedBox(height: 8.0),
+                                Row(
+                                  children: <Widget>[
+                                    Expanded(
+                                      child: Align(
+                                        alignment:
+                                            AlignmentDirectional.centerStart,
+                                        child: Text(
+                                          "    Address Line1",
+                                          style: const TextStyle(
+                                              fontFamily: "Montserrat",
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                      ),
                                     ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 2),
-                                      child: Text(
-                                        m0.postCode,
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
+                                    Align(
+                                      alignment: AlignmentDirectional.center,
+                                      child: Center(
+                                        child: Text(" : "),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Align(
+                                        alignment:
+                                            AlignmentDirectional.centerStart,
+                                        child: Text(
+                                          m0.addressLine1,
+                                          style: const TextStyle(
+                                              fontFamily: "Montserrat",
+                                              fontWeight: FontWeight.w500),
+                                        ),
                                       ),
                                     ),
                                   ],
                                 ),
-                              ),
-                              SizedBox(height: 8.0),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 15),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Country                     :",
-                                      style: const TextStyle(
-                                          fontFamily: "Montserrat",
-                                          fontWeight: FontWeight.w500),
+                                SizedBox(height: 8.0),
+                                Row(
+                                  children: <Widget>[
+                                    Expanded(
+                                      child: Align(
+                                        alignment:
+                                            AlignmentDirectional.centerStart,
+                                        child: Text(
+                                          "    Address Line2",
+                                          style: const TextStyle(
+                                              fontFamily: "Montserrat",
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                      ),
                                     ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 2),
-                                      child: Text(
-                                        m0.country,
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
+                                    Align(
+                                      alignment: AlignmentDirectional.center,
+                                      child: Center(
+                                        child: Text(" : "),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Align(
+                                        alignment:
+                                            AlignmentDirectional.centerStart,
+                                        child: Text(
+                                          m0.addressLine2,
+                                          style: const TextStyle(
+                                              fontFamily: "Montserrat",
+                                              fontWeight: FontWeight.w500),
+                                        ),
                                       ),
                                     ),
                                   ],
                                 ),
-                              ),
-                              SizedBox(height: 8.0),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 15),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Credit Limit              :",
-                                      style: const TextStyle(
-                                          fontFamily: "Montserrat",
-                                          fontWeight: FontWeight.w500),
+                                SizedBox(height: 8.0),
+                                Row(
+                                  children: <Widget>[
+                                    Expanded(
+                                      child: Align(
+                                        alignment:
+                                            AlignmentDirectional.centerStart,
+                                        child: Text(
+                                          "    Address Line3",
+                                          style: const TextStyle(
+                                              fontFamily: "Montserrat",
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                      ),
                                     ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 2),
-                                      child: Text(
-                                        m0.creditLimit,
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
+                                    Align(
+                                      alignment: AlignmentDirectional.center,
+                                      child: Center(
+                                        child: Text(" : "),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Align(
+                                        alignment:
+                                            AlignmentDirectional.centerStart,
+                                        child: Text(
+                                          m0.addressLine3,
+                                          style: const TextStyle(
+                                              fontFamily: "Montserrat",
+                                              fontWeight: FontWeight.w500),
+                                        ),
                                       ),
                                     ),
                                   ],
                                 ),
-                              ),
-                              SizedBox(height: 8.0),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 15),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Status                       :",
-                                      style: const TextStyle(
-                                          fontFamily: "Montserrat",
-                                          fontWeight: FontWeight.w500),
+                                SizedBox(height: 8.0),
+                                Row(
+                                  children: <Widget>[
+                                    Expanded(
+                                      child: Align(
+                                        alignment:
+                                            AlignmentDirectional.centerStart,
+                                        child: Text(
+                                          "    City",
+                                          style: const TextStyle(
+                                              fontFamily: "Montserrat",
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                      ),
                                     ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 2),
-                                      child: Text(
-                                        m0.status,
-                                        style: const TextStyle(
-                                            fontFamily: "Montserrat",
-                                            fontWeight: FontWeight.w500),
+                                    Align(
+                                      alignment: AlignmentDirectional.center,
+                                      child: Center(
+                                        child: Text(" : "),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Align(
+                                        alignment:
+                                            AlignmentDirectional.centerStart,
+                                        child: Text(
+                                          m0.city,
+                                          style: const TextStyle(
+                                              fontFamily: "Montserrat",
+                                              fontWeight: FontWeight.w500),
+                                        ),
                                       ),
                                     ),
                                   ],
                                 ),
-                              ),
-                              SizedBox(height: 8.0),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 10),
-                                child: Text(
-                                  "User Credentials",
-                                  style: const TextStyle(
-                                      fontSize: 18,
-                                      fontFamily: "Montserrat",
-                                      fontWeight: FontWeight.bold),
+                                SizedBox(height: 8.0),
+                                Row(
+                                  children: <Widget>[
+                                    Expanded(
+                                      child: Align(
+                                        alignment:
+                                            AlignmentDirectional.centerStart,
+                                        child: Text(
+                                          "    State",
+                                          style: const TextStyle(
+                                              fontFamily: "Montserrat",
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                      ),
+                                    ),
+                                    Align(
+                                      alignment: AlignmentDirectional.center,
+                                      child: Center(
+                                        child: Text(" : "),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Align(
+                                        alignment:
+                                            AlignmentDirectional.centerStart,
+                                        child: Text(
+                                          m0.state,
+                                          style: const TextStyle(
+                                              fontFamily: "Montserrat",
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                              ),
-                              Spacer()
-                            ],
-                          ),
-                          SizedBox(height: 8.0),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "UserName                :",
-                                  style: const TextStyle(
-                                      fontFamily: "Montserrat",
-                                      fontWeight: FontWeight.w500),
+                                SizedBox(height: 8.0),
+                                Row(
+                                  children: <Widget>[
+                                    Expanded(
+                                      child: Align(
+                                        alignment:
+                                            AlignmentDirectional.centerStart,
+                                        child: Text(
+                                          "    Post Code",
+                                          style: const TextStyle(
+                                              fontFamily: "Montserrat",
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                      ),
+                                    ),
+                                    Align(
+                                      alignment: AlignmentDirectional.center,
+                                      child: Center(
+                                        child: Text(" : "),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Align(
+                                        alignment:
+                                            AlignmentDirectional.centerStart,
+                                        child: Text(
+                                          m0.postCode,
+                                          style: const TextStyle(
+                                              fontFamily: "Montserrat",
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                                Padding(
-                                  padding: EdgeInsets.only(left: 2),
-                                  child: Text(
-                                    m0.userName,
-                                    style: const TextStyle(
-                                        fontFamily: "Montserrat",
-                                        fontWeight: FontWeight.w500),
-                                  ),
+                                SizedBox(height: 8.0),
+                                Row(
+                                  children: <Widget>[
+                                    Expanded(
+                                      child: Align(
+                                        alignment:
+                                            AlignmentDirectional.centerStart,
+                                        child: Text(
+                                          "    Country",
+                                          style: const TextStyle(
+                                              fontFamily: "Montserrat",
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                      ),
+                                    ),
+                                    Align(
+                                      alignment: AlignmentDirectional.center,
+                                      child: Center(
+                                        child: Text(" : "),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Align(
+                                        alignment:
+                                            AlignmentDirectional.centerStart,
+                                        child: Text(
+                                          m0.country,
+                                          style: const TextStyle(
+                                              fontFamily: "Montserrat",
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
+                                SizedBox(height: 8.0),
+                                Row(
+                                  children: <Widget>[
+                                    Expanded(
+                                      child: Align(
+                                        alignment:
+                                            AlignmentDirectional.centerStart,
+                                        child: Text(
+                                          "    Credit Limit",
+                                          style: const TextStyle(
+                                              fontFamily: "Montserrat",
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                      ),
+                                    ),
+                                    Align(
+                                      alignment: AlignmentDirectional.center,
+                                      child: Center(
+                                        child: Text(" : "),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Align(
+                                        alignment:
+                                            AlignmentDirectional.centerStart,
+                                        child: Text(
+                                          m0.creditLimit,
+                                          style: const TextStyle(
+                                              fontFamily: "Montserrat",
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: 8.0),
+                                Row(
+                                  children: <Widget>[
+                                    Expanded(
+                                      child: Align(
+                                        alignment:
+                                            AlignmentDirectional.centerStart,
+                                        child: Text(
+                                          "    Status",
+                                          style: const TextStyle(
+                                              fontFamily: "Montserrat",
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                      ),
+                                    ),
+                                    Align(
+                                      alignment: AlignmentDirectional.center,
+                                      child: Center(
+                                        child: Text(" : "),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Align(
+                                        alignment:
+                                            AlignmentDirectional.centerStart,
+                                        child: Text(
+                                          m0.status == "1"
+                                              ? "Active"
+                                              : "InActive",
+                                          style: const TextStyle(
+                                              fontFamily: "Montserrat",
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: 8.0),
                               ],
                             ),
-                          ),
-                          SizedBox(height: 8.0),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
+                            Row(
                               children: [
-                                Text(
-                                  "Password                 :",
-                                  style: const TextStyle(
-                                      fontFamily: "Montserrat",
-                                      fontWeight: FontWeight.w500),
-                                ),
                                 Padding(
-                                  padding: EdgeInsets.only(left: 2),
+                                  padding: const EdgeInsets.only(left: 10),
                                   child: Text(
-                                    m0.password,
+                                    "User Credentials",
                                     style: const TextStyle(
-                                        fontFamily: "Montserrat",
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(height: 16.0),
-                          Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 10),
-                                child: Text(
-                                  "Branch Contacts",
-                                  style: const TextStyle(
-                                      fontSize: 18,
-                                      fontFamily: "Montserrat",
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              Spacer()
-                            ],
-                          ),
-                          SizedBox(height: 4.0),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Mobile                       :",
-                                  style: const TextStyle(
-                                      fontFamily: "Montserrat",
-                                      fontWeight: FontWeight.w500),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(left: 2),
-                                  child: Text(
-                                    m0.mobile,
-                                    style: const TextStyle(
-                                        fontFamily: "Montserrat",
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(height: 8.0),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Phone                        :",
-                                  style: const TextStyle(
-                                      fontFamily: "Montserrat",
-                                      fontWeight: FontWeight.w500),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(left: 2),
-                                  child: Text(
-                                    m0.phone,
-                                    style: const TextStyle(
-                                        fontFamily: "Montserrat",
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(height: 8.0),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "FAX                            :",
-                                  style: const TextStyle(
-                                      fontFamily: "Montserrat",
-                                      fontWeight: FontWeight.w500),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(left: 2),
-                                  child: Text(
-                                    m0.fax,
-                                    style: const TextStyle(
-                                        fontFamily: "Montserrat",
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(height: 8.0),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Email                         :",
-                                  style: const TextStyle(
-                                      fontFamily: "Montserrat",
-                                      fontWeight: FontWeight.w500),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(left: 2),
-                                  child: Text(
-                                    m0.email,
-                                    style: const TextStyle(
-                                        fontSize: 13,
-                                        fontFamily: "Montserrat",
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(height: 8.0),
-                          Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 10),
-                                child: Text(
-                                  "Working Days",
-                                  style: const TextStyle(
-                                      fontSize: 18,
-                                      fontFamily: "Montserrat",
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              Spacer()
-                            ],
-                          ),
-                          SizedBox(height: 8.0),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  left: 10,
-                                ),
-                                child: Text(
-                                  "Monday                   :" + m0.monday,
-                                  style: TextStyle(
-                                    fontFamily: "Montserrat",
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 8.0),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  left: 10,
-                                ),
-                                child: Text(
-                                  "Tuesday                  :" + m0.tuesday,
-                                  style: TextStyle(
-                                    fontFamily: "Montserrat",
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 8.0),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  left: 10,
-                                ),
-                                child: Text(
-                                  "Wednesday            :" + m0.wednesday,
-                                  style: TextStyle(
-                                    fontFamily: "Montserrat",
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 8.0),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  left: 10,
-                                ),
-                                child: Text(
-                                  "Thursday                :" + m0.thursday,
-                                  style: TextStyle(
-                                    fontFamily: "Montserrat",
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 8.0),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  left: 10,
-                                ),
-                                child: Text(
-                                  "Friday                      :" + m0.friday,
-                                  style: TextStyle(
-                                    fontFamily: "Montserrat",
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 8.0),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  left: 10,
-                                ),
-                                child: Text(
-                                  "Saturday                 :" + m0.saturday,
-                                  style: TextStyle(
-                                    fontFamily: "Montserrat",
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 8.0),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  left: 10,
-                                ),
-                                child: Text(
-                                  "Sunday                    :" + m0.sunday,
-                                  style: TextStyle(
-                                    fontFamily: "Montserrat",
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 8.0),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  left: 10,
-                                ),
-                                child: Text(
-                                  "IATA Code              :" + m0.iataCode,
-                                  style: TextStyle(
-                                    fontFamily: "Montserrat",
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 8.0),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  left: 10,
-                                ),
-                                child: Text(
-                                  "PCC Number          :" + m0.pccNumber,
-                                  style: TextStyle(
-                                    fontFamily: "Montserrat",
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 8.0),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  left: 10,
-                                ),
-                                child: Text(
-                                  "Working(AM)         :" + m0.workingAM,
-                                  style: TextStyle(
-                                    fontFamily: "Montserrat",
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 8.0),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  left: 10,
-                                ),
-                                child: Text(
-                                  "Working(PM)         :" + m0.workingPM,
-                                  style: TextStyle(
-                                    fontFamily: "Montserrat",
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: 7,
-                          ),
-                          Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 10),
-                                child: Text(
-                                  "Bank Details",
-                                  style: const TextStyle(
-                                      fontSize: 18,
-                                      fontFamily: "Montserrat",
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              Spacer()
-                            ],
-                          ),
-                          SizedBox(
-                            height: 7,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Bank Name1             :",
-                                  style: const TextStyle(
-                                      fontFamily: "Montserrat",
-                                      fontWeight: FontWeight.w500),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(left: 2),
-                                  child: Text(
-                                    m0.bankName1,
-                                    style: const TextStyle(
-                                        fontFamily: "Montserrat",
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(height: 8.0),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Account Number1    :",
-                                  style: const TextStyle(
-                                      fontFamily: "Montserrat",
-                                      fontWeight: FontWeight.w500),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(left: 2),
-                                  child: Text(
-                                    m0.accountNo1,
-                                    style: const TextStyle(
-                                        fontFamily: "Montserrat",
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(height: 8.0),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Bank Code1               :",
-                                  style: const TextStyle(
-                                      fontFamily: "Montserrat",
-                                      fontWeight: FontWeight.w500),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(left: 2),
-                                  child: Text(
-                                    m0.bankCode1,
-                                    style: const TextStyle(
-                                        fontFamily: "Montserrat",
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(height: 8.0),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Bank Name2             :",
-                                  style: const TextStyle(
-                                      fontFamily: "Montserrat",
-                                      fontWeight: FontWeight.w500),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(left: 2),
-                                  child: Text(
-                                    m0.bankName2,
-                                    style: const TextStyle(
-                                        fontFamily: "Montserrat",
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(height: 8.0),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Account No2             :",
-                                  style: const TextStyle(
-                                      fontFamily: "Montserrat",
-                                      fontWeight: FontWeight.w500),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(left: 2),
-                                  child: Text(
-                                    m0.accountNo2,
-                                    style: const TextStyle(
-                                        fontFamily: "Montserrat",
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(height: 8.0),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Bank Code2               :",
-                                  style: const TextStyle(
-                                      fontFamily: "Montserrat",
-                                      fontWeight: FontWeight.w500),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(left: 2),
-                                  child: Text(
-                                    m0.bankCode2,
-                                    style: const TextStyle(
-                                        fontFamily: "Montserrat",
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(height: 8.0),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 10),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Bookings Option Allowed',
-                                      style: TextStyle(
                                         fontSize: 18,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-
-                                    // Add more checkboxes as needed
-                                  ],
+                                        fontFamily: "Montserrat",
+                                        fontWeight: FontWeight.bold),
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 8.0),
-                          SizedBox(height: 16.0),
-                        ],
+                                Spacer()
+                              ],
+                            ),
+                            SizedBox(height: 8.0),
+                            Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: Align(
+                                    alignment: AlignmentDirectional.centerStart,
+                                    child: Text(
+                                      "    UserName",
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: AlignmentDirectional.center,
+                                  child: Center(
+                                    child: Text(" : "),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Align(
+                                    alignment: AlignmentDirectional.centerStart,
+                                    child: Text(
+                                      m0.userName,
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 8.0),
+                            Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: Align(
+                                    alignment: AlignmentDirectional.centerStart,
+                                    child: Text(
+                                      "    Password",
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: AlignmentDirectional.center,
+                                  child: Center(
+                                    child: Text(" : "),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Align(
+                                    alignment: AlignmentDirectional.centerStart,
+                                    child: Text(
+                                      m0.password,
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 16.0),
+                            Row(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 10),
+                                  child: Text(
+                                    "Branch Contacts",
+                                    style: const TextStyle(
+                                        fontSize: 18,
+                                        fontFamily: "Montserrat",
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                                Spacer()
+                              ],
+                            ),
+                            SizedBox(height: 8.0),
+                            Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: Align(
+                                    alignment: AlignmentDirectional.centerStart,
+                                    child: Text(
+                                      "    Mobile",
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: AlignmentDirectional.center,
+                                  child: Center(
+                                    child: Text(" : "),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Align(
+                                    alignment: AlignmentDirectional.centerStart,
+                                    child: Text(
+                                      m0.mobile,
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 8.0),
+                            Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: Align(
+                                    alignment: AlignmentDirectional.centerStart,
+                                    child: Text(
+                                      "    Phone",
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: AlignmentDirectional.center,
+                                  child: Center(
+                                    child: Text(" : "),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Align(
+                                    alignment: AlignmentDirectional.centerStart,
+                                    child: Text(
+                                      m0.phone,
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 8.0),
+                            Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: Align(
+                                    alignment: AlignmentDirectional.centerStart,
+                                    child: Text(
+                                      "    Fax",
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: AlignmentDirectional.center,
+                                  child: Center(
+                                    child: Text(" : "),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Align(
+                                    alignment: AlignmentDirectional.centerStart,
+                                    child: Text(
+                                      m0.fax,
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 8.0),
+                            Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: Align(
+                                    alignment: AlignmentDirectional.centerStart,
+                                    child: Text(
+                                      "    Email",
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: AlignmentDirectional.center,
+                                  child: Center(
+                                    child: Text(" : "),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Align(
+                                    alignment: AlignmentDirectional.centerStart,
+                                    child: Text(
+                                      m0.email,
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 8.0),
+                            Row(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 10),
+                                  child: Text(
+                                    "Working Days",
+                                    style: const TextStyle(
+                                        fontSize: 18,
+                                        fontFamily: "Montserrat",
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                                Spacer()
+                              ],
+                            ),
+                            SizedBox(height: 8.0),
+                            Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: Align(
+                                    alignment: AlignmentDirectional.centerStart,
+                                    child: Text(
+                                      "    Monday",
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: AlignmentDirectional.center,
+                                  child: Center(
+                                    child: Text(" : "),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Align(
+                                    alignment: AlignmentDirectional.centerStart,
+                                    child: Text(
+                                      m0.monday,
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 8.0),
+                            Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: Align(
+                                    alignment: AlignmentDirectional.centerStart,
+                                    child: Text(
+                                      "    Tuesday",
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: AlignmentDirectional.center,
+                                  child: Center(
+                                    child: Text(" : "),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Align(
+                                    alignment: AlignmentDirectional.centerStart,
+                                    child: Text(
+                                      m0.tuesday,
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 8.0),
+                            Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: Align(
+                                    alignment: AlignmentDirectional.centerStart,
+                                    child: Text(
+                                      "    Wednesday",
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: AlignmentDirectional.center,
+                                  child: Center(
+                                    child: Text(" : "),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Align(
+                                    alignment: AlignmentDirectional.centerStart,
+                                    child: Text(
+                                      m0.wednesday,
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 8.0),
+                            Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: Align(
+                                    alignment: AlignmentDirectional.centerStart,
+                                    child: Text(
+                                      "    Thursday",
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: AlignmentDirectional.center,
+                                  child: Center(
+                                    child: Text(" : "),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Align(
+                                    alignment: AlignmentDirectional.centerStart,
+                                    child: Text(
+                                      m0.thursday,
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 8.0),
+                            Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: Align(
+                                    alignment: AlignmentDirectional.centerStart,
+                                    child: Text(
+                                      "    Friday",
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: AlignmentDirectional.center,
+                                  child: Center(
+                                    child: Text(" : "),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Align(
+                                    alignment: AlignmentDirectional.centerStart,
+                                    child: Text(
+                                      m0.friday,
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 8.0),
+                            Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: Align(
+                                    alignment: AlignmentDirectional.centerStart,
+                                    child: Text(
+                                      "    Saturday",
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: AlignmentDirectional.center,
+                                  child: Center(
+                                    child: Text(" : "),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Align(
+                                    alignment: AlignmentDirectional.centerStart,
+                                    child: Text(
+                                      m0.saturday,
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 8.0),
+                            Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: Align(
+                                    alignment: AlignmentDirectional.centerStart,
+                                    child: Text(
+                                      "    Sunday",
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: AlignmentDirectional.center,
+                                  child: Center(
+                                    child: Text(" : "),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Align(
+                                    alignment: AlignmentDirectional.centerStart,
+                                    child: Text(
+                                      m0.sunday,
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 8.0),
+                            Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: Align(
+                                    alignment: AlignmentDirectional.centerStart,
+                                    child: Text(
+                                      "    IATA Code",
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: AlignmentDirectional.center,
+                                  child: Center(
+                                    child: Text(" : "),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Align(
+                                    alignment: AlignmentDirectional.centerStart,
+                                    child: Text(
+                                      m0.iataCode,
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 8.0),
+                            Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: Align(
+                                    alignment: AlignmentDirectional.centerStart,
+                                    child: Text(
+                                      "    PCC Number",
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: AlignmentDirectional.center,
+                                  child: Center(
+                                    child: Text(" : "),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Align(
+                                    alignment: AlignmentDirectional.centerStart,
+                                    child: Text(
+                                      m0.pccNumber,
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 8.0),
+                            Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: Align(
+                                    alignment: AlignmentDirectional.centerStart,
+                                    child: Text(
+                                      "    Working(AM)",
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: AlignmentDirectional.center,
+                                  child: Center(
+                                    child: Text(" : "),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Align(
+                                    alignment: AlignmentDirectional.centerStart,
+                                    child: Text(
+                                      m0.workingAM,
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 8.0),
+                            Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: Align(
+                                    alignment: AlignmentDirectional.centerStart,
+                                    child: Text(
+                                      "    Working(PM)",
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: AlignmentDirectional.center,
+                                  child: Center(
+                                    child: Text(" : "),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Align(
+                                    alignment: AlignmentDirectional.centerStart,
+                                    child: Text(
+                                      m0.workingPM,
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 8.0),
+                            Row(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 10),
+                                  child: Text(
+                                    "Bank Details",
+                                    style: const TextStyle(
+                                        fontSize: 18,
+                                        fontFamily: "Montserrat",
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                                Spacer()
+                              ],
+                            ),
+                            SizedBox(height: 8.0),
+                            Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: Align(
+                                    alignment: AlignmentDirectional.centerStart,
+                                    child: Text(
+                                      "    Bank Name1",
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: AlignmentDirectional.center,
+                                  child: Center(
+                                    child: Text(" : "),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Align(
+                                    alignment: AlignmentDirectional.centerStart,
+                                    child: Text(
+                                      m0.bankName1,
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 8.0),
+                            Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: Align(
+                                    alignment: AlignmentDirectional.centerStart,
+                                    child: Text(
+                                      "    Account Number1",
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: AlignmentDirectional.center,
+                                  child: Center(
+                                    child: Text(" : "),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Align(
+                                    alignment: AlignmentDirectional.centerStart,
+                                    child: Text(
+                                      m0.accountNo1,
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 8.0),
+                            Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: Align(
+                                    alignment: AlignmentDirectional.centerStart,
+                                    child: Text(
+                                      "    Bank Code1",
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: AlignmentDirectional.center,
+                                  child: Center(
+                                    child: Text(" : "),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Align(
+                                    alignment: AlignmentDirectional.centerStart,
+                                    child: Text(
+                                      m0.bankCode1,
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 8.0),
+                            Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: Align(
+                                    alignment: AlignmentDirectional.centerStart,
+                                    child: Text(
+                                      "    Bank Name2",
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: AlignmentDirectional.center,
+                                  child: Center(
+                                    child: Text(" : "),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Align(
+                                    alignment: AlignmentDirectional.centerStart,
+                                    child: Text(
+                                      m0.bankName2,
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 8.0),
+                            Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: Align(
+                                    alignment: AlignmentDirectional.centerStart,
+                                    child: Text(
+                                      "    Account Number2",
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: AlignmentDirectional.center,
+                                  child: Center(
+                                    child: Text(" : "),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Align(
+                                    alignment: AlignmentDirectional.centerStart,
+                                    child: Text(
+                                      m0.accountNo2,
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 8.0),
+                            Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: Align(
+                                    alignment: AlignmentDirectional.centerStart,
+                                    child: Text(
+                                      "    Bank Code2",
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: AlignmentDirectional.center,
+                                  child: Center(
+                                    child: Text(" : "),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Align(
+                                    alignment: AlignmentDirectional.centerStart,
+                                    child: Text(
+                                      m0.bankCode2,
+                                      style: const TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 8.0),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 10),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Bookings Option Allowed',
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+
+                                      // Add more checkboxes as needed
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 8.0),
+                            SizedBox(height: 16.0),
+                          ],
+                        ),
                       ),
                     );
                   } catch (error) {
